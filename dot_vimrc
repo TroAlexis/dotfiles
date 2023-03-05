@@ -46,7 +46,6 @@ set visualbell
 " Theme settings
 if !is_ide
 	syntax on
-	colorscheme atom-dark-256
 endif
 " Theme settings
 " Do incremental searching.
