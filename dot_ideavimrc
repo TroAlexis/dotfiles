@@ -321,7 +321,7 @@ if has('ide')
 	map <leader>rr <Action>(ReformatCode)
 	map <leader>rR <Action>(ReformatWithPrettierAction)
 	map <leader>re <Action>(Javascript.Linters.EsLint.Fix)
-	map <leader>rs <Action>(Tool_External Tools_Stylelint.Fix)
+	map <leader>rs <Action>(Stylelint.Fix)
 	map <leader>ri <Action>(OptimizeImports)
 	map <leader>rt <Action>(Refactorings.QuickListPopupAction)
 	" Refactoring
