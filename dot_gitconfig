@@ -1,6 +1,6 @@
 [user]
-	name = Alex Troshin
-	email = aleksei.troshin@tedo.ru
+	name = Alexey Troshin
+	email = alexey.troshin.dev@gmail.com
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
