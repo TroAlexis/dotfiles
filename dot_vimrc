@@ -15,6 +15,7 @@ autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
 " highlight f, F, t, T unique characters
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 Plug 'unblevable/quick-scope'
 Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdtree'
