@@ -12,6 +12,9 @@ if has('ide')
 	set keep-english-in-normal-and-restore-in-insert
 	" Ideavim Extension for switching to English in normal"
 
+	" Ideavim Extension for highligting unique characters in line
+	set quickscope
+
 	" Config manipulations
 	nnoremap \e :e ~/.ideavimrc<CR>
 	nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
