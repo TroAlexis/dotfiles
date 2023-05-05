@@ -12,6 +12,7 @@ endif
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 " Run chezmoi apply on saving a dotfile
 
+" Plugins ---------------------------------
 call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -37,6 +38,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'chrisbra/matchit'
 call plug#end()
+" Plugins ---------------------------------
 
 let mapleader=" "
 
@@ -47,11 +49,11 @@ set sidescroll=20
 set sidescrolloff=30
 set visualbell
 
-" Theme settings
+" Theme settings --------------------------
 if !is_ide
 	syntax on
 endif
-" Theme settings
+" Theme settings --------------------------
 "
 " Do incremental searching.
 set incsearch
@@ -140,3 +142,8 @@ vnoremap <leader>X X
 
 " Map to insert inside brackets
 nnoremap <leader>pi a<CR><Esc>"_dd<S-p>
+
+" INFORMATION --------------------------
+"
+" zs                      Scroll the screen horizontally to position the cursor
+"                         at the start (left side) of the screen.
