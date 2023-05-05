@@ -72,7 +72,6 @@ xmap g<C-n> <Plug>NextOccurrence
 xmap <C-x> <Plug>SkipOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
 
-
 " Scroll horizontally with uppercase H and L"
 nnoremap L 40l
 nnoremap H 40h
