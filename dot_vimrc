@@ -39,6 +39,7 @@ Plug 'chrisbra/matchit'
 call plug#end()
 
 let mapleader=" "
+
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=10
@@ -51,6 +52,7 @@ if !is_ide
 	syntax on
 endif
 " Theme settings
+"
 " Do incremental searching.
 set incsearch
 set ignorecase smartcase
@@ -76,10 +78,11 @@ xmap <C-p> <Plug>RemoveOccurrence
 " <A-n> is used to enter accented text e.g. ñ
 nmap <S-C-n> <Plug>AllWholeOccurrences
 xmap <S-C-n> <Plug>AllWholeOccurrences
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 
 " Scroll horizontally with uppercase H and L"
-nnoremap L 40l
-nnoremap H 40h
+nnoremap L 40lzs
+nnoremap H 40hze
 
 " Easymotion ----
 map <leader>/ <Plug>(easymotion-s)
