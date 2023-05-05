@@ -83,6 +83,7 @@ xmap <S-C-n> <Plug>AllWholeOccurrences
 " Scroll horizontally with uppercase H and L"
 nnoremap L 40lzs
 nnoremap H 40hze
+nnoremap $ $zs
 
 " Easymotion ----
 map <leader>/ <Plug>(easymotion-s)
