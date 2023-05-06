@@ -68,6 +68,7 @@ set clipboard=unnamed
 
 let g:argtextobj_pairs="(:),{:},<:>"
 
+
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
@@ -75,6 +76,7 @@ nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
 xmap <C-x> <Plug>SkipOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
+
 
 " Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
 " <A-n> is used to enter accented text e.g. ñ
@@ -111,10 +113,20 @@ nnoremap K i<CR><Esc>l
 map U <C-R>
 inoremap <C-l> <Del>
 
+" Make Y behave the same way as D and C.
 nnoremap Y y$
+
 " Line text-objects.
 nnoremap yil ^vg_y
 vnoremap il ^og_
+
+" Text objects for delimiters.
+for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '-', '#' ]
+    execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
+    execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
+    execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
+    execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
+endfor
 
 " Shortcut to use blackhole register by default
 nnoremap d "_d
