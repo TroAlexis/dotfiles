@@ -243,6 +243,10 @@ if has('ide')
 	map <leader>ri <Action>(OptimizeImports)
 	map <leader>rt <Action>(Refactorings.QuickListPopupAction)
 	" Refactoring
+	"
+	" Comments
+
+	map gcb <Action>(CommentByBlockComment)
 
 	map <leader>a <Action>(Annotate)
 	map <leader>b <Action>(ToggleLineBreakpoint)
