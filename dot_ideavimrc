@@ -34,10 +34,6 @@ if has('ide')
 	nnoremap <leader>*    :action ShowUsages<CR>
 	vnoremap <leader>*    :action ShowUsages<CR>
 
-	" Project recent
-	nnoremap <leader>pr    :action RecentFiles<CR>
-	vnoremap <leader>pr    :action RecentFiles<CR>
-
 	" Project save
 	nnoremap <leader>ps    :action SaveAll<CR>
 	vnoremap <leader>ps    :action SaveAll<CR>
@@ -50,20 +46,7 @@ if has('ide')
 	nnoremap <leader>pfn    :action NewElementMenu<CR>
 	vnoremap <leader>pfn    :action NewElementMenu<CR>
 
-	" -- Colors --
-	
-	" Pick color
-	nnoremap <leader>Cl    :action ShowColorPicker<CR>
-	vnoremap <leader>Cl    :action ShowColorPicker<CR>
-
-	" -- Colors --
-
-
 	" -- Errors --
-
-	" List errors
-	nnoremap <leader>el    :action CodeInspection.OnEditor<CR>
-	vnoremap <leader>el    :action CodeInspection.OnEditor<CR>
 
 	" Go to next error
 	nnoremap <leader>en    :action GotoNextError<CR>
@@ -87,50 +70,14 @@ if has('ide')
 	vnoremap <leader>gfl    :action Vcs.ShowTabbedFileHistory<CR>
 	""" ---------------------------------------------
 
-	" Git init
-	nnoremap <leader>gi    :action Git.Init<CR>
-	vnoremap <leader>gi    :action Git.Init<CR>
-
-	" Show local changes (git status)
-	nnoremap <leader>gs    :action Vcs.Show.Local.Changes<CR>
-	vnoremap <leader>gs    :action Vcs.Show.Local.Changes<CR>
-
-	" Update project (git pull)
-	nnoremap <leader>gv+    :action Vcs.UpdateProject<CR>
-	vnoremap <leader>gv+    :action Vcs.UpdateProject<CR>
-
 	" Annotate. Show when each line was last edited and by whom.
 	nnoremap <leader>ga    :action Annotate<CR>
 	vnoremap <leader>ga    :action Annotate<CR>
 
-	" Show log (git log)
-	nnoremap <leader>gvl    :action Vcs.Show.Log<CR>
-	vnoremap <leader>gvl    :action Vcs.Show.Log<CR>
-
 	" -- Git --
-	
-	" -- Insertions --
-	
-	" Insert line below
-	nnoremap <leader>ij    o<Esc>k
-	vnoremap <leader>ij    <Esc>o<Esc>k
-
-	" Insert line above
-	nnoremap <leader>ik    O<Esc>j
-	vnoremap <leader>ik    <Esc>O<Esc>j
-
-	" -- Insertions --
 	
 
 	" -- Changes --
-
-	" Go to next change
-	nnoremap g,    :action JumpToNextChange<CR>
-	vnoremap g,    :action JumpToNextChange<CR>
-
-	" Go to last change
-	nnoremap g;    :action JumpToLastChange<CR>
-	vnoremap g;    :action JumpToLastChange<CR>
 
 	" Collapse all folds
 	nnoremap zm    :action CollapseAllRegions<CR>
@@ -160,30 +107,6 @@ if has('ide')
 	" -- Numbers --
 	
 
-	" -- Project --
-
-	" Close project
-	nnoremap <leader>qf    :action CloseProject<CR>
-	vnoremap <leader>qf    <Esc>:action CloseProject<CR>
-	nnoremap <leader>qq    :action CloseProject<CR>
-	vnoremap <leader>qq    <Esc>:action CloseProject<CR>
-
-	" Exit (close all projects)
-	nnoremap <leader>qQ    :action Exit<CR>
-	vnoremap <leader>qQ    <Esc>:action Exit<CR>
-
-	" Restart
-	nnoremap <leader>qR    :action InvalidateCaches<CR>
-	vnoremap <leader>qR    <Esc>:action InvalidateCaches<CR>
-	nnoremap <leader>qr    :action RestartIde<CR>
-	vnoremap <leader>qr    <Esc>:action RestartIde<CR>
-
-	" Save all and close project
-	nnoremap <leader>qs    :action SaveAll<CR>:action CloseProject<CR>
-	vnoremap <leader>qs    <Esc>:action SaveAll<CR>:action CloseProject<CR>
-
-	" -- Project --
-	
 	" -- Windows  --
 
 	" Split window right
@@ -228,10 +151,6 @@ if has('ide')
 	nnoremap <leader>w<Right>    <C-w>l
 	vnoremap <leader>w<Right>    <Esc><C-w>l
 
-	" Focus next project
-	nnoremap <leader>wo    :action NextProjectWindow<CR>
-	vnoremap <leader>wo    :action NextProjectWindow<CR>
-
 	" Split window below and focus
 	nnoremap <leader>wS    <C-w>s<C-w>j
 	vnoremap <leader>wS    <Esc><C-w>s<C-w>j
@@ -275,6 +194,7 @@ if has('ide')
 	map <leader>mr <Action>(ChooseRunConfiguration)
 	map <leader>mR <Action>(RunClass)
 	map <leader>md <Action>(ChooseDebugConfiguration)
+	map <leader>mD <Action>(DebugClass)
 
 	map <leader>ms <Action>(SurroundWithLiveTemplate)
 	map <leader>mm <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
@@ -284,10 +204,6 @@ if has('ide')
 	map <leader>mc <Action>(CallHierarchy)
 
 	map <leader>mh <Action>(LocalHistory.ShowHistory)
-
-	" Menu of events (Show event log)
-	nnoremap <leader>me    :action ActivateEventLogToolWindow<CR>
-	vnoremap <leader>me    :action ActivateEventLogToolWindow<CR>
 
 	" Menu of bookmarks
 	nnoremap <leader>mb    :action ShowBookmarks<CR>
