@@ -187,7 +187,7 @@ if has('ide')
 	map <leader>mg <Action>(Git.MainMenu)
 
 	map <leader>mp <Action>(ManageRecentProjects)
-	map <leader>mn <Action>(ShowNavBar)
+	map <leader>mn <Action>(ActivatenpmToolWindow)
 	map <leader>mv <Action>(ActivateProjectToolWindow)
 	map <leader>ml <Action>(SelectInProjectView)
 
@@ -201,7 +201,6 @@ if has('ide')
 
 	map <leader>mo <Action>(FileStructurePopup)
 	map <leader>mu <Action>(FindUsagesMenuGroup)
-	map <leader>mc <Action>(CallHierarchy)
 
 	map <leader>mh <Action>(LocalHistory.ShowHistory)
 
