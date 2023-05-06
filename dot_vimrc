@@ -141,7 +141,9 @@ nnoremap ci! T!ct!
 nnoremap ca! F!ct!
 nnoremap ci& T&ct&
 nnoremap ca& F&ct&
-nnoremap di/ T/dt/
+nnoremap ci* T*ct*
+nnoremap ca* F*ct*
+nnoremap di/ T/ct/
 nnoremap da/ F/dt/
 nnoremap di, T,dt,
 nnoremap da, F,dt,
@@ -161,8 +163,10 @@ nnoremap di! T!dt!
 nnoremap da! F!dt!
 nnoremap di& T&dt&
 nnoremap da& F&dt&
-nnoremap vi/ T/vt/
-nnoremap va/ F/vt/
+nnoremap di* T*dt*
+nnoremap da* F*ct*
+nnoremap vi/ c/vt/
+nnoremap va/ c/vt/
 nnoremap vi, T,vt,
 nnoremap va, F,vt,
 nnoremap vi. T.vt.
@@ -181,6 +185,8 @@ nnoremap vi! T!vt!
 nnoremap va! F!vt!
 nnoremap vi& T&vt&
 nnoremap va& F&vt&
+nnoremap vi* T*vt*
+nnoremap va* F*vt*
 nnoremap yi/ T/yt/
 nnoremap ya/ F/yt/
 nnoremap yi, T,yt,
@@ -201,6 +207,8 @@ nnoremap yi! T!yt!
 nnoremap ya! F!yt!
 nnoremap yi& T&yt&
 nnoremap ya& F&yt&
+nnoremap yi* T*yt*
+nnoremap ya* F*yt*
 " Text objects for delimiters.
 
 " Shortcut to use blackhole register by default
