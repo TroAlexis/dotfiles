@@ -121,12 +121,87 @@ nnoremap yil ^vg_y
 vnoremap il ^og_
 
 " Text objects for delimiters.
-for char in [ '_', '.', ':', ',', ';', '<bar>', '/', '<bslash>', '*', '+', '%', '-', '#' ]
-    execute 'xnoremap i' . char . ' :<C-u>normal! T' . char . 'vt' . char . '<CR>'
-    execute 'onoremap i' . char . ' :normal vi' . char . '<CR>'
-    execute 'xnoremap a' . char . ' :<C-u>normal! F' . char . 'vf' . char . '<CR>'
-    execute 'onoremap a' . char . ' :normal va' . char . '<CR>'
-endfor
+nnoremap ci/ T/ct/
+nnoremap ca/ F/ct/
+nnoremap ci, T,ct,
+nnoremap ca, F,ct,
+nnoremap ci. T.ct.
+nnoremap ca. F.ct.
+nnoremap ci_ T_ct_
+nnoremap ca_ F_ct_
+nnoremap ci- T-ct-
+nnoremap ca- F-ct-
+nnoremap ci% T%ct%
+nnoremap ca% F%ct%
+nnoremap ci= T=ct=
+nnoremap ca= F=ct=
+nnoremap ci? T?ct?
+nnoremap ca? F?ct?
+nnoremap ci! T!ct!
+nnoremap ca! F!ct!
+nnoremap ci& T&ct&
+nnoremap ca& F&ct&
+nnoremap di/ T/dt/
+nnoremap da/ F/dt/
+nnoremap di, T,dt,
+nnoremap da, F,dt,
+nnoremap di. T.dt.
+nnoremap da. F.dt.
+nnoremap di_ T_dt_
+nnoremap da_ F_dt_
+nnoremap di- T-dt-
+nnoremap da- F-dt-
+nnoremap di% T%dt%
+nnoremap da% F%dt%
+nnoremap di= T=dt=
+nnoremap da= F=dt=
+nnoremap di? T?dt?
+nnoremap da? F?dt?
+nnoremap di! T!dt!
+nnoremap da! F!dt!
+nnoremap di& T&dt&
+nnoremap da& F&dt&
+nnoremap vi/ T/vt/
+nnoremap va/ F/vt/
+nnoremap vi, T,vt,
+nnoremap va, F,vt,
+nnoremap vi. T.vt.
+nnoremap va. F.vt.
+nnoremap vi_ T_vt_
+nnoremap va_ F_vt_
+nnoremap vi- T-vt-
+nnoremap va- F-vt-
+nnoremap vi% T%vt%
+nnoremap va% F%vt%
+nnoremap vi= T=vt=
+nnoremap va= F=vt=
+nnoremap vi? T?vt?
+nnoremap va? F?vt?
+nnoremap vi! T!vt!
+nnoremap va! F!vt!
+nnoremap vi& T&vt&
+nnoremap va& F&vt&
+nnoremap yi/ T/yt/
+nnoremap ya/ F/yt/
+nnoremap yi, T,yt,
+nnoremap ya, F,yt,
+nnoremap yi. T.yt.
+nnoremap ya. F.yt.
+nnoremap yi_ T_yt_
+nnoremap ya_ F_yt_
+nnoremap yi- T-yt-
+nnoremap ya- F-yt-
+nnoremap yi% T%yt%
+nnoremap ya% F%yt%
+nnoremap yi= T=yt=
+nnoremap ya= F=yt=
+nnoremap yi? T?yt?
+nnoremap ya? F?yt?
+nnoremap yi! T!yt!
+nnoremap ya! F!yt!
+nnoremap yi& T&yt&
+nnoremap ya& F&yt&
+" Text objects for delimiters.
 
 " Shortcut to use blackhole register by default
 nnoremap d "_d
