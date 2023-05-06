@@ -112,6 +112,9 @@ map U <C-R>
 inoremap <C-l> <Del>
 
 nnoremap Y y$
+" Line text-objects.
+nnoremap yil ^vg_y
+vnoremap il ^og_
 
 " Shortcut to use blackhole register by default
 nnoremap d "_d
