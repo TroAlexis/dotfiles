@@ -246,7 +246,7 @@ if has('ide')
 	"
 	" Comments
 
-	map gcb <Action>(CommentByBlockComment)
+	vnoremap gcb <Action>(CommentByBlockComment)
 
 	map <leader>a <Action>(Annotate)
 	map <leader>b <Action>(ToggleLineBreakpoint)
