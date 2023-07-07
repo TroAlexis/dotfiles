@@ -12,6 +12,8 @@ endif
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 " Run chezmoi apply on saving a dotfile
 
+let g:notes_directories = ['~/Documents/Notes']
+
 " Plugins ---------------------------------
 call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
