@@ -38,6 +38,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'chrisbra/matchit'
 Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
 call plug#end()
 " Plugins ---------------------------------
 
