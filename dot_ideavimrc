@@ -262,7 +262,6 @@ if has('ide')
 	vmap <A-Up> <Action>(MoveStatementUp)
 	vmap <A-Down> <Action>(MoveStatementDown)
 
-	map <leader>a <Action>(Annotate)
 	map <leader>b <Action>(ToggleLineBreakpoint)
 
 	" built-in navigation to navigated items works better
