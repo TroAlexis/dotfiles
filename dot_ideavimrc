@@ -192,6 +192,8 @@ if has('ide')
 	map <leader>mv <Action>(ActivateProjectToolWindow)
 	map <leader>ml <Action>(SelectInProjectView)
 
+	map <leader>mz <Action>(ToggleZenMode)
+
 	map <leader>mr <Action>(ChooseRunConfiguration)
 	map <leader>mR <Action>(RunClass)
 	map <leader>md <Action>(ChooseDebugConfiguration)
