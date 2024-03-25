@@ -70,7 +70,7 @@ set hlsearch
 set number relativenumber
 set clipboard=unnamed
 
-let g:argtextobj_pairs="(:),{:},<:>"
+let g:argtextobj_pairs="(:),{:},<:>,[:]"
 
 
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
