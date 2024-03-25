@@ -9,8 +9,7 @@ if has('ide')
 	set ideamarks
 	set idearefactormode=keep
 	" Ideavim Extension for switching to English in normal"
-	set keep-english-in-normal-and-restore-in-insert
-	let context_aware=1
+	set keep-english-in-normal
 	" Ideavim Extension for switching to English in normal"
 
 	" Ideavim Extension for highligting unique characters in line
