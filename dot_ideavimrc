@@ -2,15 +2,15 @@ source ~/.vimrc
 
 if has('ide')
 	set history=1000
-	set clipboard+=unnamed
-	set clipboard+=ideaput
+	" Fixed the problem that p paste cannot import class automatically, https://youtrack.jetbrains.com/issue/VIM-25/VIM-code-paste-should-be-smarter
+	set clipboard+=ideaput,unnamed
 	" Smart join for <C-J>
 	set ideajoin
 	set ideamarks
 	set idearefactormode=keep
 	" Ideavim Extension for switching to English in normal"
-	let g:KeepEnglishName_package_name_package_name = "org.sil.ukelele.keyboardlayout.abcnl.abcnl"
 	set keep-english-in-normal-and-restore-in-insert
+	let context_aware=1
 	" Ideavim Extension for switching to English in normal"
 
 	" Ideavim Extension for highligting unique characters in line
@@ -211,6 +211,12 @@ if has('ide')
 	nnoremap <leader>mb    :action ShowBookmarks<CR>
 	vnoremap <leader>mb    :action ShowBookmarks<CR>
 
+
+	" Bookmarks
+	map <leader>bn <Action>(GotoNextBookmark)
+	map <leader>bp <Action>(GotoPreviousBookmark)
+	map <leader>bb <Action>(ToggleBookmark)
+
 	" IDE menus
 
 	" Hover mapping
@@ -245,6 +251,7 @@ if has('ide')
 	map <leader>rs <Action>(Stylelint.Fix)
 	map <leader>ri <Action>(OptimizeImports)
 	map <leader>rt <Action>(Refactorings.QuickListPopupAction)
+	map <leader>rl <Action>(EditorSortLines)
 	" Refactoring
 	"
 	" Comments
@@ -263,8 +270,6 @@ if has('ide')
 	imap <A-Down> <Action>(MoveStatementDown)
 	vmap <A-Up> <Action>(MoveStatementUp)
 	vmap <A-Down> <Action>(MoveStatementDown)
-
-	map <leader>b <Action>(ToggleLineBreakpoint)
 
 	" built-in navigation to navigated items works better
 	nmap <c-o> <Action>(Back)
