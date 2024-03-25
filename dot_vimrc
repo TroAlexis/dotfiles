@@ -88,6 +88,12 @@ nmap <S-C-n> <Plug>AllWholeOccurrences
 xmap <S-C-n> <Plug>AllWholeOccurrences
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 
+" Display the search results in the middle of the screen
+noremap * *zz
+noremap # #zz
+noremap n nzz
+noremap N Nzz
+
 " Scroll horizontally with uppercase H and L"
 nnoremap L 40lzs
 nnoremap H 40hze
