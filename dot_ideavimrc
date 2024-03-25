@@ -186,6 +186,8 @@ if has('ide')
 
 	" IDE menus
 	map <leader>mg <Action>(Git.MainMenu)
+	nmap <leader>mc <Action>(CodeMenu)
+	nmap <leader>mw <Action>(ToolWindowsGroup)
 
 	map <leader>mp <Action>(ManageRecentProjects)
 	map <leader>mn <Action>(ActivatenpmToolWindow)
@@ -199,7 +201,7 @@ if has('ide')
 	map <leader>md <Action>(ChooseDebugConfiguration)
 	map <leader>mD <Action>(DebugClass)
 
-	map <leader>ms <Action>(SurroundWithLiveTemplate)
+	map <leader>ms <Action>(SelectIn)
 	map <leader>mm <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
 
 	map <leader>mo <Action>(FileStructurePopup)
