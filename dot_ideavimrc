@@ -226,6 +226,7 @@ if has('ide')
 	map gh <Action>(ShowHoverInfo)
 	map gt <Action>(QuickTypeDefinition)
 	map ge <Action>(EditSource)
+	map gp <Action>(QuickPreview)
 	" map ge <Action>(Documentation.EditSource)
 
 	" Find action
