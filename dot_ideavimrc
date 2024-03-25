@@ -221,7 +221,7 @@ if has('ide')
 
 	" Hover mapping
 	map gj <Action>(ShowErrorDescription)
-	map gh <Action>(QuickJavaDoc)
+	map gh <Action>(ShowHoverInfo)
 	map gt <Action>(QuickTypeDefinition)
 	map ge <Action>(EditSource)
 	" map ge <Action>(Documentation.EditSource)
