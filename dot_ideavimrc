@@ -204,7 +204,7 @@ if has('ide')
 	map <leader>mm <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
 
 	map <leader>mo <Action>(FileStructurePopup)
-	map <leader>mu <Action>(CallHierarchyPopupMenu)
+	map <leader>mu <Action>(CallHierarchy)
 
 	map <leader>mh <Action>(LocalHistory.ShowHistory)
 
