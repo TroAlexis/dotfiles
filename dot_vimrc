@@ -114,6 +114,9 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" Map ' to ` 
+" as backtick jumps to place instead of line 
+" which is more comfortable
 noremap ' `
 noremap ` '
 
