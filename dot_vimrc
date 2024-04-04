@@ -114,6 +114,9 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+noremap ' `
+noremap ` '
+
 " Map oo/OO to insert newline without entering insert mode
 nmap <leader>o o<Esc>k
 nmap <leader>O O<Esc>j
