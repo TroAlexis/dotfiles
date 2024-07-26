@@ -84,8 +84,10 @@ xmap <C-p> <Plug>RemoveOccurrence
 
 " Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
 " <A-n> is used to enter accented text e.g. ñ
-nmap <S-C-n> <Plug>AllWholeOccurrences
-xmap <S-C-n> <Plug>AllWholeOccurrences
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 
 " Display the search results in the middle of the screen
@@ -124,6 +126,7 @@ noremap ` '
 nmap <leader>o m'o<Esc>''
 nmap <leader>O m'O<Esc>''
 
+" Break line (opposite of J)
 nnoremap K i<CR><Esc>l
 
 map U <C-R>
