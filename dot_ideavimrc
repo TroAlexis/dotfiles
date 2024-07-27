@@ -21,6 +21,11 @@ if has('ide')
 	set notimeout
 	" make the popup appear much slower
 	let g:WhichKey_DefaultDelay = 600
+	" close the popup and don't process formerly typed keys
+	let g:WhichKey_ProcessUnknownMappings = "false"
+
+	" Leader namespace
+	let g:WhichKeyDesc_actions = "<leader> Actions"
 
 	" Config manipulations
 	let g:WhichKeyDesc_config = "<Bslash> Config"
@@ -44,20 +49,24 @@ if has('ide')
 	nnoremap <leader>tt    :action ActivateTerminalToolWindow<CR>
 	vnoremap <leader>tt    :action ActivateTerminalToolWindow<CR>
 
-	let g:WhichKeyDesc_actions = "<leader> Actions"
 	let g:WhichKeyDesc_usages = "<leader>* Show usages"
 	nnoremap <leader>*    :action ShowUsages<CR>
 	vnoremap <leader>*    :action ShowUsages<CR>
 
+	let g:WhichKeyDesc_project = "<leader>p Project"
 	" Project save
+	let g:WhichKeyDesc_project_save = "<leader>ps Save all"
 	nnoremap <leader>ps    :action SaveAll<CR>
 	vnoremap <leader>ps    :action SaveAll<CR>
 
+	let g:WhichKeyDesc_project_file = "<leader>pf File"
 	" Copy project file path
+	let g:WhichKeyDesc_project_copy_path = "<leader>pfy Copy absolute file path"
 	nnoremap <leader>pfy    :action CopyAbsolutePath<CR>
 	vnoremap <leader>pfy    :action CopyAbsolutePath<CR>
 
 	" Project new file
+	let g:WhichKeyDesc_project_new_file = "<leader>pfn Create new file"
 	nnoremap <leader>pfn    :action NewElementMenu<CR>
 	vnoremap <leader>pfn    :action NewElementMenu<CR>
 
