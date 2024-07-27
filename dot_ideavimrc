@@ -20,7 +20,7 @@ if has('ide')
 	" do not close after timeout, but after keypress or cancelling
 	set notimeout
 	" make the popup appear much slower
-	let g:WhichKey_DefaultDelay = 1000
+	let g:WhichKey_DefaultDelay = 600
 
 	" Config manipulations
 	nnoremap \e :e ~/.ideavimrc<CR>
