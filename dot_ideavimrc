@@ -17,8 +17,10 @@ if has('ide')
 
 	" Ideavim Extension for displaying keymap info https://github.com/TheBlob42/idea-which-key
 	set which-key
+	" do not close after timeout, but after keypress or cancelling
 	set notimeout
-	set timeoutlen=5000
+	" make the popup appear much slower
+	let g:WhichKey_DefaultDelay = 2000
 
 	" Config manipulations
 	nnoremap \e :e ~/.ideavimrc<CR>
