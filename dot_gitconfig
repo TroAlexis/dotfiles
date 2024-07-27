@@ -8,5 +8,6 @@
 	process = git-lfs filter-process
 [core]
 	autocrlf = input
+	editor = vim
 [alias]
 	rst = commit --amend --no-edit --reset-author
