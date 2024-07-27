@@ -35,12 +35,17 @@ if has('ide')
 	vnoremap <leader><Tab>    <Esc><C-S-6>
 
 	" Open in terminal
+	let g:WhichKeyDesc_terminal = "<leader>t Terminal"
+	let g:WhichKeyDesc_terminal_edit = "<leader>te Open in terminal"
 	nnoremap <leader>te    :action Terminal.OpenInTerminal<CR>
 	vnoremap <leader>te    :action Terminal.OpenInTerminal<CR>
 
+	let g:WhichKeyDesc_terminal_toggle = "<leader>tt Toggle terminal"
 	nnoremap <leader>tt    :action ActivateTerminalToolWindow<CR>
 	vnoremap <leader>tt    :action ActivateTerminalToolWindow<CR>
 
+	let g:WhichKeyDesc_actions = "<leader> Actions"
+	let g:WhichKeyDesc_usages = "<leader>* Show usages"
 	nnoremap <leader>*    :action ShowUsages<CR>
 	vnoremap <leader>*    :action ShowUsages<CR>
 
