@@ -17,6 +17,8 @@ if has('ide')
 
 	" Ideavim Extension for displaying keymap info https://github.com/TheBlob42/idea-which-key
 	set which-key
+	set notimeout
+	set timeoutlen=3000
 
 	" Config manipulations
 	nnoremap \e :e ~/.ideavimrc<CR>
