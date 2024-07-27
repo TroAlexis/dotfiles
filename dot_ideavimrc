@@ -1,5 +1,7 @@
 source ~/.vimrc
 
+" test
+
 if has('ide')
 	set history=1000
 	" Fixed the problem that p paste cannot import class automatically, https://youtrack.jetbrains.com/issue/VIM-25/VIM-code-paste-should-be-smarter
