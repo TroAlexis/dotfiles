@@ -15,6 +15,9 @@ if has('ide')
 	" Ideavim Extension for highligting unique characters in line
 	set quickscope
 
+	" Ideavim Extension for displaying keymap info https://github.com/TheBlob42/idea-which-key
+	set which-key
+
 	" Config manipulations
 	nnoremap \e :e ~/.ideavimrc<CR>
 	nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
