@@ -152,94 +152,94 @@ vnoremap il ^og_
 
 " Text objects for delimiters.
 " TODO: Not working with which-key in ideavim
-onoremap <silent>i/ T/ct/
-onoremap <silent>a/ F/ct/
-onoremap <silent>i, T,ct,
-onoremap <silent>a, F,ct,
-onoremap <silent>i. T.ct.
-onoremap <silent>a. F.ct.
-onoremap <silent>i_ T_ct_
-onoremap <silent>a_ F_ct_
-onoremap <silent>i- T-ct-
-onoremap <silent>a- F-ct-
-onoremap <silent>i% T%ct%
-onoremap <silent>a% F%ct%
-onoremap <silent>i= T=ct=
-onoremap <silent>a= F=ct=
-onoremap <silent>i? T?ct?
-onoremap <silent>a? F?ct?
-onoremap <silent>i! T!ct!
-onoremap <silent>a! F!ct!
-onoremap <silent>i& T&ct&
-onoremap <silent>a& F&ct&
-onoremap <silent>i* T*ct*
-onoremap <silent>a* F*ct*
-onoremap <silent>i/ T/ct/
-onoremap <silent>a/ F/dt/
-onoremap <silent>i, T,dt,
-onoremap <silent>a, F,dt,
-onoremap <silent>i. T.dt.
-onoremap <silent>a. F.dt.
-onoremap <silent>i_ T_dt_
-onoremap <silent>a_ F_dt_
-onoremap <silent>i- T-dt-
-onoremap <silent>a- F-dt-
-onoremap <silent>i% T%dt%
-onoremap <silent>a% F%dt%
-onoremap <silent>i= T=dt=
-onoremap <silent>a= F=dt=
-onoremap <silent>i? T?dt?
-onoremap <silent>a? F?dt?
-onoremap <silent>i! T!dt!
-onoremap <silent>a! F!dt!
-onoremap <silent>i& T&dt&
-onoremap <silent>a& F&dt&
-onoremap <silent>i* T*dt*
-onoremap <silent>a* F*ct*
-onoremap <silent>i/ c/vt/
-onoremap <silent>a/ c/vt/
-onoremap <silent>i, T,vt,
-onoremap <silent>a, F,vt,
-onoremap <silent>i. T.vt.
-onoremap <silent>a. F.vt.
-onoremap <silent>i_ T_vt_
-onoremap <silent>a_ F_vt_
-onoremap <silent>i- T-vt-
-onoremap <silent>a- F-vt-
-onoremap <silent>i% T%vt%
-onoremap <silent>a% F%vt%
-onoremap <silent>i= T=vt=
-onoremap <silent>a= F=vt=
-onoremap <silent>i? T?vt?
-onoremap <silent>a? F?vt?
-onoremap <silent>i! T!vt!
-onoremap <silent>a! F!vt!
-onoremap <silent>i& T&vt&
-onoremap <silent>a& F&vt&
-onoremap <silent>i* T*vt*
-onoremap <silent>a* F*vt*
-onoremap <silent>i/ T/yt/
-onoremap <silent>a/ F/yt/
-onoremap <silent>i, T,yt,
-onoremap <silent>a, F,yt,
-onoremap <silent>i. T.yt.
-onoremap <silent>a. F.yt.
-onoremap <silent>i_ T_yt_
-onoremap <silent>a_ F_yt_
-onoremap <silent>i- T-yt-
-onoremap <silent>a- F-yt-
-onoremap <silent>i% T%yt%
-onoremap <silent>a% F%yt%
-onoremap <silent>i= T=yt=
-onoremap <silent>a= F=yt=
-onoremap <silent>i? T?yt?
-onoremap <silent>a? F?yt?
-onoremap <silent>i! T!yt!
-onoremap <silent>a! F!yt!
-onoremap <silent>i& T&yt&
-onoremap <silent>a& F&yt&
-onoremap <silent>i* T*yt*
-onoremap <silent>a* F*yt*
+onoremap <silent> i/ T/ct/
+onoremap <silent> a/ F/ct/
+onoremap <silent> i, T,ct,
+onoremap <silent> a, F,ct,
+onoremap <silent> i. T.ct.
+onoremap <silent> a. F.ct.
+onoremap <silent> i_ T_ct_
+onoremap <silent> a_ F_ct_
+onoremap <silent> i- T-ct-
+onoremap <silent> a- F-ct-
+onoremap <silent> i% T%ct%
+onoremap <silent> a% F%ct%
+onoremap <silent> i= T=ct=
+onoremap <silent> a= F=ct=
+onoremap <silent> i? T?ct?
+onoremap <silent> a? F?ct?
+onoremap <silent> i! T!ct!
+onoremap <silent> a! F!ct!
+onoremap <silent> i& T&ct&
+onoremap <silent> a& F&ct&
+onoremap <silent> i* T*ct*
+onoremap <silent> a* F*ct*
+onoremap <silent> i/ T/ct/
+onoremap <silent> a/ F/dt/
+onoremap <silent> i, T,dt,
+onoremap <silent> a, F,dt,
+onoremap <silent> i. T.dt.
+onoremap <silent> a. F.dt.
+onoremap <silent> i_ T_dt_
+onoremap <silent> a_ F_dt_
+onoremap <silent> i- T-dt-
+onoremap <silent> a- F-dt-
+onoremap <silent> i% T%dt%
+onoremap <silent> a% F%dt%
+onoremap <silent> i= T=dt=
+onoremap <silent> a= F=dt=
+onoremap <silent> i? T?dt?
+onoremap <silent> a? F?dt?
+onoremap <silent> i! T!dt!
+onoremap <silent> a! F!dt!
+onoremap <silent> i& T&dt&
+onoremap <silent> a& F&dt&
+onoremap <silent> i* T*dt*
+onoremap <silent> a* F*ct*
+onoremap <silent> i/ c/vt/
+onoremap <silent> a/ c/vt/
+onoremap <silent> i, T,vt,
+onoremap <silent> a, F,vt,
+onoremap <silent> i. T.vt.
+onoremap <silent> a. F.vt.
+onoremap <silent> i_ T_vt_
+onoremap <silent> a_ F_vt_
+onoremap <silent> i- T-vt-
+onoremap <silent> a- F-vt-
+onoremap <silent> i% T%vt%
+onoremap <silent> a% F%vt%
+onoremap <silent> i= T=vt=
+onoremap <silent> a= F=vt=
+onoremap <silent> i? T?vt?
+onoremap <silent> a? F?vt?
+onoremap <silent> i! T!vt!
+onoremap <silent> a! F!vt!
+onoremap <silent> i& T&vt&
+onoremap <silent> a& F&vt&
+onoremap <silent> i* T*vt*
+onoremap <silent> a* F*vt*
+onoremap <silent> i/ T/yt/
+onoremap <silent> a/ F/yt/
+onoremap <silent> i, T,yt,
+onoremap <silent> a, F,yt,
+onoremap <silent> i. T.yt.
+onoremap <silent> a. F.yt.
+onoremap <silent> i_ T_yt_
+onoremap <silent> a_ F_yt_
+onoremap <silent> i- T-yt-
+onoremap <silent> a- F-yt-
+onoremap <silent> i% T%yt%
+onoremap <silent> a% F%yt%
+onoremap <silent> i= T=yt=
+onoremap <silent> a= F=yt=
+onoremap <silent> i? T?yt?
+onoremap <silent> a? F?yt?
+onoremap <silent> i! T!yt!
+onoremap <silent> a! F!yt!
+onoremap <silent> i& T&yt&
+onoremap <silent> a& F&yt&
+onoremap <silent> i* T*yt*
+onoremap <silent> a* F*yt*
 " Text objects for delimiters.
 
 " Shortcut to use blackhole register by default
