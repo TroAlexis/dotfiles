@@ -41,6 +41,8 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'chrisbra/matchit'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+" alignment plugin https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 " Plugins ---------------------------------
 
@@ -72,6 +74,11 @@ set clipboard=unnamed
 
 let g:argtextobj_pairs="(:),{:},<:>,[:]"
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
