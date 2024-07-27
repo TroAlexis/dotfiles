@@ -23,10 +23,10 @@ if has('ide')
 	let g:WhichKey_DefaultDelay = 600
 
 	" Config manipulations
-	let g:WhichKeyDesc_config = "\ Config"
-	let g:WhichKeyDesc_config = "\e Edit IdeaVimrc"
+	let g:WhichKeyDesc_config = "<Bslash> Config"
+	let g:WhichKeyDesc_config_edit = "<Bslash>e Edit IdeaVimrc"
 	nnoremap \e :e ~/.ideavimrc<CR>
-	let g:WhichKeyDesc_config = "\r Reload IdeaVimrc"
+	let g:WhichKeyDesc_config_reload = "<Bslash>r Reload IdeaVimrc"
 	nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 	" Config manipulations
 
