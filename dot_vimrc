@@ -41,8 +41,9 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'chrisbra/matchit'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
-" alignment plugin https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
+if !is_ide
+	" alignment plugin https://github.com/junegunn/vim-easy-align
+	Plug 'junegunn/vim-easy-align'
 call plug#end()
 " Plugins ---------------------------------
 
