@@ -22,11 +22,12 @@ if has('ide')
 	" make the popup appear much slower
 	let g:WhichKey_DefaultDelay = 600
 	" close the popup and don't process formerly typed keys
-	" let g:WhichKey_ProcessUnknownMappings = "false"
+	let g:WhichKey_ProcessUnknownMappings = "false"
 	" set how the elements should be ordered
 	let g:WhichKey_SortOrder = "by_description"
 	" set if the sorting should be case-sensitive or not
 	let g:WhichKey_SortCaseSensitive = "false"
+	let g:WhichKey_ShowVimActions = "true"
 
 	" Leader namespace
 	let g:WhichKeyDesc_actions = "<leader> Actions"
