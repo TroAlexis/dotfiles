@@ -1,5 +1,6 @@
 [git]
     autoCommit = true
+    autoPush = true
 
 [edit]
     command = "vim"
