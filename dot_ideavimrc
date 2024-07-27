@@ -29,7 +29,6 @@ if has('ide')
 	let g:WhichKey_SortOrder = "by_description"
 	" set if the sorting should be case-sensitive or not
 	let g:WhichKey_SortCaseSensitive = "false"
-	let g:WhichKey_ShowVimActions = "true"
 
 	" Leader namespace
 	let g:WhichKeyDesc_actions = "<leader> Actions"
