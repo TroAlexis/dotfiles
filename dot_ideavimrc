@@ -76,6 +76,10 @@ if has('ide')
 	nnoremap <leader>pfn    :action NewElementMenu<CR>
 	vnoremap <leader>pfn    :action NewElementMenu<CR>
 
+	" Rename file
+	let g:WhichKeyDesc_project_rename_file = "<leader>pfr Rename file"
+	map <leader>pfr :action RenameFile<CR>
+
 	" -- Errors --
 
 	" Error navigation mappings
@@ -357,33 +361,64 @@ if has('ide')
 	map gt <Action>(QuickTypeDefinition)
 	let g:WhichKeyDesc_edit_source = "ge Edit source"
 	map ge <Action>(EditSource)
-	" map ge <Action>(Documentation.EditSource)
+
+	" Find actions namespace
+	let g:WhichKeyDesc_find_actions = "<leader>f Find actions"
 
 	" Find action
-	nnoremap <leader>fa    :action GotoAction<CR>
-	vnoremap <leader>fa    :action GotoAction<CR>
+	let g:WhichKeyDesc_find_action = "<leader>fa Find action"
+	nnoremap <leader>fa :action GotoAction<CR>
+	vnoremap <leader>fa :action GotoAction<CR>
 
 	" Find file
-	nnoremap <leader>ff    :action GotoFile<CR>
-	vnoremap <leader>ff    :action GotoFile<CR>
+	let g:WhichKeyDesc_find_file = "<leader>ff Find file"
+	nnoremap <leader>ff :action GotoFile<CR>
+	vnoremap <leader>ff :action GotoFile<CR>
 
 	" Find in path (globally)
-	nnoremap <leader>fg    :action FindInPath<CR>
-	vnoremap <leader>fg    :action FindInPath<CR>
+	let g:WhichKeyDesc_find_in_path = "<leader>fg Find globally"
+	nnoremap <leader>fg :action FindInPath<CR>
+	vnoremap <leader>fg :action FindInPath<CR>
 
 	" Find symbol
-	nnoremap <leader>fs    :action GotoSymbol<CR>
-	vnoremap <leader>fs    :action GotoSymbol<CR>
+	let g:WhichKeyDesc_find_symbol = "<leader>fs Find symbol"
+	nnoremap <leader>fs :action GotoSymbol<CR>
+	vnoremap <leader>fs :action GotoSymbol<CR>
 
 	" Refactoring
+	" Refactor actions namespace
+	let g:WhichKeyDesc_refactor_actions = "<leader>r Refactor actions"
+
+	" Rename element
+	let g:WhichKeyDesc_refactor_rename_element = "<leader>rn Rename element"
 	map <leader>rn <Action>(RenameElement)
-	map <leader>rf :action RenameFile<CR>
+
+	" Reformat code
+	let g:WhichKeyDesc_refactor_reformat_code = "<leader>rr Reformat code"
 	map <leader>rr <Action>(ReformatCode)
+
+	" Reformat with Prettier
+	let g:WhichKeyDesc_refactor_reformat_prettier = "<leader>rR Reformat with Prettier"
 	map <leader>rR <Action>(ReformatWithPrettierAction)
+
+	" Fix ESLint issues
+	let g:WhichKeyDesc_refactor_eslint_fix = "<leader>re Fix ESLint issues"
 	map <leader>re <Action>(Javascript.Linters.EsLint.Fix)
+
+	" Fix Stylelint issues
+	let g:WhichKeyDesc_refactor_stylelint_fix = "<leader>rs Fix Stylelint issues"
 	map <leader>rs <Action>(Stylelint.Fix)
+
+	" Optimize imports
+	let g:WhichKeyDesc_refactor_optimize_imports = "<leader>ri Optimize imports"
 	map <leader>ri <Action>(OptimizeImports)
+
+	" Quick list of refactorings
+	let g:WhichKeyDesc_refactor_quick_list = "<leader>rt Quick list of refactorings"
 	map <leader>rt <Action>(Refactorings.QuickListPopupAction)
+
+	" Sort lines
+	let g:WhichKeyDesc_refactor_sort_lines = "<leader>rl Sort lines"
 	map <leader>rl <Action>(EditorSortLines)
 	" Refactoring
 	"
