@@ -450,6 +450,10 @@ if has('ide')
 	xnoremap g/ :action Find<cr>
 	noremap g/ :action Find<cr>
 
+	" use IDE undo instead of vim undo as it undoes the whole insert
+	" (works not well with code completion tools like copilot)
+	nmap u <Action>($Undo)
+
 	" Commands for shortcut conflicts
 	sethandler <S-Tab> a:vim
 	sethandler <A-Up> a:vim
