@@ -113,6 +113,9 @@ nnoremap L 40lzs
 nnoremap H 40hze
 nnoremap $ $zs
 
+inoremap jj <esc>
+vnoremap jj <esc>
+
 " Easymotion ----
 map <leader>/ <Plug>(easymotion-s)
 map <leader>? <Plug>(easymotion-jumptoanywhere)
