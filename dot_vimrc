@@ -75,7 +75,7 @@ set number relativenumber
 set clipboard=unnamed
 
 let g:argtextobj_pairs="(:),{:},<:>,[:]"
-let b:match_words = "if:else,':',\":\""
+let b:match_words = "if:else,':'"
 
 if !is_ide
 	" Start interactive EasyAlign in visual mode (e.g. vipga)
