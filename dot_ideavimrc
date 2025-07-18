@@ -65,9 +65,9 @@ if has('ide')
 
 	let g:WhichKeyDesc_project_file = "<leader>pf File"
 	" Copy project file path
-	let g:WhichKeyDesc_project_copy_path = "<leader>pfy Copy absolute file path"
-	nnoremap <leader>pfy    :action CopyAbsolutePath<CR>
-	vnoremap <leader>pfy    :action CopyAbsolutePath<CR>
+	let g:WhichKeyDesc_project_copy_path = "<leader>pfy Copy content root file path"
+	nnoremap <leader>pfy    :action CopyContentRootPath<CR>
+	vnoremap <leader>pfy    :action CopyContentRootPath<CR>
 
 	" Project new file
 	let g:WhichKeyDesc_project_new_file = "<leader>pfn Create new file"
