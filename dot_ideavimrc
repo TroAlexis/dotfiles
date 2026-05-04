@@ -11,6 +11,7 @@ if has('ide')
 	" Ideavim Extension for switching to English in normal"
 	set keep-english-in-normal
 	" Ideavim Extension for switching to English in normal"
+	set VimEverywhere
 
 	" Ideavim Extension for highligting unique characters in line
 	set quickscope
