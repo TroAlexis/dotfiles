@@ -25,7 +25,4 @@ config.audible_bell = "Disabled"
 config.initial_cols = 120
 config.initial_rows = 34
 
--- Treat right Option as Alt (same as left Option), not as macOS compose key
-config.send_composed_key_when_right_alt_is_pressed = false
-
 return config
