@@ -27,5 +27,6 @@ config.initial_rows = 34
 
 -- Treat right option key as Meta
 config.send_composed_key_for_right_alt = false
+config.use_dead_keys = false
 
 return config
