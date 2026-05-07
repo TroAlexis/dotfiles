@@ -4,9 +4,8 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Everblush"
 config.font_dirs = { "/Users/atroshin/Library/Fonts" }
-config.font = wezterm.font("Fira Code")
+config.font = wezterm.font("MesloLGS NF")
 config.font_size = 16
-config.freetype_load_target = "Light"
 
 config.window_background_opacity = 0.96
 config.macos_window_background_blur = 20
