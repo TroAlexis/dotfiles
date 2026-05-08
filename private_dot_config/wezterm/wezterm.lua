@@ -3,7 +3,6 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "Everblush"
-config.font_dirs = { "/Users/atroshin/Library/Fonts" }
 config.font = wezterm.font("MesloLGS NF")
 config.font_size = 16
 
@@ -11,10 +10,10 @@ config.window_background_opacity = 0.96
 config.macos_window_background_blur = 20
 config.window_decorations = "RESIZE"
 config.window_padding = {
-  left = 10,
-  right = 10,
-  top = 8,
-  bottom = 8,
+	left = 10,
+	right = 10,
+	top = 8,
+	bottom = 8,
 }
 
 config.use_fancy_tab_bar = false
