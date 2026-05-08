@@ -11,3 +11,9 @@
 	editor = nvim
 [alias]
 	rst = commit --amend --no-edit --reset-author
+[merge]
+	tool = nvimdiff
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[mergetool]
+	keepBackup = false
