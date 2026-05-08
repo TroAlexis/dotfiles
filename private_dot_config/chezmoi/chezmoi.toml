@@ -1,7 +1,10 @@
 [git]
-    autoCommit = true
-    autoPush = true
+autoCommit = true
+autoPush = true
 
 [edit]
-    command = "vim"
+command = "nvim"
 
+[merge]
+command = "nvim"
+args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
