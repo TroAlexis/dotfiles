@@ -136,6 +136,7 @@ export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
 export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
 export PATH="$PATH:/Users/atroshin/.local/bin
 
+
 # pnpm
 export PNPM_HOME="/Users/atroshin/Library/pnpm"
 case ":$PATH:" in
