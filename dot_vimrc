@@ -113,8 +113,8 @@ nnoremap H 40hze
 nnoremap $ $zs
 
 " Easymotion ----
-map <leader>/ <Plug>(easymotion-s)
-map <leader>? <Plug>(easymotion-jumptoanywhere)
+map s <Plug>(easymotion-s)
+map S <Plug>(easymotion-jumptoanywhere)
 " Easymotion ----
 
 " clear the search buffer when hitting return
@@ -133,12 +133,8 @@ vnoremap <S-Tab> <gv
 noremap ' `
 noremap ` '
 
-" Map oo/OO to insert newline without entering insert mode
-nmap <leader>o m'o<Esc>''
-nmap <leader>O m'O<Esc>''
-
 " Break line (opposite of J)
-nnoremap K i<CR><Esc>l
+nnoremap K gh
 
 map U <C-R>
 inoremap <C-l> <Del>
@@ -158,28 +154,16 @@ endfor
 " Shortcut to use blackhole register by default
 nnoremap d "_d
 vnoremap d "_d
-nnoremap D "_D
-vnoremap D "_D
+nnoremap D d
+vnoremap D d
 nnoremap c "_c
 vnoremap c "_c
-nnoremap C "_C
-vnoremap C "_C
+nnoremap C c
+vnoremap C c
 nnoremap x "_x
 vnoremap x "_x
-nnoremap X "_X
-vnoremap X "_X
-nnoremap <leader>d d
-vnoremap <leader>d d
-nnoremap <leader>D D
-vnoremap <leader>D D
-nnoremap <leader>c c
-vnoremap <leader>c c
-nnoremap <leader>C C
-vnoremap <leader>C C
-nnoremap <leader>x x
-vnoremap <leader>x x
-nnoremap <leader>X X
-vnoremap <leader>X X
+nnoremap X x
+vnoremap X x
 " Shortcut to use blackhole register by default
 
 " Map to insert inside brackets
