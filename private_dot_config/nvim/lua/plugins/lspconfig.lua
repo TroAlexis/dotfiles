@@ -23,11 +23,6 @@ return {
           },
           settings = {
             typescript = {
-              tsserver = {
-                experimental = {
-                  enableProjectDiagnostics = true,
-                },
-              },
               workspaceSymbols = {
                 scope = "allOpenProjects",
               },
