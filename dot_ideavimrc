@@ -41,9 +41,13 @@ if has('ide')
 	nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 	" Config manipulations
 
-	" Focus last buffer
-	nnoremap <leader><Tab>    <C-S-6>
-	vnoremap <leader><Tab>    <Esc><C-S-6>
+let g:WhichKeyDesc_buffer = "<leader>b Buffer"
+
+let g:WhichKeyDesc_buffer_other = "<leader>bb Switch to other buffer"
+
+nnoremap <leader>bb <C-S-6>
+
+vnoremap <leader>bb <Esc><C-S-6>
 
 	" Open in terminal
 	let g:WhichKeyDesc_terminal = "<leader>t Terminal"
