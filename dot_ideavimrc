@@ -73,7 +73,7 @@ if has('ide')
   nnoremap <leader>fp <Action>(ManageRecentProjects)
 
   let g:WhichKeyDesc_ide_activate_npm = "<leader>oo Activate npm tool window"
-  nnoremap <leader>mn <Action>(ActivatenpmToolWindow)
+  nnoremap <leader>oo <Action>(ActivatenpmToolWindow)
 
 
   nnoremap <C-.> :action ActivateTerminalToolWindow<CR>
@@ -112,10 +112,10 @@ if has('ide')
   nnoremap <leader>cr :action RenameElement<CR>
   vnoremap <leader>cr :action RenameElement<CR>
 
-  let g:WhichKeyDesc_ide_choose_run = "<leader>cr Choose run configuration"
-  nnoremap <leader>cr <Action>(ChooseRunConfiguration)
-  let g:WhichKeyDesc_ide_run_class = "<leader>cR Run class under cursor"
-  nnoremap <leader>cR <Action>(RunClass)
+  let g:WhichKeyDesc_ide_choose_run = "<leader>or Choose run configuration"
+  nnoremap <leader>or <Action>(ChooseRunConfiguration)
+  let g:WhichKeyDesc_ide_run_class = "<leader>oR Run class under cursor"
+  nnoremap <leader>oR <Action>(RunClass)
 
   let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename file"
   nnoremap <leader>cR :action RenameFile<CR>
@@ -181,7 +181,7 @@ if has('ide')
   nnoremap <leader>gm <Action>(Git.MainMenu)
 
   let g:WhichKeyDesc_ide_lazygit = "<leader>gg Lazygit"
-  nnoremap <leader>gm <Action>(TUILauncher.lazygit)
+  nnoremap <leader>gg <Action>(TUILauncher.lazygit)
 
   let g:WhichKeyDesc_git_file_history = "<leader>gf Git current file history"
   nnoremap <leader>gf :action Vcs.ShowTabbedFileHistory<CR>
