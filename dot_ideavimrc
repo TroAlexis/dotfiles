@@ -311,8 +311,7 @@ if has('ide')
   " ============================================================================
 
   let g:WhichKeyDesc_terminal_tool_window = "<C-.> Terminal tool window"
-  nnoremap <C-.> :action ActivateTerminalToolWindow<CR>
-  vnoremap <C-.> <Esc>:action ActivateTerminalToolWindow<CR>
+  map <C-.> :action ActivateTerminalToolWindow<CR>
 
   let g:WhichKeyDesc_save_all = "<C-s> Save all"
   nnoremap <C-s> :action SaveAll<CR>
@@ -373,5 +372,6 @@ if has('ide')
   sethandler <C-U> a:vim
   sethandler <C-V> a:vim
   sethandler <C-W> a:vim
+  sethandler <C-.> a:vim
   sethandler <A-X> a:ide
 endif
