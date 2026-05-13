@@ -170,7 +170,7 @@ if has('ide')
   vnoremap <leader>cf :action ReformatCode<CR>
 
   let g:WhichKeyDesc_code_menu = "<leader>cm Code menu"
-  nnoremap <leader>cm <Action>(CodeMenu)
+  nnoremap <leader>cm :action CodeMenu<CR>
 
   let g:WhichKeyDesc_code_rename = "<leader>cr Rename"
   nnoremap <leader>cr :action RenameElement<CR>
