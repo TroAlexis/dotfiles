@@ -62,6 +62,8 @@ let g:WhichKeyDesc_replace_register = "gR Replace with register"
 nmap gR <Plug>ReplaceWithRegisterOperator
 nmap gRR <Plug>ReplaceWithRegisterLine
 xmap gR <Plug>ReplaceWithRegisterVisual
+" Clear the plugin's default grr line mapping from the gr namespace.
+nunmap grr
 
 " Theme settings --------------------------
 if !is_ide
