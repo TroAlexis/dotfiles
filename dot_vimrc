@@ -57,10 +57,11 @@ set sidescroll=20
 set sidescrolloff=30
 set visualbell
 
-" Preserve original ReplaceWithRegister gr on gR before overriding gr.
-let g:WhichKeyDesc_replace_register = "gR Replace from register"
-nmap gR gr
-vmap gR gr
+" Move ReplaceWithRegister from gr to gR so gr can be used for references.
+let g:WhichKeyDesc_replace_register = "gR Replace with register"
+nmap gR <Plug>ReplaceWithRegisterOperator
+nmap gRR <Plug>ReplaceWithRegisterLine
+xmap gR <Plug>ReplaceWithRegisterVisual
 
 " Theme settings --------------------------
 if !is_ide
