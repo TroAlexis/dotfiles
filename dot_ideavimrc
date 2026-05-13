@@ -66,6 +66,10 @@ if has('ide')
   let g:WhichKeyDesc_next_buffer = "]b Next tab"
   nnoremap ]b :action NextTab<CR>
 
+  let g:WhichKeyDesc_buffer_delete = "<leader>bd Close buffer"
+  nnoremap <leader>bd :action CloseContent<CR>
+  vnoremap <leader>bd <Esc>:action CloseContent<CR>
+
   " ============================================================================
   " File and project mappings
   " ============================================================================
