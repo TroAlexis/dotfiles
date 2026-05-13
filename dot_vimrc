@@ -57,9 +57,10 @@ set sidescroll=20
 set sidescrolloff=30
 set visualbell
 
-" Preserve the original IdeaVim/Vim gr behavior on gR before overriding gr.
-nnoremap gR gr
-vnoremap gR gr
+" Preserve original ReplaceWithRegister gr on gR before overriding gr.
+let g:WhichKeyDesc_replace_register = "gR Replace from register"
+nmap gR gr
+vmap gR gr
 
 " Theme settings --------------------------
 if !is_ide
