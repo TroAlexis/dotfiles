@@ -279,6 +279,18 @@ if has('ide')
   nnoremap <leader>gL :action Vcs.Show.Log<CR>
   vnoremap <leader>gL <Esc>:action Vcs.Show.Log<CR>
 
+  let g:WhichKeyDesc_next_hunk = "]h Next VCS change"
+  nnoremap ]h :action VcsShowNextChangeMarker<CR>
+  vnoremap ]h <Esc>:action VcsShowNextChangeMarker<CR>
+
+  let g:WhichKeyDesc_prev_hunk = "[h Previous VCS change"
+  nnoremap [h :action VcsShowPrevChangeMarker<CR>
+  vnoremap [h <Esc>:action VcsShowPrevChangeMarker<CR>
+
+  let g:WhichKeyDesc_rollback_hunk = "ghgh Rollback changed lines"
+  nnoremap ghgh :action Vcs.RollbackChangedLines<CR>
+  vnoremap ghgh <Esc>:action Vcs.RollbackChangedLines<CR>
+
   " ============================================================================
   " Run and tool mappings
   " ============================================================================
