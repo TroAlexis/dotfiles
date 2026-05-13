@@ -1,58 +1,77 @@
 source ~/.vimrc
 
 if has('ide')
-	set history=1000
-	" Fixed the problem that p paste cannot import class automatically, https://youtrack.jetbrains.com/issue/VIM-25/VIM-code-paste-should-be-smarter
-	set clipboard+=ideaput,unnamed
-	" Smart join for <C-J>
-	set ideajoin
-	set ideamarks
-	set idearefactormode=keep
-	" Ideavim Extension for switching to English in normal"
-	set keep-english-in-normal
-	" Ideavim Extension for switching to English in normal"
-	set VimEverywhere
-	set mini-ai
+  " ============================================================================
+  " General IdeaVim settings
+  " ============================================================================
 
-	" Ideavim Extension for highligting unique characters in line
-	set quickscope
+  set history=1000
+  " Smarter IDE-aware paste. See: https://youtrack.jetbrains.com/issue/VIM-25
+  set clipboard+=ideaput,unnamed
+  set ideajoin
+  set ideamarks
+  set idearefactormode=keep
 
-	" Ideavim Extension for displaying keymap info https://github.com/TheBlob42/idea-which-key
-	set which-key
-	" do not close after timeout, but after keypress or cancelling
-	set notimeout
-	" make the popup appear much slower
-	let g:WhichKey_DefaultDelay = 600
-	" close the popup and don't process formerly typed keys
-	let g:WhichKey_ProcessUnknownMappings = "false"
-	" set how the elements should be ordered
-	let g:WhichKey_SortOrder = "by_description"
-	" set if the sorting should be case-sensitive or not
-	let g:WhichKey_SortCaseSensitive = "false"
+  " ============================================================================
+  " Plugins
+  " ============================================================================
 
-	" Leader namespace
-	let g:WhichKeyDesc_actions = "<leader> Actions"
+  set keep-english-in-normal
+  set VimEverywhere
+  set mini-ai
+  set quickscope
+  set which-key
 
-	" Config manipulations
-	let g:WhichKeyDesc_config = "<Bslash> Config"
-	let g:WhichKeyDesc_config_edit = "<Bslash>e Edit IdeaVimrc"
-	nnoremap \e :e ~/.ideavimrc<CR>
-	let g:WhichKeyDesc_config_reload = "<Bslash>r Reload IdeaVimrc"
-	nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
-	" Config manipulations
+  " ============================================================================
+  " Which-Key settings
+  " ============================================================================
+
+  set notimeout
+  let g:WhichKey_DefaultDelay = 600
+  let g:WhichKey_ProcessUnknownMappings = "false"
+  let g:WhichKey_SortOrder = "by_description"
+  let g:WhichKey_SortCaseSensitive = "false"
+
+  " ============================================================================
+  " Config mappings
+  " ============================================================================
+
+  let g:WhichKeyDesc_config = "<Bslash> Config"
+
+  let g:WhichKeyDesc_config_edit = "<Bslash>e Edit IdeaVimrc"
+  nnoremap \e :e ~/.ideavimrc<CR>
+
+  let g:WhichKeyDesc_config_reload = "<Bslash>r Reload IdeaVimrc"
+  nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+  " ============================================================================
+  " Buffer and tab mappings
+  " ============================================================================
 
   let g:WhichKeyDesc_buffer = "<leader>b Buffer"
-  let g:WhichKeyDesc_buffer_other = "<leader>bb Switch to other buffer"
+
+  let g:WhichKeyDesc_buffer_other = "<leader>bb Other buffer"
   nnoremap <leader>bb <C-S-6>
   vnoremap <leader>bb <Esc><C-S-6>
 
+  let g:WhichKeyDesc_tab_previous = "<S-h> Previous tab"
   nnoremap <S-h> :action PreviousTab<CR>
+
+  let g:WhichKeyDesc_tab_next = "<S-l> Next tab"
   nnoremap <S-l> :action NextTab<CR>
 
+  let g:WhichKeyDesc_prev_buffer = "[b Previous tab"
   nnoremap [b :action PreviousTab<CR>
+
+  let g:WhichKeyDesc_next_buffer = "]b Next tab"
   nnoremap ]b :action NextTab<CR>
 
-  let g:WhichKeyDesc_file_find = "<leader>f File / find"
+  " ============================================================================
+  " File and project mappings
+  " ============================================================================
+
+  let g:WhichKeyDesc_file = "<leader>f File"
+
   let g:WhichKeyDesc_find_file = "<leader>ff Find file"
   nnoremap <leader>ff :action GotoFile<CR>
   vnoremap <leader>ff <Esc>:action GotoFile<CR>
@@ -65,29 +84,30 @@ if has('ide')
   nnoremap <leader>fn :action NewElementMenu<CR>
   vnoremap <leader>fn <Esc>:action NewElementMenu<CR>
 
-  let g:WhichKeyDesc_terminal_root = "<leader>ft Terminal root dir"
+  let g:WhichKeyDesc_terminal_root = "<leader>ft Terminal in root"
   nnoremap <leader>ft :action Terminal.OpenInTerminal<CR>
   vnoremap <leader>ft <Esc>:action Terminal.OpenInTerminal<CR>
 
-  let g:WhichKeyDesc_ide_manage_recent = "<leader>fp Manage recent projects"
+  let g:WhichKeyDesc_ide_manage_recent = "<leader>fp Recent projects"
   nnoremap <leader>fp <Action>(ManageRecentProjects)
 
-  let g:WhichKeyDesc_ide_activate_npm = "<leader>oo Activate npm tool window"
-  nnoremap <leader>oo <Action>(ActivatenpmToolWindow)
+  let g:WhichKeyDesc_project_activate = "<leader>E Project tool window"
+  nnoremap <leader>E <Action>(ActivateProjectToolWindow)
 
+  let g:WhichKeyDesc_project_select = "<leader>e Select in project"
+  nnoremap <leader>e <Action>(SelectInProjectView)
 
-  nnoremap <C-.> :action ActivateTerminalToolWindow<CR>
-  vnoremap <C-.> <Esc>:action ActivateTerminalToolWindow<CR>
-
-	let g:WhichKeyDesc_usages = "<leader>* Show usages"
-	nnoremap <leader>*    :action ShowUsages<CR>
-	vnoremap <leader>*    :action ShowUsages<CR>
+  " ============================================================================
+  " Search mappings
+  " ============================================================================
 
   let g:WhichKeyDesc_search = "<leader>s Search"
+
   let g:WhichKeyDesc_search_grep = "<leader>sg Grep"
-  let g:WhichKeyDesc_search_grep_1 = "<leader>s/ Grep"
   nnoremap <leader>sg :action FindInPath<CR>
   vnoremap <leader>sg <Esc>:action FindInPath<CR>
+
+  let g:WhichKeyDesc_search_grep_root = "<leader>/ Grep"
   nnoremap <leader>/ :action FindInPath<CR>
   vnoremap <leader>/ <Esc>:action FindInPath<CR>
 
@@ -99,205 +119,247 @@ if has('ide')
   nnoremap <leader>sa :action GotoAction<CR>
   vnoremap <leader>sa <Esc>:action GotoAction<CR>
 
+  let g:WhichKeyDesc_builtin_find = "g/ Find"
+  xnoremap g/ :action Find<CR>
+  noremap g/ :action Find<CR>
+
+  " ============================================================================
+  " Code navigation mappings
+  " ============================================================================
+
+  let g:WhichKeyDesc_hover = "K Hover info"
+  nnoremap K :action ShowHoverInfo<CR>
+  vnoremap K <Esc>:action ShowHoverInfo<CR>
+
+  let g:WhichKeyDesc_goto_declaration = "gd Go to declaration"
+  nnoremap gd :action GotoDeclaration<CR>
+  vnoremap gd <Esc>:action GotoDeclaration<CR>
+
+  let g:WhichKeyDesc_find_usages = "gr Find usages"
+  nnoremap gr :action FindUsages<CR>
+  vnoremap gr <Esc>:action FindUsages<CR>
+
+  let g:WhichKeyDesc_type_definition = "gy Type definition"
+  nnoremap gy :action QuickTypeDefinition<CR>
+  vnoremap gy <Esc>:action QuickTypeDefinition<CR>
+
+  let g:WhichKeyDesc_edit_source = "ge Edit source"
+  nnoremap ge :action EditSource<CR>
+  vnoremap ge <Esc>:action EditSource<CR>
+
+  let g:WhichKeyDesc_usages = "<leader>* Show usages"
+  nnoremap <leader>* :action ShowUsages<CR>
+  vnoremap <leader>* :action ShowUsages<CR>
+
+  " ============================================================================
+  " Code action and formatting mappings
+  " ============================================================================
+
   let g:WhichKeyDesc_code = "<leader>c Code"
+
   let g:WhichKeyDesc_code_action = "<leader>ca Code action"
   nnoremap <leader>ca :action ShowIntentionActions<CR>
   vnoremap <leader>ca :action ShowIntentionActions<CR>
+
+  let g:WhichKeyDesc_code_diagnostics = "<leader>cd Line diagnostics"
+  nnoremap <leader>cd :action ShowErrorDescription<CR>
+  vnoremap <leader>cd <Esc>:action ShowErrorDescription<CR>
 
   let g:WhichKeyDesc_code_format = "<leader>cf Format"
   nnoremap <leader>cf :action ReformatCode<CR>
   vnoremap <leader>cf :action ReformatCode<CR>
 
+  let g:WhichKeyDesc_code_menu = "<leader>cm Code menu"
+  nnoremap <leader>cm <Action>(CodeMenu)
+
   let g:WhichKeyDesc_code_rename = "<leader>cr Rename"
   nnoremap <leader>cr :action RenameElement<CR>
   vnoremap <leader>cr :action RenameElement<CR>
 
-  let g:WhichKeyDesc_ide_choose_run = "<leader>or Choose run configuration"
-  nnoremap <leader>or <Action>(ChooseRunConfiguration)
-  let g:WhichKeyDesc_ide_run_class = "<leader>oR Run class under cursor"
-  nnoremap <leader>oR <Action>(RunClass)
+  let g:WhichKeyDesc_code_source_action = "<leader>cA Optimize imports"
+  nnoremap <leader>cA :action OptimizeImports<CR>
+  vnoremap <leader>cA :action OptimizeImports<CR>
 
   let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename file"
   nnoremap <leader>cR :action RenameFile<CR>
   vnoremap <leader>cR <Esc>:action RenameFile<CR>
 
-  let g:WhichKeyDesc_code_source_action = "<leader>cA Source action"
-  nnoremap <leader>cA :action OptimizeImports<CR>
-  vnoremap <leader>cA :action OptimizeImports<CR>
+  " ============================================================================
+  " Diagnostics mappings
+  " ============================================================================
 
-  let g:WhichKeyDesc_ide_code_menu = "<leader>cm Code menu"
-  nnoremap <leader>cm <Action>(CodeMenu)
+  let g:WhichKeyDesc_diagnostics = "<leader>x Diagnostics"
 
-  nnoremap K :action ShowHoverInfo<CR>
-  vnoremap K <Esc>:action ShowHoverInfo<CR>
-
-  nnoremap gd :action GotoDeclaration<CR>
-  vnoremap gd <Esc>:action GotoDeclaration<CR>
-
-  nnoremap gr :action FindUsages<CR>
-  vnoremap gr <Esc>:action FindUsages<CR>
-
-  nnoremap gy :action QuickTypeDefinition<CR>
-  vnoremap gy <Esc>:action QuickTypeDefinition<CR>
-
-  nnoremap ge :action EditSource<CR>
-  vnoremap ge <Esc>:action EditSource<CR>
-
-  let g:WhichKeyDesc_ide_activate_project = "<leader>E Activate project tool window"
-  nnoremap <leader>E <Action>(ActivateProjectToolWindow)
-
-  let g:WhichKeyDesc_ide_select_project_view = "<leader>e Select in project view"
-  nnoremap <leader>e <Action>(SelectInProjectView)
-
-  let g:WhichKeyDesc_diagnostics = "<leader>x Diagnostics / quickfix"
-  let g:WhichKeyDesc_line_diagnostics = "<leader>cd Line diagnostics"
-  nnoremap <leader>cd :action ShowErrorDescription<CR>
-  vnoremap <leader>cd <Esc>:action ShowErrorDescription<CR>
-
+  let g:WhichKeyDesc_next_diagnostic = "]d Next diagnostic"
   nnoremap ]d :action GotoNextError<CR>
   vnoremap ]d <Esc>:action GotoNextError<CR>
 
+  let g:WhichKeyDesc_prev_diagnostic = "[d Previous diagnostic"
   nnoremap [d :action GotoPreviousError<CR>
   vnoremap [d <Esc>:action GotoPreviousError<CR>
 
+  let g:WhichKeyDesc_next_error = "]e Next error"
   nnoremap ]e :action GotoNextError<CR>
   vnoremap ]e <Esc>:action GotoNextError<CR>
 
+  let g:WhichKeyDesc_prev_error = "[e Previous error"
   nnoremap [e :action GotoPreviousError<CR>
   vnoremap [e <Esc>:action GotoPreviousError<CR>
 
+  let g:WhichKeyDesc_next_warning = "]w Next warning"
   nnoremap ]w :action GotoNextError<CR>
   vnoremap ]w <Esc>:action GotoNextError<CR>
 
+  let g:WhichKeyDesc_prev_warning = "[w Previous warning"
   nnoremap [w :action GotoPreviousError<CR>
   vnoremap [w <Esc>:action GotoPreviousError<CR>
 
+  " ============================================================================
+  " Refactor mappings
+  " ============================================================================
+
+  let g:WhichKeyDesc_refactor = "<leader>r Refactor"
+
+  let g:WhichKeyDesc_refactor_rename_element = "<leader>rn Rename element"
+  map <leader>rn <Action>(RenameElement)
+
+  let g:WhichKeyDesc_refactor_reformat_code = "<leader>rr Reformat code"
+  map <leader>rr <Action>(ReformatCode)
+
+  let g:WhichKeyDesc_refactor_reformat_prettier = "<leader>rR Prettier"
+  map <leader>rR <Action>(ReformatWithPrettierAction)
+
+  let g:WhichKeyDesc_refactor_eslint_fix = "<leader>re Fix ESLint"
+  map <leader>re <Action>(Javascript.Linters.EsLint.Fix)
+
+  let g:WhichKeyDesc_refactor_stylelint_fix = "<leader>rs Fix Stylelint"
+  map <leader>rs <Action>(Stylelint.Fix)
+
+  let g:WhichKeyDesc_refactor_optimize_imports = "<leader>ri Optimize imports"
+  map <leader>ri <Action>(OptimizeImports)
+
+  let g:WhichKeyDesc_refactor_quick_list = "<leader>rt Refactor list"
+  map <leader>rt <Action>(Refactorings.QuickListPopupAction)
+
+  let g:WhichKeyDesc_refactor_sort_lines = "<leader>rl Sort lines"
+  map <leader>rl <Action>(EditorSortLines)
+
+  " ============================================================================
+  " Git and VCS mappings
+  " ============================================================================
+
   let g:WhichKeyDesc_git = "<leader>g Git"
-  let g:WhichKeyDesc_git_blame = "<leader>gb Git blame line"
+
+  let g:WhichKeyDesc_git_blame = "<leader>gb Blame line"
   nnoremap <leader>gb :action Annotate<CR>
   vnoremap <leader>gb <Esc>:action Annotate<CR>
 
-  let g:WhichKeyDesc_ide_git_menu = "<leader>gm Git main menu"
-  nnoremap <leader>gm <Action>(Git.MainMenu)
-
-  let g:WhichKeyDesc_ide_lazygit = "<leader>gg Lazygit"
-  nnoremap <leader>gg <Action>(TUILauncher.lazygit)
-
-  let g:WhichKeyDesc_git_file_history = "<leader>gf Git current file history"
+  let g:WhichKeyDesc_git_file_history = "<leader>gf File history"
   nnoremap <leader>gf :action Vcs.ShowTabbedFileHistory<CR>
   vnoremap <leader>gf <Esc>:action Vcs.ShowTabbedFileHistory<CR>
 
-  let g:WhichKeyDesc_ide_local_history = "<leader>gF Local history"
-  nnoremap <leader>gF <Action>(LocalHistory.ShowHistory)
+  let g:WhichKeyDesc_git_lazygit = "<leader>gg Lazygit"
+  nnoremap <leader>gg <Action>(TUILauncher.lazygit)
 
   let g:WhichKeyDesc_git_log = "<leader>gl Git log"
   nnoremap <leader>gl :action Vcs.Show.Log<CR>
   vnoremap <leader>gl <Esc>:action Vcs.Show.Log<CR>
 
+  let g:WhichKeyDesc_git_menu = "<leader>gm Git menu"
+  nnoremap <leader>gm <Action>(Git.MainMenu)
+
+  let g:WhichKeyDesc_git_clone = "<leader>gC Clone"
+  nnoremap <leader>gC :action Git.Clone<CR>
+  vnoremap <leader>gC <Esc>:action Git.Clone<CR>
+
+  let g:WhichKeyDesc_git_local_history = "<leader>gF Local history"
+  nnoremap <leader>gF <Action>(LocalHistory.ShowHistory)
+
   let g:WhichKeyDesc_git_log_cwd = "<leader>gL Git log cwd"
   nnoremap <leader>gL :action Vcs.Show.Log<CR>
   vnoremap <leader>gL <Esc>:action Vcs.Show.Log<CR>
 
-  let g:WhichKeyDesc_git_clone = "<leader>gC Git clone"
-  nnoremap <leader>gC :action Git.Clone<CR>
-  vnoremap <leader>gC <Esc>:action Git.Clone<CR>
+  " ============================================================================
+  " Run and tool mappings
+  " ============================================================================
 
+  let g:WhichKeyDesc_run_tools = "<leader>o Run / tools"
+
+  let g:WhichKeyDesc_run_choose_config = "<leader>or Choose run config"
+  nnoremap <leader>or <Action>(ChooseRunConfiguration)
+
+  let g:WhichKeyDesc_run_class = "<leader>oR Run class"
+  nnoremap <leader>oR <Action>(RunClass)
+
+  let g:WhichKeyDesc_tool_npm = "<leader>oo npm tool window"
+  nnoremap <leader>oo <Action>(ActivatenpmToolWindow)
+
+  " ============================================================================
+  " UI and tool-window mappings
+  " ============================================================================
+
+  let g:WhichKeyDesc_terminal_tool_window = "<C-.> Terminal tool window"
+  nnoremap <C-.> :action ActivateTerminalToolWindow<CR>
+  vnoremap <C-.> <Esc>:action ActivateTerminalToolWindow<CR>
+
+  let g:WhichKeyDesc_save_all = "<C-s> Save all"
   nnoremap <C-s> :action SaveAll<CR>
   vnoremap <C-s> <Esc>:action SaveAll<CR>
 
-	" Refactoring
-	" Refactor actions namespace
-	let g:WhichKeyDesc_refactor_actions = "<leader>r Refactor actions"
+  " ============================================================================
+  " Comments and editing mappings
+  " ============================================================================
 
-	" Rename element
-	let g:WhichKeyDesc_refactor_rename_element = "<leader>rn Rename element"
-	map <leader>rn <Action>(RenameElement)
+  let g:WhichKeyDesc_block_comment = "gcb Block comment"
+  vmap gcb <Action>(CommentByBlockComment)
 
-	" Reformat code
-	let g:WhichKeyDesc_refactor_reformat_code = "<leader>rr Reformat code"
-	map <leader>rr <Action>(ReformatCode)
-
-	" Reformat with Prettier
-	let g:WhichKeyDesc_refactor_reformat_prettier = "<leader>rR Reformat with Prettier"
-	map <leader>rR <Action>(ReformatWithPrettierAction)
-
-	" Fix ESLint issues
-	let g:WhichKeyDesc_refactor_eslint_fix = "<leader>re Fix ESLint issues"
-	map <leader>re <Action>(Javascript.Linters.EsLint.Fix)
-
-	" Fix Stylelint issues
-	let g:WhichKeyDesc_refactor_stylelint_fix = "<leader>rs Fix Stylelint issues"
-	map <leader>rs <Action>(Stylelint.Fix)
-
-	" Optimize imports
-	let g:WhichKeyDesc_refactor_optimize_imports = "<leader>ri Optimize imports"
-	map <leader>ri <Action>(OptimizeImports)
-
-	" Quick list of refactorings
-	let g:WhichKeyDesc_refactor_quick_list = "<leader>rt Quick list of refactorings"
-	map <leader>rt <Action>(Refactorings.QuickListPopupAction)
-
-	" Sort lines
-	let g:WhichKeyDesc_refactor_sort_lines = "<leader>rl Sort lines"
-	map <leader>rl <Action>(EditorSortLines)
-	" Refactoring
-	"
-	" Comments
-
-	vmap gcb <Action>(CommentByBlockComment)
-
-	" Move text up and down.
-	" nnoremap <A-Up> :m .-2<CR>==
-	" nnoremap <A-Down> :m .+1<CR>==
-	" inoremap <A-Up> <Esc>:m .-2<CR>==gi
-	" inoremap <A-Down> <Esc>:m .+1<CR>==gi
-	" NOTE It's not the same as using Vim's Ex-commands.
+  let g:WhichKeyDesc_move_statement_up = "<A-Up> Move statement up"
   nmap <A-Up> <Action>(MoveStatementUp)
-	nmap <A-Down> <Action>(MoveStatementDown)
-	imap <A-Up> <Action>(MoveStatementUp)
-	imap <A-Down> <Action>(MoveStatementDown)
-	vmap <A-Up> <Action>(MoveStatementUp)
-	vmap <A-Down> <Action>(MoveStatementDown)
+  imap <A-Up> <Action>(MoveStatementUp)
+  vmap <A-Up> <Action>(MoveStatementUp)
 
-	" built-in navigation to navigated items works better
-	nmap <c-o> <Action>(Back)
-	nmap <c-i> <Action>(Forward)
-	" but preserve ideavim defaults
-	nnoremap g<c-o> <c-o>
-	nnoremap g<c-i> <c-i>
+  let g:WhichKeyDesc_move_statement_down = "<A-Down> Move statement down"
+  nmap <A-Down> <Action>(MoveStatementDown)
+  imap <A-Down> <Action>(MoveStatementDown)
+  vmap <A-Down> <Action>(MoveStatementDown)
 
-	" built in search
-	xnoremap g/ :action Find<cr>
-	noremap g/ :action Find<cr>
+  " Built-in navigation to navigated items works better in the IDE.
+  nmap <C-o> <Action>(Back)
+  nmap <C-i> <Action>(Forward)
 
-	" use IDE undo instead of vim undo as it undoes the whole insert
-	" (works not well with code completion tools like copilot)
-	nmap u <Action>($Undo)
+  " Preserve IdeaVim defaults.
+  nnoremap g<C-o> <C-o>
+  nnoremap g<C-i> <C-i>
 
-	" Commands for shortcut conflicts
-	sethandler <S-Tab> a:vim
-	sethandler <A-Up> a:vim
-	sethandler <A-Down> a:vim
-	sethandler <C-;> a:vim
-	sethandler <C-S-;> a:vim
-	sethandler <C-A> a:vim
-	sethandler <C-D> a:vim
-	sethandler <C-E> a:vim
-	sethandler <C-F> a:vim
-	sethandler <C-G> a:vim
-	sethandler <C-H> a:vim
-	sethandler <C-J> a:vim
-	sethandler <C-K> a:vim
-	sethandler <C-L> a:vim
-	sethandler <C-M> a:vim
-	sethandler <C-P> a:vim
-	sethandler <A-P> a:ide
-	sethandler <C-R> a:vim
-	sethandler <C-S> a:vim
-	sethandler <C-T> a:vim
-	sethandler <C-U> a:vim
-	sethandler <C-V> a:vim
-	sethandler <C-W> a:vim
-	sethandler <A-X> a:ide
-	" Commands for shortcut conflicts
+  " Use IDE undo instead of Vim undo; this better matches IDE completion behavior.
+  nmap u <Action>($Undo)
+
+  " ============================================================================
+  " Shortcut conflict handlers
+  " ============================================================================
+
+  sethandler <S-Tab> a:vim
+  sethandler <A-Up> a:vim
+  sethandler <A-Down> a:vim
+  sethandler <C-;> a:vim
+  sethandler <C-S-;> a:vim
+  sethandler <C-A> a:vim
+  sethandler <C-D> a:vim
+  sethandler <C-E> a:vim
+  sethandler <C-F> a:vim
+  sethandler <C-G> a:vim
+  sethandler <C-H> a:vim
+  sethandler <C-J> a:vim
+  sethandler <C-K> a:vim
+  sethandler <C-L> a:vim
+  sethandler <C-M> a:vim
+  sethandler <C-P> a:vim
+  sethandler <A-P> a:ide
+  sethandler <C-R> a:vim
+  sethandler <C-S> a:vim
+  sethandler <C-T> a:vim
+  sethandler <C-U> a:vim
+  sethandler <C-V> a:vim
+  sethandler <C-W> a:vim
+  sethandler <A-X> a:ide
 endif
