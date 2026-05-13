@@ -69,6 +69,13 @@ if has('ide')
   nnoremap <leader>ft :action Terminal.OpenInTerminal<CR>
   vnoremap <leader>ft <Esc>:action Terminal.OpenInTerminal<CR>
 
+  let g:WhichKeyDesc_ide_manage_recent = "<leader>fp Manage recent projects"
+  nnoremap <leader>fp <Action>(ManageRecentProjects)
+
+  let g:WhichKeyDesc_ide_activate_npm = "<leader>oo Activate npm tool window"
+  nnoremap <leader>mn <Action>(ActivatenpmToolWindow)
+
+
   nnoremap <C-.> :action ActivateTerminalToolWindow<CR>
   vnoremap <C-.> <Esc>:action ActivateTerminalToolWindow<CR>
 
@@ -92,331 +99,111 @@ if has('ide')
   nnoremap <leader>sa :action GotoAction<CR>
   vnoremap <leader>sa <Esc>:action GotoAction<CR>
 
-	let g:WhichKeyDesc_project = "<leader>p Project"
-	" Project save
-	let g:WhichKeyDesc_project_save = "<leader>ps Save all"
-	nnoremap <leader>ps    :action SaveAll<CR>
-	vnoremap <leader>ps    :action SaveAll<CR>
+  let g:WhichKeyDesc_code = "<leader>c Code"
+  let g:WhichKeyDesc_code_action = "<leader>ca Code action"
+  nnoremap <leader>ca :action ShowIntentionActions<CR>
+  vnoremap <leader>ca :action ShowIntentionActions<CR>
 
-	let g:WhichKeyDesc_project_file = "<leader>pf File"
-	" Copy project file path
-	let g:WhichKeyDesc_project_copy_path = "<leader>pfy Copy content root file path"
-	nnoremap <leader>pfy    :action CopyContentRootPath<CR>
-	vnoremap <leader>pfy    :action CopyContentRootPath<CR>
+  let g:WhichKeyDesc_code_format = "<leader>cf Format"
+  nnoremap <leader>cf :action ReformatCode<CR>
+  vnoremap <leader>cf :action ReformatCode<CR>
 
-	" Project new file
-	let g:WhichKeyDesc_project_new_file = "<leader>pfn Create new file"
-	nnoremap <leader>pfn    :action NewElementMenu<CR>
-	vnoremap <leader>pfn    :action NewElementMenu<CR>
-
-	" Rename file
-	let g:WhichKeyDesc_project_rename_file = "<leader>pfr Rename file"
-	map <leader>pfr :action RenameFile<CR>
-
-	" -- Errors --
-
-	" Error navigation mappings
-	let g:WhichKeyDesc_error = "<leader>e Error navigation"
-
-	" Go to next error
-	let g:WhichKeyDesc_error_next = "<leader>en Go to next error"
-	nnoremap <leader>en           :action GotoNextError<CR>
-	vnoremap <leader>en           <Esc>:action GotoNextError<CR>
-
-	" Go to previous error
-	let g:WhichKeyDesc_error_prev = "<leader>ep Go to previous error"
-	nnoremap <leader>ep           :action GotoPreviousError<CR>
-	vnoremap <leader>ep           <Esc>:action GotoPreviousError<CR>
-
-	" -- Errors --
-	
-
-	" -- Git --
-
-	" Git commands namespace
-	let g:WhichKeyDesc_git = "<leader>g Git commands"
-
-	" Git clone
-	let g:WhichKeyDesc_git_clone = "<leader>gc Git clone"
-	nnoremap <leader>gc          :action Git.Clone<CR>
-	vnoremap <leader>gc          :action Git.Clone<CR>
-
-	" Show log of current file
-	let g:WhichKeyDesc_git_file_log = "<leader>gfl Show log of current file"
-	nnoremap <leader>gfl            :action Vcs.ShowTabbedFileHistory<CR>
-	vnoremap <leader>gfl            :action Vcs.ShowTabbedFileHistory<CR>
-
-	" Annotate
-	let g:WhichKeyDesc_git_annotate = "<leader>ga Annotate"
-	nnoremap <leader>ga             :action Annotate<CR>
-	vnoremap <leader>ga             :action Annotate<CR>
-
-	" -- Git --
-	
-
-	" -- Changes --
-
-	" Fold commands namespace
-	let g:WhichKeyDesc_fold = "<leader>z Fold commands"
-
-	" Collapse all folds
-	let g:WhichKeyDesc_fold_collapse_all = "<leader>zm Collapse all folds"
-	nnoremap <leader>zm                 :action CollapseAllRegions<CR>
-	vnoremap <leader>zm                 :action CollapseAllRegions<CR>
-
-	" Open all folds
-	let g:WhichKeyDesc_fold_expand_all = "<leader>zr Open all folds"
-	nnoremap <leader>zr               :action ExpandAllRegions<CR>
-	vnoremap <leader>zr               :action ExpandAllRegions<CR>
-
-	" -- Changes --
-
-
-	" -- Numbers --
-
-	" Number commands namespace
-	let g:WhichKeyDesc_number = "<leader>n Number commands"
-
-	" Increment number
-	let g:WhichKeyDesc_number_increment = "<leader>ni Increment number"
-	nnoremap <leader>ni                    <C-a>
-	vnoremap <leader>ni                    <C-a>
-
-	" Decrement number
-	let g:WhichKeyDesc_number_decrement = "<leader>nd Decrement number"
-	nnoremap <leader>nd                 <C-x>
-	vnoremap <leader>nd                 <C-x>
-
-	" -- Numbers --
-	
-
-	" -- Windows  --
-	
-	" Window management commands namespace
-	let g:WhichKeyDesc_window = "<leader>w Window management"
-
-	" Split window right
-	let g:WhichKeyDesc_window_split_right1 = "<leader>w/ Split window right"
-	let g:WhichKeyDesc_window_split_right2 = "<leader>wv Split window right"
-	nnoremap <leader>w/                    :action SplitVertically<CR>
-	vnoremap <leader>w/                    <Esc>:action SplitVertically<CR>
-	nnoremap <leader>wv                    :action SplitVertically<CR>
-	vnoremap <leader>wv                    <Esc>:action SplitVertically<CR>
-
-	" Split window below
-	let g:WhichKeyDesc_window_split_below1 = "<leader>w- Split window below"
-	let g:WhichKeyDesc_window_split_below2 = "<leader>ws Split window below"
-	nnoremap <leader>w-                    :action SplitHorizontally<CR>
-	vnoremap <leader>w-                    <Esc>:action SplitHorizontally<CR>
-	nnoremap <leader>ws                    :action SplitHorizontally<CR>
-	vnoremap <leader>ws                    <Esc>:action SplitHorizontally<CR>
-
-	" Close window
-	let g:WhichKeyDesc_window_close1 = "<leader>wd Close window"
-	let g:WhichKeyDesc_window_close2 = "<leader>wx Close window"
-	nnoremap <leader>wd                :action CloseAllEditors<CR>
-	vnoremap <leader>wd                <Esc>:action CloseAllEditors<CR>
-	nnoremap <leader>wx                :action CloseAllEditors<CR>
-	vnoremap <leader>wx                <Esc>:action CloseAllEditors<CR>
-
-	" Focus window left
-	let g:WhichKeyDesc_window_left1 = "<leader>wh Focus window left"
-	let g:WhichKeyDesc_window_left2 = "<leader>w<Left> Focus window left"
-	nnoremap <leader>wh                <C-w>h
-	vnoremap <leader>wh                <Esc><C-w>h
-	nnoremap <leader>w<Left>           <C-w>h
-	vnoremap <leader>w<Left>           <Esc><C-w>h
-
-	" Focus window down
-	let g:WhichKeyDesc_window_down1 = "<leader>wj Focus window down"
-	let g:WhichKeyDesc_window_down2 = "<leader>w<Down> Focus window down"
-	nnoremap <leader>wj                <C-w>j
-	vnoremap <leader>wj                <Esc><C-w>j
-	nnoremap <leader>w<Down>           <C-w>j
-	vnoremap <leader>w<Down>           <Esc><C-w>j
-
-	" Focus window up
-	let g:WhichKeyDesc_window_up1 = "<leader>wk Focus window up"
-	let g:WhichKeyDesc_window_up2 = "<leader>w<Up> Focus window up"
-	nnoremap <leader>wk              <C-w>k
-	vnoremap <leader>wk              <Esc><C-w>k
-	nnoremap <leader>w<Up>           <C-w>k
-	vnoremap <leader>w<Up>           <Esc><C-w>k
-
-	" Focus window right
-	let g:WhichKeyDesc_window_right1 = "<leader>wl Focus window right"
-	let g:WhichKeyDesc_window_right2 = "<leader>w<Right> Focus window right"
-	nnoremap <leader>wl                <C-w>l
-	vnoremap <leader>wl                <Esc><C-w>l
-	nnoremap <leader>w<Right>          <C-w>l
-	vnoremap <leader>w<Right>          <Esc><C-w>l
-
-	" Split window below and focus
-	let g:WhichKeyDesc_window_split_focus_below = "<leader>wS Split window below and focus"
-	nnoremap <leader>wS                    <C-w>s<C-w>j
-	vnoremap <leader>wS                    <Esc><C-w>s<C-w>j
-
-	" Split window right and focus
-	let g:WhichKeyDesc_window_split_focus_right = "<leader>wV Split window right and focus"
-	nnoremap <leader>wV                    <C-w>v<C-w>l
-	vnoremap <leader>wV                    <Esc><C-w>v<C-w>l
-
-	" Focus next window
-	let g:WhichKeyDesc_window_next = "<leader>ww Focus next window"
-	nnoremap <leader>ww             :action NextSplitter<CR>
-	vnoremap <leader>ww             <Esc>:action NextSplitter<CR>
-
-	" -- Windows  --
-	
-	" -- Zoom  --
-
-	" Font size commands namespace
-	let g:WhichKeyDesc_font = "<leader>zx Font size commands"
-
-	" Increase font size
-	let g:WhichKeyDesc_font_increase = "<leader>zxi Increase font size"
-	nnoremap <leader>zxi             :action EditorIncreaseFontSize<CR>
-	vnoremap <leader>zxi             :action EditorIncreaseFontSize<CR>
-
-	" Decrease font size
-	let g:WhichKeyDesc_font_decrease = "<leader>zxd Decrease font size"
-	nnoremap <leader>zxd             :action EditorDecreaseFontSize<CR>
-	vnoremap <leader>zxd             :action EditorDecreaseFontSize<CR>
-
-	" Reset font size
-	let g:WhichKeyDesc_font_reset = "<leader>zxr Reset font size"
-	nnoremap <leader>zxr             :action EditorResetFontSize<CR>
-	vnoremap <leader>zxr             :action EditorResetFontSize<CR>
-
-	" -- Zoom  --
-
-	" IDE menus
-	
-	" IDE menus namespace
-	let g:WhichKeyDesc_ide = "<leader>m IDE menus"
-
-	" Git main menu
-	let g:WhichKeyDesc_ide_git_menu = "<leader>mg Git main menu"
-	map <leader>mg              <Action>(Git.MainMenu)
-
-	" Code menu
-	let g:WhichKeyDesc_ide_code_menu = "<leader>mc Code menu"
-	nmap <leader>mc             <Action>(CodeMenu)
-
-	" Tool windows group
-	let g:WhichKeyDesc_ide_tool_windows = "<leader>mw Tool windows group"
-	nmap <leader>mw             <Action>(ToolWindowsGroup)
-
-	" Manage recent projects
-	let g:WhichKeyDesc_ide_manage_recent = "<leader>mp Manage recent projects"
-	map <leader>mp             <Action>(ManageRecentProjects)
-
-	" Activate npm tool window
-	let g:WhichKeyDesc_ide_activate_npm = "<leader>mn Activate npm tool window"
-	map <leader>mn             <Action>(ActivatenpmToolWindow)
-
-	" Activate project tool window
-	let g:WhichKeyDesc_ide_activate_project = "<leader>mv Activate project tool window"
-	map <leader>mv             <Action>(ActivateProjectToolWindow)
-
-	" Select in project view
-	let g:WhichKeyDesc_ide_select_project_view = "<leader>ml Select in project view"
-	map <leader>ml             <Action>(SelectInProjectView)
-
-	" Toggle Zen mode
-	let g:WhichKeyDesc_ide_toggle_zen = "<leader>mz Toggle Zen mode"
-	map <leader>mz             <Action>(ToggleZenMode)
-
-	" Choose run configuration
-	let g:WhichKeyDesc_ide_choose_run = "<leader>mr Choose run configuration"
-	map <leader>mr             <Action>(ChooseRunConfiguration)
-
-	" Run class under cursor
-	let g:WhichKeyDesc_ide_run_class = "<leader>mR Run class under cursor"
-	map <leader>mR             <Action>(RunClass)
-
-	" Choose debug configuration
-	let g:WhichKeyDesc_ide_choose_debug = "<leader>md Choose debug configuration"
-	map <leader>md             <Action>(ChooseDebugConfiguration)
-
-	" Debug class under cursor
-	let g:WhichKeyDesc_ide_debug_class = "<leader>mD Debug class under cursor"
-	map <leader>mD             <Action>(DebugClass)
-
-	" Select in
-	let g:WhichKeyDesc_ide_select_in = "<leader>ms Select in"
-	map <leader>ms             <Action>(SelectIn)
-
-	" String manipulation popup
-	let g:WhichKeyDesc_ide_string_manip = "<leader>mm String manipulation popup"
-	map <leader>mm             <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
-
-	" File structure popup
-	let g:WhichKeyDesc_ide_file_structure = "<leader>mo File structure popup"
-	map <leader>mo             <Action>(FileStructurePopup)
-
-	" Call hierarchy
-	let g:WhichKeyDesc_ide_call_hierarchy = "<leader>mu Call hierarchy"
-	map <leader>mu             <Action>(CallHierarchy)
-
-	" Local history
-	let g:WhichKeyDesc_ide_local_history = "<leader>mh Local history"
-	map <leader>mh             <Action>(LocalHistory.ShowHistory)
-
-	" Bookmarks namespace
-	let g:WhichKeyDesc_bookmarks = "<leader>b Bookmarks"
-
-	" Show bookmarks
-	let g:WhichKeyDesc_bookmarks_show = "<leader>mb Show bookmarks"
-	nnoremap <leader>mb       :action ShowBookmarks<CR>
-	vnoremap <leader>mb       :action ShowBookmarks<CR>
-
-	" Goto next bookmark
-	let g:WhichKeyDesc_bookmarks_next = "<leader>bn Goto next bookmark"
-	map <leader>bn           <Action>(GotoNextBookmark)
-
-	" Goto previous bookmark
-	let g:WhichKeyDesc_bookmarks_prev = "<leader>bp Goto previous bookmark"
-	map <leader>bp           <Action>(GotoPreviousBookmark)
-
-	" Toggle bookmark
-	let g:WhichKeyDesc_bookmarks_toggle = "<leader>bb Toggle bookmark"
-	map <leader>bb           <Action>(ToggleBookmark)
-
-	" IDE menus
-
-	" Hover mapping
-	let g:WhichKeyDesc_show_error = "gj Show error description"
-	map gj <Action>(ShowErrorDescription)
-	let g:WhichKeyDesc_show_hover= "gh Show hover info"
-	map gh <Action>(ShowHoverInfo)
-	let g:WhichKeyDesc_show_type_definition = "gh Show quick type definition"
-	map gt <Action>(QuickTypeDefinition)
-	let g:WhichKeyDesc_edit_source = "ge Edit source"
-	map ge <Action>(EditSource)
-
-	" Find actions namespace
-	let g:WhichKeyDesc_find_actions = "<leader>f Find actions"
-
-	" Find action
-	let g:WhichKeyDesc_find_action = "<leader>fa Find action"
-	nnoremap <leader>fa :action GotoAction<CR>
-	vnoremap <leader>fa :action GotoAction<CR>
-
-	" Find file
-	let g:WhichKeyDesc_find_file = "<leader>ff Find file"
-	nnoremap <leader>ff :action GotoFile<CR>
-	vnoremap <leader>ff :action GotoFile<CR>
-
-	" Find in path (globally)
-	let g:WhichKeyDesc_find_in_path = "<leader>fg Find globally"
-	nnoremap <leader>fg :action FindInPath<CR>
-	vnoremap <leader>fg :action FindInPath<CR>
-
-	" Find symbol
-	let g:WhichKeyDesc_find_symbol = "<leader>fs Find symbol"
-	nnoremap <leader>fs :action GotoSymbol<CR>
-	vnoremap <leader>fs :action GotoSymbol<CR>
+  let g:WhichKeyDesc_code_rename = "<leader>cr Rename"
+  nnoremap <leader>cr :action RenameElement<CR>
+  vnoremap <leader>cr :action RenameElement<CR>
+
+  let g:WhichKeyDesc_ide_choose_run = "<leader>cr Choose run configuration"
+  nnoremap <leader>cr <Action>(ChooseRunConfiguration)
+  let g:WhichKeyDesc_ide_run_class = "<leader>cR Run class under cursor"
+  nnoremap <leader>cR <Action>(RunClass)
+
+  let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename file"
+  nnoremap <leader>cR :action RenameFile<CR>
+  vnoremap <leader>cR <Esc>:action RenameFile<CR>
+
+  let g:WhichKeyDesc_code_source_action = "<leader>cA Source action"
+  nnoremap <leader>cA :action OptimizeImports<CR>
+  vnoremap <leader>cA :action OptimizeImports<CR>
+
+  let g:WhichKeyDesc_ide_code_menu = "<leader>cm Code menu"
+  nnoremap <leader>cm <Action>(CodeMenu)
+
+  nnoremap K :action ShowHoverInfo<CR>
+  vnoremap K <Esc>:action ShowHoverInfo<CR>
+
+  nnoremap gd :action GotoDeclaration<CR>
+  vnoremap gd <Esc>:action GotoDeclaration<CR>
+
+  nnoremap gr :action FindUsages<CR>
+  vnoremap gr <Esc>:action FindUsages<CR>
+
+  nnoremap gy :action QuickTypeDefinition<CR>
+  vnoremap gy <Esc>:action QuickTypeDefinition<CR>
+
+  nnoremap ge :action EditSource<CR>
+  vnoremap ge <Esc>:action EditSource<CR>
+
+  let g:WhichKeyDesc_ide_activate_project = "<leader>E Activate project tool window"
+  nnoremap <leader>E <Action>(ActivateProjectToolWindow)
+
+  let g:WhichKeyDesc_ide_select_project_view = "<leader>e Select in project view"
+  nnoremap <leader>e <Action>(SelectInProjectView)
+
+  let g:WhichKeyDesc_diagnostics = "<leader>x Diagnostics / quickfix"
+  let g:WhichKeyDesc_line_diagnostics = "<leader>cd Line diagnostics"
+  nnoremap <leader>cd :action ShowErrorDescription<CR>
+  vnoremap <leader>cd <Esc>:action ShowErrorDescription<CR>
+
+  nnoremap ]d :action GotoNextError<CR>
+  vnoremap ]d <Esc>:action GotoNextError<CR>
+
+  nnoremap [d :action GotoPreviousError<CR>
+  vnoremap [d <Esc>:action GotoPreviousError<CR>
+
+  nnoremap ]e :action GotoNextError<CR>
+  vnoremap ]e <Esc>:action GotoNextError<CR>
+
+  nnoremap [e :action GotoPreviousError<CR>
+  vnoremap [e <Esc>:action GotoPreviousError<CR>
+
+  nnoremap ]w :action GotoNextError<CR>
+  vnoremap ]w <Esc>:action GotoNextError<CR>
+
+  nnoremap [w :action GotoPreviousError<CR>
+  vnoremap [w <Esc>:action GotoPreviousError<CR>
+
+  let g:WhichKeyDesc_git = "<leader>g Git"
+  let g:WhichKeyDesc_git_blame = "<leader>gb Git blame line"
+  nnoremap <leader>gb :action Annotate<CR>
+  vnoremap <leader>gb <Esc>:action Annotate<CR>
+
+  let g:WhichKeyDesc_ide_git_menu = "<leader>gm Git main menu"
+  nnoremap <leader>gm <Action>(Git.MainMenu)
+
+  let g:WhichKeyDesc_ide_lazygit = "<leader>gg Lazygit"
+  nnoremap <leader>gm <Action>(TUILauncher.lazygit)
+
+  let g:WhichKeyDesc_git_file_history = "<leader>gf Git current file history"
+  nnoremap <leader>gf :action Vcs.ShowTabbedFileHistory<CR>
+  vnoremap <leader>gf <Esc>:action Vcs.ShowTabbedFileHistory<CR>
+
+  let g:WhichKeyDesc_ide_local_history = "<leader>gF Local history"
+  nnoremap <leader>gF <Action>(LocalHistory.ShowHistory)
+
+  let g:WhichKeyDesc_git_log = "<leader>gl Git log"
+  nnoremap <leader>gl :action Vcs.Show.Log<CR>
+  vnoremap <leader>gl <Esc>:action Vcs.Show.Log<CR>
+
+  let g:WhichKeyDesc_git_log_cwd = "<leader>gL Git log cwd"
+  nnoremap <leader>gL :action Vcs.Show.Log<CR>
+  vnoremap <leader>gL <Esc>:action Vcs.Show.Log<CR>
+
+  let g:WhichKeyDesc_git_clone = "<leader>gC Git clone"
+  nnoremap <leader>gC :action Git.Clone<CR>
+  vnoremap <leader>gC <Esc>:action Git.Clone<CR>
+
+  nnoremap <C-s> :action SaveAll<CR>
+  vnoremap <C-s> <Esc>:action SaveAll<CR>
 
 	" Refactoring
 	" Refactor actions namespace
@@ -465,7 +252,7 @@ if has('ide')
 	" inoremap <A-Up> <Esc>:m .-2<CR>==gi
 	" inoremap <A-Down> <Esc>:m .+1<CR>==gi
 	" NOTE It's not the same as using Vim's Ex-commands.
-	nmap <A-Up> <Action>(MoveStatementUp)
+  nmap <A-Up> <Action>(MoveStatementUp)
 	nmap <A-Down> <Action>(MoveStatementDown)
 	imap <A-Up> <Action>(MoveStatementUp)
 	imap <A-Down> <Action>(MoveStatementDown)
