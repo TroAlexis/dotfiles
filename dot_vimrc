@@ -57,6 +57,10 @@ set sidescroll=20
 set sidescrolloff=30
 set visualbell
 
+" Preserve the original IdeaVim/Vim gr behavior on gR before overriding gr.
+nnoremap gR gr
+vnoremap gR gr
+
 " Theme settings --------------------------
 if !is_ide
 	syntax on
