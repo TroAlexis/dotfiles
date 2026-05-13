@@ -89,13 +89,13 @@ if has('ide')
   vnoremap <leader>ft <Esc>:action Terminal.OpenInTerminal<CR>
 
   let g:WhichKeyDesc_ide_manage_recent = "<leader>fp Recent projects"
-  nnoremap <leader>fp <Action>(ManageRecentProjects)
+  nnoremap <leader>fp :action ManageRecentProjects<CR>
 
   let g:WhichKeyDesc_project_activate = "<leader>E Project tool window"
-  nnoremap <leader>E <Action>(ActivateProjectToolWindow)
+  nnoremap <leader>E :action ActivateProjectToolWindow<CR>
 
   let g:WhichKeyDesc_project_select = "<leader>e Select in project"
-  nnoremap <leader>e <Action>(SelectInProjectView)
+  nnoremap <leader>e :action SelectInProjectView<CR>
 
   " ============================================================================
   " Search mappings
@@ -259,21 +259,21 @@ if has('ide')
   vnoremap <leader>gf <Esc>:action Vcs.ShowTabbedFileHistory<CR>
 
   let g:WhichKeyDesc_git_lazygit = "<leader>gg Lazygit"
-  nnoremap <leader>gg <Action>(TUILauncher.lazygit)
+  nnoremap <leader>gg :action TUILauncher.lazygit<CR>
 
   let g:WhichKeyDesc_git_log = "<leader>gl Git log"
   nnoremap <leader>gl :action Vcs.Show.Log<CR>
   vnoremap <leader>gl <Esc>:action Vcs.Show.Log<CR>
 
   let g:WhichKeyDesc_git_menu = "<leader>gm Git menu"
-  nnoremap <leader>gm <Action>(Git.MainMenu)
+  nnoremap <leader>gm :action Git.MainMenu<CR>
 
   let g:WhichKeyDesc_git_clone = "<leader>gC Clone"
   nnoremap <leader>gC :action Git.Clone<CR>
   vnoremap <leader>gC <Esc>:action Git.Clone<CR>
 
   let g:WhichKeyDesc_git_local_history = "<leader>gF Local history"
-  nnoremap <leader>gF <Action>(LocalHistory.ShowHistory)
+  nnoremap <leader>gF :action LocalHistory.ShowHistory<CR>
 
   let g:WhichKeyDesc_git_log_cwd = "<leader>gL Git log cwd"
   nnoremap <leader>gL :action Vcs.Show.Log<CR>
@@ -286,13 +286,13 @@ if has('ide')
   let g:WhichKeyDesc_run_tools = "<leader>o Run / tools"
 
   let g:WhichKeyDesc_run_choose_config = "<leader>or Choose run config"
-  nnoremap <leader>or <Action>(ChooseRunConfiguration)
+  nnoremap <leader>or :action ChooseRunConfiguration<CR>
 
   let g:WhichKeyDesc_run_class = "<leader>oR Run class"
-  nnoremap <leader>oR <Action>(RunClass)
+  nnoremap <leader>oR :action RunClass<CR>
 
   let g:WhichKeyDesc_tool_npm = "<leader>oo npm tool window"
-  nnoremap <leader>oo <Action>(ActivatenpmToolWindow)
+  nnoremap <leader>oo :action ActivatenpmToolWindow<CR>
 
   " ============================================================================
   " UI and tool-window mappings
