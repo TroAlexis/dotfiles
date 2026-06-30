@@ -156,4 +156,7 @@ eval "$(tv init zsh)"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+
+eval "$(zoxide init zsh)"
