@@ -160,3 +160,8 @@ eval "$(atuin init zsh)"
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 eval "$(zoxide init zsh)"
+
+# AI Skills Channel for Television
+# Quick access to explore AI agent skills from all locations
+export EDITOR=nvim
+export VISUAL=nvim
