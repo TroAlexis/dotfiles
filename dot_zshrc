@@ -83,7 +83,7 @@ compinit
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git brew zsh-syntax-highlighting nvm npm zsh-autosuggestions)
 
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 
 source $ZSH/oh-my-zsh.sh
 
