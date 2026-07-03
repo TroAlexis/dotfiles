@@ -263,7 +263,7 @@ if has('ide')
   vnoremap <leader>gf <Esc>:action Vcs.ShowTabbedFileHistory<CR>
 
   let g:WhichKeyDesc_git_lazygit = "<leader>gg Lazygit"
-  nnoremap <leader>gg :action TUILauncher.lazygit<CR>
+  nnoremap <leader>gg :action ActivateTerminalToolWindow<CR>
 
   let g:WhichKeyDesc_git_log = "<leader>gl Git log"
   nnoremap <leader>gl :action Vcs.Show.Log<CR>
