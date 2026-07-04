@@ -165,3 +165,6 @@ eval "$(zoxide init zsh)"
 # Quick access to explore AI agent skills from all locations
 export EDITOR=nvim
 export VISUAL=nvim
+
+# pi-pretty / Shiki syntax highlighting theme
+export PRETTY_THEME=nord
