@@ -168,3 +168,6 @@ export VISUAL=nvim
 
 # pi-pretty / Shiki syntax highlighting theme
 export PRETTY_THEME=nord
+
+# pi-ask-user: use inline display mode by default
+export PI_ASK_USER_DISPLAY_MODE=inline
