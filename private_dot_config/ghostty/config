@@ -1,4 +1,6 @@
 theme = Catppuccin Mocha
+background-opacity = 0.92
+background-blur-radius = 30
 font-family = MesloLGS NF
 font-size = 16
 font-thicken = true
