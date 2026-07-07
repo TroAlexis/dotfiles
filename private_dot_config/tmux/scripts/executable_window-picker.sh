@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cmd="$HOME/.config/tmux/window-picker.sh"
+cmd="$HOME/.config/tmux/scripts/window-picker.sh"
 
 case "${1:-picker}" in
   list)
