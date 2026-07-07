@@ -7,10 +7,13 @@ cmd="$HOME/.config/tmux/scripts/window-picker.sh"
 popup_input() {
   local prompt="$1"
   local default="$2"
-  local tmp=$(mktemp)
-  tmux display-popup -w 60% -h 15% -E "bash -c 'echo -n \"$prompt\"; read -e -i \"$default\" val; echo \"\$val\" > \"$tmp\"'"
-  cat "$tmp"
-  rm -f "$tmp"
+  local fifo=$(mktemp -d)/fifo
+  mkfifo "$fifo"
+  tmux display-popup -w 60% -h 15% -E "bash -c 'echo -n \"$prompt\"; read -e -i \"$default\" val; echo \"\$val\" > \"$fifo\"'" &
+  local result
+  read -r result < "$fifo"
+  rm -f "$fifo"
+  echo "$result"
 }
 
 case "${1:-picker}" in
