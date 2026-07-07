@@ -3,19 +3,6 @@ set -euo pipefail
 
 cmd="$HOME/.config/tmux/scripts/window-picker.sh"
 
-# Open popup for text input, returns the input value
-popup_input() {
-  local prompt="$1"
-  local default="$2"
-  local fifo=$(mktemp -d)/fifo
-  mkfifo "$fifo"
-  tmux display-popup -w 60% -h 15% -E "bash -c 'echo -n \"$prompt\"; read -e -i \"$default\" val; echo \"\$val\" > \"$fifo\"'" &
-  local result
-  read -r result < "$fifo"
-  rm -f "$fifo"
-  echo "$result"
-}
-
 case "${1:-picker}" in
   list)
     tmux list-windows -F '#I: #W — #{pane_current_path}'
@@ -48,9 +35,7 @@ case "${1:-picker}" in
     idx="${choice%%:*}"
     if [ "$key" = ctrl-r ]; then
       tmux select-window -t ":$idx"
-      current_name=$(tmux display-message -p -t ":$idx" '#W')
-      new_name=$(popup_input "Rename window: " "$current_name")
-      [ -n "$new_name" ] && tmux rename-window -t ":$idx" "$new_name"
+      tmux command-prompt -I '#W' 'rename-window "%%"'
     else
       tmux select-window -t ":$idx"
     fi
