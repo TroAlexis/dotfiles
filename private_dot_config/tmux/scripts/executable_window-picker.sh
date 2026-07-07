@@ -35,7 +35,7 @@ case "${1:-picker}" in
     idx="${choice%%:*}"
     if [ "$key" = ctrl-r ]; then
       tmux select-window -t ":$idx"
-      tmux command-prompt -I '#W' 'rename-window \'%%\''
+      tmux command-prompt -I "#W" 'rename-window "%%"'
     else
       tmux select-window -t ":$idx"
     fi
