@@ -34,9 +34,8 @@ case "${1:-picker}" in
 
     idx="${choice%%:*}"
     if [ "$key" = ctrl-r ]; then
-      name=$(tmux display-message -p -t ":$idx" '#W')
-      new_name=$(printf '' | fzf-tmux -p 50%,10% --print-query --query "$name" --disabled --no-info --border-label ' rename ' --prompt 'rename window: ' || true)
-      [ -n "$new_name" ] && tmux rename-window -t ":$idx" "$new_name"
+      tmux select-window -t ":$idx"
+      tmux command-prompt -I '#W' 'rename-window \'%%\''
     else
       tmux select-window -t ":$idx"
     fi
