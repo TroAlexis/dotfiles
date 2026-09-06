@@ -130,10 +130,10 @@ docker() {
 }
 export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
 export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
-export PATH="$PATH:/Users/atroshin/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # pnpm
-export PNPM_HOME="/Users/atroshin/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -145,7 +145,7 @@ esac
 
 
 # Added by Antigravity CLI installer
-export PATH="/Users/atroshin/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(tv init zsh)"
 
