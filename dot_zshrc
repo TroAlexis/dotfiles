@@ -170,3 +170,6 @@ export PI_ASK_USER_DISPLAY_MODE=inline
 
 # Figma REST API token from macOS Keychain
 export FIGMA_API_KEY="$(security find-generic-password -a "$USER" -s figma-api-key -w)"
+
+# ppi: complete subcommands and profile IDs
+eval "$(ppi completion zsh)"
