@@ -3,6 +3,33 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "U", "<C-r>", { desc = "Redo" })
 
+local function diffget(side)
+  if vim.wo.diff then
+    vim.cmd("diffget //" .. side)
+  end
+end
+
+local function configure_diff_keymaps()
+  local buffer = vim.api.nvim_get_current_buf()
+
+  if vim.wo.diff then
+    vim.keymap.set("n", "dl", function()
+      diffget(2)
+    end, { buffer = buffer, desc = "Diff: take LOCAL" })
+    vim.keymap.set("n", "dr", function()
+      diffget(3)
+    end, { buffer = buffer, desc = "Diff: take REMOTE" })
+  else
+    pcall(vim.keymap.del, "n", "dl", { buffer = buffer })
+    pcall(vim.keymap.del, "n", "dr", { buffer = buffer })
+  end
+end
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter", "OptionSet" }, {
+  pattern = "*",
+  callback = configure_diff_keymaps,
+})
+
 local function current_file()
   local file = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":p")
   local root = LazyVim and LazyVim.root and LazyVim.root.get({ normalize = true }) or vim.uv.cwd()

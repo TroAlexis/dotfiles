@@ -1,6 +1,26 @@
 return {
   {
     "folke/snacks.nvim",
+    keys = {
+      {
+        "<leader>sU",
+        function()
+          local root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+          if vim.v.shell_error ~= 0 then
+            return vim.notify("not a git repo", vim.log.levels.WARN)
+          end
+          local files = vim.fn.systemlist(
+            "cd " .. vim.fn.shellescape(root)
+              .. " && { git diff --name-only --diff-filter=d HEAD; git ls-files --others --exclude-standard; } | sort -u"
+          )
+          if #files == 0 then
+            return vim.notify("no uncommitted files", vim.log.levels.INFO)
+          end
+          Snacks.picker.grep({ cwd = root, dirs = files, title = "Grep (uncommitted)" })
+        end,
+        desc = "Grep (uncommitted files)",
+      },
+    },
     opts = {
       image = { enabled = true },
       dashboard = {
@@ -31,6 +51,11 @@ return {
             filename_first = true,
             min_width = 80,
           },
+        },
+        sources = {
+          explorer = { hidden = true, ignored = true },
+          files = { hidden = true, ignored = true },
+          grep = { hidden = true },
         },
       },
     },

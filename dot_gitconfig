@@ -11,9 +11,15 @@
 	editor = nvim
 [alias]
 	rst = commit --amend --no-edit --reset-author
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d "$LOCAL" "$REMOTE"
 [merge]
 	tool = nvimdiff
 [mergetool "nvimdiff"]
 	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [mergetool]
 	keepBackup = false
+[url "git@github-baitshift:baitshift/"]
+	insteadOf = git@github.com:baitshift/
