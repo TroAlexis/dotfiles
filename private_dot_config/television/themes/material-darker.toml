@@ -1,0 +1,25 @@
+# Material Darker — derived from ~/Material_Darker.icls
+# general
+background = '#212121'
+border_fg = '#424242'
+text_fg = '#eeffff'
+dimmed_text_fg = '#616161'
+# input
+input_text_fg = '#eeffff'
+result_count_fg = '#ffcb6b'
+# results
+result_name_fg = '#82aaff'
+result_line_number_fg = '#616161'
+result_value_fg = '#b2ccd6'
+selection_fg = '#eeffff'
+selection_bg = '#353535'
+match_fg = '#ffcb6b'
+# preview
+preview_title_fg = '#f78c6c'
+# modes
+channel_mode_fg = '#212121'
+channel_mode_bg = '#ff9cac'
+remote_control_mode_fg = '#212121'
+remote_control_mode_bg = '#c3e88d'
+action_picker_mode_fg = '#212121'
+action_picker_mode_bg = '#82aaff'
