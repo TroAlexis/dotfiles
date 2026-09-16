@@ -1,4 +1,24 @@
-theme = Catppuccin Mocha
+theme = Material Darker
+
+# Material Darker ships 7 == 15 (#ffffff) and repeats 1-6 for 9-14, so bold text
+# in TUIs has no brighter slot to move to. Split white and derive the brights.
+palette = 7=#b0bec5
+palette = 15=#eeffff
+# Material's CONSOLE_CYAN_OUTPUT (#89ddff) is a light blue, nearly identical to
+# ANSI blue (#82aaff); anything using both (sesh icons, TUIs) loses the contrast.
+# Use the palette's real teal instead.
+palette = 6=#80cbc4
+palette = 14=#a5dbd6
+palette = 9=#ff879b
+palette = 10=#d5efaf
+palette = 11=#ffdb97
+palette = 12=#a8c4ff
+palette = 13=#d8b3f0
+
+# CARET_COLOR / SELECTION_BACKGROUND from Material_Darker.icls
+cursor-color = #94ff86
+selection-background = #353535
+selection-foreground = #eeffff
 background-opacity = 0.92
 background-blur-radius = 30
 font-family = MesloLGS NF

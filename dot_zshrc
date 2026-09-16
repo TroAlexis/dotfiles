@@ -168,8 +168,13 @@ export PRETTY_THEME=nord
 export PI_ASK_USER_DISPLAY_MODE=inline
 
 # Figma REST API token from macOS Keychain
-export FIGMA_API_KEY="$(security find-generic-password -a "$USER" -s figma-api-key -w)"
+export FIGMA_API_KEY="$(security find-generic-password -a "$USER" -s figma-api-key -w 2>/dev/null)"
 
 # ppi: complete subcommands and profile IDs
 eval "$(ppi completion zsh)"
 
+
+# fzf defaults to its 256-colour "dark" scheme on a 256-colour terminal, which is
+# built from fixed cube indices (109/161/236...) that no terminal theme controls.
+# base16 confines it to ANSI 0-15, so it inherits Ghostty's Material Darker.
+export FZF_DEFAULT_OPTS='--color=base16'

@@ -23,3 +23,21 @@
 	keepBackup = false
 [url "git@github-baitshift:baitshift/"]
 	insteadOf = git@github.com:baitshift/
+
+[delta]
+	# Colours from ~/Material_Darker.icls. Delta reads these from git config, so
+	# they apply to lazygit's pager too. Emph styles are the base brightened ~1.5x.
+	syntax-theme = Catppuccin Mocha
+	plus-style = syntax "#264b33"
+	minus-style = syntax "#4b3639"
+	plus-emph-style = syntax "#39704c"
+	minus-emph-style = syntax "#6d4b50"
+	file-style = "#82aaff" bold
+	file-decoration-style = "#424242" ul
+	hunk-header-style = "#616161"
+	hunk-header-decoration-style = "#424242" box
+	line-numbers-left-style = "#424242"
+	line-numbers-right-style = "#424242"
+	line-numbers-minus-style = "#f07178"
+	line-numbers-plus-style = "#c3e88d"
+	line-numbers-zero-style = "#616161"

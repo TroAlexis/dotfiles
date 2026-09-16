@@ -23,6 +23,15 @@ return {
     },
     opts = {
       image = { enabled = true },
+      -- snacks derives lazygit's accent from MatchParen's fg, but Material's
+      -- MATCHED_BRACE_ATTRIBUTES tints only the background, leaving nothing to
+      -- derive. Point it at the palette's orange instead.
+      lazygit = {
+        theme = {
+          activeBorderColor = { fg = "Constant", bold = true },
+          searchingActiveBorderColor = { fg = "Constant", bold = true },
+        },
+      },
       dashboard = {
         preset = {
           header = [[
