@@ -8,3 +8,18 @@
 ((import_specifier
   name: (identifier) @variable.import)
   (#set! priority 110))
+
+; `import type { X }` and `import { type X }` say so syntactically, so they beat
+; the blanket @variable.import rule above (priority 115 > 110).
+((import_specifier
+  "type"
+  name: (identifier) @type.import)
+  (#set! priority 115))
+
+((import_statement
+  "type"
+  (import_clause
+    (named_imports
+      (import_specifier
+        name: (identifier) @type.import))))
+  (#set! priority 115))

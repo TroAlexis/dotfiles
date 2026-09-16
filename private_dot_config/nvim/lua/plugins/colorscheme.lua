@@ -117,6 +117,7 @@ return {
             -- catppuccin leaves this empty, so treesitter's (wrong) @type shows through
             ["@lsp.type.variable"] = { fg = c.text },
             ["@variable.import"] = { fg = c.yellow, style = italic }, -- see after/queries/
+          ["@type.import"] = { fg = c.green, style = italic }, -- `import type { X }`
             -- .icls splits these: DEFAULT_CLASS_REFERENCE is green, DEFAULT_CLASS_NAME
           -- (the declaration) is yellow. Matches the bat/delta theme.
           ["@lsp.type.class"] = { fg = c.green },
