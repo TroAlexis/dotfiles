@@ -4,7 +4,7 @@ name = "material-darker"
 [colors]
 AlertInfo = "#c3e88d"
 AlertWarn = "#ffcb6b"
-AlertError = "#ff5370"
+AlertError = "#f07178"
 Annotation = "#c792ea"
 Base = "#eeffff"
 Guidance = "#90a4ae"
