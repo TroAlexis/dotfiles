@@ -118,6 +118,7 @@ return {
             ["@lsp.type.variable"] = { fg = c.text },
             ["@variable.import"] = { fg = c.yellow, style = italic }, -- see after/queries/
           ["@type.import"] = { fg = c.green, style = italic }, -- `import type { X }`
+          ["@constant.import"] = { fg = c.peach }, -- DEFAULT_CONSTANT, ALL_CAPS imports
             -- .icls splits these: DEFAULT_CLASS_REFERENCE is green, DEFAULT_CLASS_NAME
           -- (the declaration) is yellow. Matches the bat/delta theme.
           ["@lsp.type.class"] = { fg = c.green },

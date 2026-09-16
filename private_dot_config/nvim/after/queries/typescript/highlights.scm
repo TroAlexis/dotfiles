@@ -23,3 +23,10 @@
       (import_specifier
         name: (identifier) @type.import))))
   (#set! priority 115))
+
+; SCREAMING_SNAKE_CASE is a strong enough convention to call a constant, which is
+; the one non-type distinction WebStorm makes that syntax can also make.
+((import_specifier
+  name: (identifier) @constant.import)
+  (#lua-match? @constant.import "^_*[A-Z][A-Z%d_]*$")
+  (#set! priority 115))
