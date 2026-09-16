@@ -177,7 +177,10 @@ return {
             IlluminatedWordRead = { bg = "#033e5d" },
             IlluminatedWordWrite = { bg = "#4a4d50" },
             Cursor = { fg = c.base, bg = "#94ff86" }, -- CARET_COLOR
-            WhichKeyDesc = { fg = c.text }, -- catppuccin uses pink; menus read as UI text
+            -- SELECTED_TEARLINE_COLOR: one "this is the active thing" accent, shared by
+          -- the tmux active pane border, atuin's focused row, lazygit and lazydocker.
+          UiAccent = { fg = "#ff9800" },
+          WhichKeyDesc = { fg = c.text }, -- catppuccin uses pink; menus read as UI text
           }
           return hl
         end,

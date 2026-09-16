@@ -4,7 +4,7 @@ gui:
   border: "rounded"  # matches the tmux popup border
   theme:
     activeBorderColor:
-      - "#f78c6c"
+      - "#ff9800"
       - bold
     inactiveBorderColor:
       - "#82aaff"

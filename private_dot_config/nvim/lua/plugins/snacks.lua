@@ -25,11 +25,11 @@ return {
       image = { enabled = true },
       -- snacks derives lazygit's accent from MatchParen's fg, but Material's
       -- MATCHED_BRACE_ATTRIBUTES tints only the background, leaving nothing to
-      -- derive. Point it at the palette's orange instead.
+      -- derive. UiAccent is the palette's dedicated "active thing" colour.
       lazygit = {
         theme = {
-          activeBorderColor = { fg = "Constant", bold = true },
-          searchingActiveBorderColor = { fg = "Constant", bold = true },
+          activeBorderColor = { fg = "UiAccent", bold = true },
+          searchingActiveBorderColor = { fg = "UiAccent", bold = true },
         },
       },
       dashboard = {
