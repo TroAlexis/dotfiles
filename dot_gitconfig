@@ -27,7 +27,7 @@
 [delta]
 	# Colours from ~/Material_Darker.icls. Delta reads these from git config, so
 	# they apply to lazygit's pager too. Emph styles are the base brightened ~1.5x.
-	syntax-theme = Catppuccin Mocha
+	syntax-theme = Material Darker
 	plus-style = syntax "#264b33"
 	minus-style = syntax "#4b3639"
 	plus-emph-style = syntax "#39704c"
