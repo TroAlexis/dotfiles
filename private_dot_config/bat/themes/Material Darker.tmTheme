@@ -2315,6 +2315,17 @@
 				<string>#c3e88d</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>Class declaration</string>
+			<key>scope</key>
+			<string>entity.name.type.class</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#ffcb6b</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>7f9a1c22-3b4e-4d61-9d0a-2c5f8e1b6a04</string>
