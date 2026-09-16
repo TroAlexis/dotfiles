@@ -1,13 +1,14 @@
-# Same colours as ~/.cache/nvim/lazygit-theme.yml (catppuccin mocha via snacks.nvim) so lazygit and lazydocker match
+# Same colours as ~/.cache/nvim/lazygit-theme.yml (Material Darker via snacks.nvim)
+# so lazygit and lazydocker match. Regenerate that file by opening lazygit from nvim.
 gui:
   border: "rounded"  # matches the tmux popup border
   theme:
     activeBorderColor:
-      - "#fab387"
+      - "#f78c6c"
       - bold
     inactiveBorderColor:
-      - "#89b4fa"
+      - "#82aaff"
     selectedLineBgColor:
-      - "#45475a"
+      - "#353535"
     optionsTextColor:
-      - "#89b4fa"
+      - "#82aaff"
