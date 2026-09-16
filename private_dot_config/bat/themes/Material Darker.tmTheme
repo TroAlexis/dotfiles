@@ -205,7 +205,7 @@
 				<key>fontStyle</key>
 				<string>italic</string>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#c3e88d</string>
 			</dict>
 		</dict>
 		<dict>
@@ -2300,6 +2300,19 @@
 				<string>italic</string>
 				<key>foreground</key>
 				<string>#f07178</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Interface declaration</string>
+			<key>scope</key>
+			<string>entity.name.type.interface</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#c3e88d</string>
 			</dict>
 		</dict>
 	</array>
