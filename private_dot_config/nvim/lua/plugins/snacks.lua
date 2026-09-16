@@ -56,6 +56,20 @@ return {
           explorer = { hidden = true, ignored = true },
           files = { hidden = true, ignored = true },
           grep = { hidden = true },
+          git_log_file = {
+            actions = {
+              git_restore_file = function(picker, item)
+                picker:close()
+                local out = vim.fn.system({ "git", "-C", item.cwd, "restore", "-s", item.commit, "--", item.file })
+                if vim.v.shell_error ~= 0 then
+                  return vim.notify(out, vim.log.levels.ERROR)
+                end
+                vim.cmd("checktime")
+                vim.notify(("Restored %s from %s"):format(vim.fn.fnamemodify(item.file, ":t"), item.commit))
+              end,
+            },
+            win = { input = { keys = { ["<C-r>"] = { "git_restore_file", mode = { "n", "i" } } } } },
+          },
         },
       },
     },

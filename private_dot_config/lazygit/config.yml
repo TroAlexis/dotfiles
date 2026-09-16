@@ -12,3 +12,11 @@ git:
 
     - pager: ydiff -p cat -s --wrap --width={{columnWidth}}
       colorArg: never
+
+os:
+  # 'e' открывает файл буфером в текущем окне neovim, а не в новой вкладке
+  # (по умолчанию nvim-remote пресет делает --remote-tab).
+  # Вне neovim ($NVIM пуст) поведение прежнее: запуск свежего nvim.
+  editPreset: nvim-remote
+  edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})'
+  editAtLine: '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")'

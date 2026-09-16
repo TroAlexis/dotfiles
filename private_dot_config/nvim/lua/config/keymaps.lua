@@ -76,3 +76,7 @@ local function copy_selection_location()
 end
 
 vim.keymap.set("x", "<leader>y", copy_selection_location, { desc = "Copy selection location" })
+
+vim.keymap.set("n", "<leader>fD", function()
+  Snacks.terminal(nil, { cwd = vim.fn.expand("%:p:h") })
+end, { desc = "Terminal (buffer dir)" })

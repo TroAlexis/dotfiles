@@ -11,3 +11,11 @@ vim.filetype.add({
     ["Dockerfile_.*"] = "dockerfile",
   },
 })
+
+-- Dim diff filler lines (the ╱ hatching) instead of the theme's red DiffDelete block
+local function dim_diff_delete()
+  local fg = vim.api.nvim_get_hl(0, { name = "NonText", link = false }).fg
+  vim.api.nvim_set_hl(0, "DiffDelete", { fg = fg, bg = "NONE" })
+end
+vim.api.nvim_create_autocmd("ColorScheme", { callback = dim_diff_delete })
+dim_diff_delete()
