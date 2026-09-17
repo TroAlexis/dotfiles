@@ -140,6 +140,7 @@ return {
             ["@lsp.typemod.variable.static"] = { fg = c.text, style = italic },
             -- json
             ["@property.json"] = { fg = c.mauve }, -- JSON.PROPERTY_KEY
+          ["@property.yaml"] = { fg = "#f07178" }, -- YAML_SCALAR_KEY
             ["@boolean.json"] = { fg = c.peach, style = italic }, -- JSON.KEYWORD
             -- css
             ["@property.css"] = { fg = c.lavender }, -- CSS.PROPERTY_NAME

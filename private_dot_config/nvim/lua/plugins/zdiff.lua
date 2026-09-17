@@ -2,7 +2,7 @@ return {
   "martindur/zdiff.nvim",
   cmd = "Zdiff",
   keys = {
-    { "<leader>zd", "<cmd>Zdiff<cr>", desc = "Zdiff (uncommitted)" },
-    { "<leader>zD", "<cmd>Zdiff main<cr>", desc = "Zdiff (vs main)" },
+    { "<leader>gz", "<cmd>Zdiff<cr>", desc = "Zdiff (uncommitted)" },
+    { "<leader>gZ", "<cmd>Zdiff main<cr>", desc = "Zdiff (vs main)" },
   },
 }
