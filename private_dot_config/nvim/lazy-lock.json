@@ -55,5 +55,6 @@
   "venv-selector.nvim": { "branch": "main", "commit": "cc4bb3975de8835291f9bb45889e96c6b2795fc4" },
   "vim-startuptime": { "branch": "master", "commit": "5f33e50f1e2e2a80370c9094e4c303ea54cd2aea" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "yanky.nvim": { "branch": "main", "commit": "dd6689fdda85f66cab7d9b1a1664625f3be0920d" }
+  "yanky.nvim": { "branch": "main", "commit": "dd6689fdda85f66cab7d9b1a1664625f3be0920d" },
+  "zdiff.nvim": { "branch": "main", "commit": "6e2a105d7cc138b25e2907589ad2c5251e608424" }
 }
