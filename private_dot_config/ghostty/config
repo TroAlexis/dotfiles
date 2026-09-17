@@ -19,8 +19,6 @@ palette = 13=#d8b3f0
 cursor-color = #94ff86
 selection-background = #353535
 selection-foreground = #eeffff
-background-opacity = 0.92
-background-blur-radius = 30
 font-family = MesloLGS NF
 font-size = 16
 font-thicken = true
