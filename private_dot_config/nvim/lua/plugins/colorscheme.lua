@@ -52,32 +52,32 @@ return {
       -- macchiato slot. Switch with :colorscheme catppuccin-macchiato or <leader>uC
       color_overrides = {
         macchiato = {
-          base = "#212121", -- editor background
-          mantle = "#1a1a1a",
-          crust = "#141414",
-          surface0 = "#2b2b2b", -- injected-language background
-          surface1 = "#353535", -- selection
-          surface2 = "#424242", -- line numbers, indent guides
-          overlay0 = "#4a4a4a",
-          overlay1 = "#565656",
-          overlay2 = "#616161", -- comments
-          subtext0 = "#90a4ae",
-          subtext1 = "#b2ccd6",
-          text = "#eeffff", -- variables, identifiers
-          rosewater = "#ffccbc",
-          flamingo = "#ffab91",
-          pink = "#ff9cac", -- Material pink
-          mauve = "#c792ea", -- keywords
-          red = "#ff5370", -- this/super, errors
-          maroon = "#f78c6c", -- parameters
-          peach = "#f78c6c", -- numbers, constants, booleans
-          yellow = "#ffcb6b", -- classes, types, attributes
-          green = "#c3e88d", -- strings, module names
-          teal = "#80cbc4",
-          sky = "#89ddff", -- operators, punctuation
-          sapphire = "#4fc3f7",
-          blue = "#82aaff", -- functions
-          lavender = "#b2ccd6", -- properties, object keys
+            base = "#212121", -- editor background
+            mantle = "#1a1a1a",
+            crust = "#141414",
+            surface0 = "#2b2b2b", -- injected-language background
+            surface1 = "#353535", -- selection
+            surface2 = "#424242", -- line numbers, indent guides
+            overlay0 = "#4a4a4a",
+            overlay1 = "#565656",
+            overlay2 = "#616161", -- comments
+            subtext0 = "#90a4ae",
+            subtext1 = "#b2ccd6",
+            text = "#eeffff", -- variables, identifiers
+            rosewater = "#ffccbc",
+            flamingo = "#ffab91",
+            pink = "#ff9cac", -- Material pink
+            mauve = "#c792ea", -- keywords
+            red = "#ff5370", -- this/super, errors
+            maroon = "#f78c6c", -- parameters
+            peach = "#f78c6c", -- numbers, constants, booleans
+            yellow = "#ffcb6b", -- classes, types, attributes
+            green = "#c3e88d", -- strings, module names
+            teal = "#80cbc4",
+            sky = "#89ddff", -- operators, punctuation
+            sapphire = "#4fc3f7",
+            blue = "#82aaff", -- functions
+            lavender = "#b2ccd6", -- properties, object keys
         },
       },
       -- Roles catppuccin assigns differently than Material does. Treesitter
@@ -89,8 +89,8 @@ return {
       -- edit and the compiled cache is never invalidated.
       highlight_overrides = {
         macchiato = function(c)
-          local italic = { "italic" }
-          local hl = {
+            local italic = { "italic" }
+            local hl = {
             -- punctuation: Material uses cyan, catppuccin uses comment grey
             Delimiter = { fg = c.sky },
             ["@punctuation.bracket"] = { fg = c.sky },
@@ -120,12 +120,12 @@ return {
             -- catppuccin leaves this empty, so treesitter's (wrong) @type shows through
             ["@lsp.type.variable"] = { fg = c.text },
             ["@variable.import"] = { fg = c.yellow, style = italic }, -- see after/queries/
-          ["@type.import"] = { fg = c.green, style = italic }, -- `import type { X }`
-          ["@constant.import"] = { fg = c.peach }, -- DEFAULT_CONSTANT, ALL_CAPS imports
+            ["@type.import"] = { fg = c.green, style = italic }, -- `import type { X }`
+            ["@constant.import"] = { fg = c.peach }, -- DEFAULT_CONSTANT, ALL_CAPS imports
             -- .icls splits these: DEFAULT_CLASS_REFERENCE is green, DEFAULT_CLASS_NAME
-          -- (the declaration) is yellow. Matches the bat/delta theme.
-          ["@lsp.type.class"] = { fg = c.green },
-          ["@lsp.typemod.class.declaration"] = { fg = c.yellow },
+            -- (the declaration) is yellow. Matches the bat/delta theme.
+            ["@lsp.type.class"] = { fg = c.green },
+            ["@lsp.typemod.class.declaration"] = { fg = c.yellow },
             ["@lsp.type.enum"] = { fg = c.yellow },
             ["@lsp.type.typeParameter"] = { fg = c.yellow }, -- TS.TYPE_PARAMETER
             ["@lsp.type.namespace"] = { fg = c.green, style = italic }, -- JS.MODULE_NAME
@@ -153,7 +153,10 @@ return {
             ["@lsp.typemod.variable.static"] = { fg = c.text, style = italic },
             -- json
             ["@property.json"] = { fg = c.mauve }, -- JSON.PROPERTY_KEY
-          ["@property.yaml"] = { fg = "#f07178" }, -- YAML_SCALAR_KEY
+            ["@property.yaml"] = { fg = "#f07178" }, -- YAML_SCALAR_KEY
+            -- snacks links this to NonText (#4a4a4a, 1.8:1) — unreadable next to the
+            -- filename. Override the group, not NonText: DiffDelete derives from it.
+            SnacksDashboardDir = { fg = c.overlay2 },
             ["@boolean.json"] = { fg = c.peach, style = italic }, -- JSON.KEYWORD
             -- css
             ["@property.css"] = { fg = c.lavender }, -- CSS.PROPERTY_NAME
@@ -192,11 +195,11 @@ return {
             IlluminatedWordWrite = { bg = "#4a4d50" },
             Cursor = { fg = c.base, bg = "#94ff86" }, -- CARET_COLOR
             -- SELECTED_TEARLINE_COLOR: one "this is the active thing" accent, shared by
-          -- the tmux active pane border, atuin's focused row, lazygit and lazydocker.
-          UiAccent = { fg = "#ff9800" },
-          WhichKeyDesc = { fg = c.text }, -- catppuccin uses pink; menus read as UI text
-          }
-          return hl
+            -- the tmux active pane border, atuin's focused row, lazygit and lazydocker.
+            UiAccent = { fg = "#ff9800" },
+            WhichKeyDesc = { fg = c.text }, -- catppuccin uses pink; menus read as UI text
+            }
+            return hl
         end,
       },
     },
@@ -209,21 +212,21 @@ return {
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "catppuccin*",
         callback = function(ev)
-          -- catppuccin ships term_colors = false, so nothing restores these on the
-          -- way out; clear them explicitly for every other flavour.
-          local term = ev.match == "catppuccin-macchiato" and material_terminal or {}
-          for i = 0, 15 do
+            -- catppuccin ships term_colors = false, so nothing restores these on the
+            -- way out; clear them explicitly for every other flavour.
+            local term = ev.match == "catppuccin-macchiato" and material_terminal or {}
+            for i = 0, 15 do
             vim.g["terminal_color_" .. i] = term[i]
-          end
-          local key = flavour_opts[ev.match] and ev.match or "default"
-          if applied == key then
+            end
+            local key = flavour_opts[ev.match] and ev.match or "default"
+            if applied == key then
             return
-          end
-          applied = key
-          require("catppuccin").setup(vim.tbl_deep_extend("force", opts, flavour_opts[ev.match] or {}))
-          vim.schedule(function()
+            end
+            applied = key
+            require("catppuccin").setup(vim.tbl_deep_extend("force", opts, flavour_opts[ev.match] or {}))
+            vim.schedule(function()
             vim.cmd.colorscheme(ev.match)
-          end)
+            end)
         end,
       })
     end,

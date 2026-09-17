@@ -10,7 +10,8 @@ return {
             return vim.notify("not a git repo", vim.log.levels.WARN)
           end
           local files = vim.fn.systemlist(
-            "cd " .. vim.fn.shellescape(root)
+            "cd "
+              .. vim.fn.shellescape(root)
               .. " && { git diff --name-only --diff-filter=d HEAD; git ls-files --others --exclude-standard; } | sort -u"
           )
           if #files == 0 then
@@ -62,8 +63,8 @@ return {
           },
         },
         sources = {
-          explorer = { hidden = true, ignored = true },
-          files = { hidden = true, ignored = true },
+          explorer = { hidden = true },
+          files = { hidden = true },
           grep = { hidden = true },
           git_log_file = {
             actions = {
