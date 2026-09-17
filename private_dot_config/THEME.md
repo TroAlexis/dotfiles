@@ -41,6 +41,45 @@ Re-export after changing the scheme in WebStorm, then re-derive whatever it affe
    from `MatchParen`, render-markdown takes `H4Bg` from `DiffDelete`. State those explicitly
    instead of bending the source group.
 
+## Changing a colour
+
+Approximate blast radius per role, counted across the dotfiles repo. Every hex maps to
+exactly one role — no colour means two different things — so a blind substitution is safe.
+
+| hex | role | occurrences |
+|---|---|---|
+| `#212121` | background | 10 |
+| `#1a1a1a` | dimmed / inactive pane | 4 |
+| `#353535` | selection | 7 |
+| `#424242` | border, gutter, line numbers | 15 |
+| `#616161` | comment, dim text | 14 |
+| `#90a4ae` | subtext | 12 |
+| `#b2ccd6` | muted text | 8 |
+| `#eeffff` | text | 29 |
+| `#ff9800` | accent — active pane/panel/row | 16 |
+| `#ff5370` | error | 27 |
+| `#f07178` | tag, soft red, removed lines | 12 |
+| `#f78c6c` | number, constant, parameter | 37 |
+| `#ffcb6b` | type, warning, search match | 37 |
+| `#c3e88d` | string, added lines | 44 |
+| `#80cbc4` | teal, ANSI cyan | 48 |
+| `#89ddff` | punctuation, operators | 23 |
+| `#82aaff` | function, link, info | 49 |
+| `#c792ea` | keyword | 34 |
+
+To change one, edit the source (not `~`), then re-apply:
+
+```sh
+S=~/.local/share/chezmoi
+grep -rlI '#ff9800' --exclude-dir=.git "$S" | xargs sed -i '' 's/#ff9800/#ffa726/gI'
+chezmoi apply && bat cache --build
+```
+
+Then reload what does not pick it up automatically: Ghostty (`cmd+shift+,`),
+`tmux source ~/.config/tmux/tmux.conf`, restart nvim and any running pi/lazygit.
+Colours that live only in nvim (`#033e5d`, `#3b514d`, `#4a4d50`, `#f071d0`, `#ffe153`,
+`#ffeb95`) are in `colorscheme.lua` alone.
+
 ## Traps
 
 Each of these cost real debugging time and fails **silently**:
@@ -60,6 +99,16 @@ Each of these cost real debugging time and fails **silently**:
 - **bat: run `bat cache --build`** after editing the `.tmTheme`, or nothing changes.
 - **chezmoi: new files are unmanaged.** `chezmoi re-add` only updates known files; a new one
   needs `chezmoi add` or it is lost on the next `apply`. Check `chezmoi status` before stopping.
+- **Scope a rule to the language it came from.** `JS.GLOBAL_FUNCTION` is yellow italic, but
+  `DEFAULT_FUNCTION_DECLARATION` is blue — applying the JS rule globally made every Go and
+  Python function yellow, unnoticed. nvim exposes `@lsp.type.<kind>.<filetype>` (filetype,
+  so `typescriptreact` not `tsx`), so define the generic group from the `DEFAULT_*` key and
+  override per language. The same applies to `@property` vs `@property.yaml`/`.json`.
+- **Ghostty rejects a value with a trailing comment**, silently, and falls back to the theme's
+  value. Comments need their own line. `ghostty +show-config` prints what actually resolved.
+- **Run `chezmoi diff <file>` before `re-add`.** A file showing modified in `chezmoi status`
+  may mean the *source* is stale, not the target — `oxfmt.lua` had a richer live version that
+  `chezmoi apply` would have silently reverted.
 
 ## Diagnosing
 
