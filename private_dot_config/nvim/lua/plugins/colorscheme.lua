@@ -104,6 +104,9 @@ return {
             ["@constant.builtin"] = { fg = c.peach, style = italic }, -- JS.NULL_UNDEFINED
             ["@module"] = { fg = c.green, style = italic }, -- JS.MODULE_NAME
             ["@keyword.jsdoc"] = { fg = c.mauve, style = { "bold", "italic", "underline" } },
+            ["@attribute.python"] = { fg = c.blue }, -- PY.DECORATOR
+            ["@module.go"] = { fg = c.yellow }, -- GO_PACKAGE
+            ["@variable.builtin.go"] = { fg = c.mauve }, -- GO_BUILTIN_VARIABLE
             ["@attribute.typescript"] = { fg = c.blue }, -- DEFAULT_METADATA (decorators)
             ["@attribute.tsx"] = { fg = c.blue },
             -- JSX. Needs the priority bump in after/queries/tsx/highlights.scm to fire.
@@ -128,12 +131,22 @@ return {
             ["@lsp.type.namespace"] = { fg = c.green, style = italic }, -- JS.MODULE_NAME
             ["@lsp.type.enumMember"] = { fg = c.peach },
             -- JS.GLOBAL_FUNCTION (module-level fns) vs JS.INSTANCE_MEMBER_FUNCTION
-            ["@lsp.type.function"] = { fg = c.yellow, style = italic },
+            -- DEFAULT_FUNCTION_DECLARATION is blue everywhere; yellow-italic is
+            -- JS.GLOBAL_FUNCTION specifically. Without scoping, Go and Python
+            -- functions came out yellow.
+            ["@lsp.type.function"] = { fg = c.blue },
+            ["@lsp.type.function.typescript"] = { fg = c.yellow, style = italic },
+            ["@lsp.type.function.typescriptreact"] = { fg = c.yellow, style = italic },
+            ["@lsp.type.function.javascript"] = { fg = c.yellow, style = italic },
+            ["@lsp.type.function.javascriptreact"] = { fg = c.yellow, style = italic },
             ["@lsp.type.method"] = { fg = c.blue },
             ["@lsp.type.property"] = { fg = c.text }, -- JS.INSTANCE_MEMBER_VARIABLE
             ["@lsp.type.parameter"] = { fg = c.peach },
             ["@lsp.typemod.variable.defaultLibrary"] = { fg = c.blue, style = italic },
-            ["@lsp.typemod.function.defaultLibrary"] = { fg = c.yellow, style = italic },
+            -- PY.PREDEFINED_USAGE is blue italic; JS.CONSOLE is yellow
+            ["@lsp.typemod.function.defaultLibrary"] = { fg = c.blue, style = italic },
+            ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = c.yellow, style = italic },
+            ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = c.yellow, style = italic },
             -- DEFAULT_STATIC_FIELD / DEFAULT_STATIC_METHOD are italic in Material
             ["@lsp.typemod.property.static"] = { fg = c.text, style = italic },
             ["@lsp.typemod.method.static"] = { fg = c.blue, style = italic },
