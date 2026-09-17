@@ -17,7 +17,7 @@ palette = 13=#d8b3f0
 
 # CARET_COLOR / SELECTION_BACKGROUND from Material_Darker.icls
 cursor-color = #94ff86
-cursor-opacity = 0.7
+cursor-opacity = 0.85
 selection-background = #353535
 selection-foreground = #eeffff
 font-family = MesloLGS NF
