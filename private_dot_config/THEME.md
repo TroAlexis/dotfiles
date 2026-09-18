@@ -106,6 +106,18 @@ Each of these cost real debugging time and fails **silently**:
   override per language. The same applies to `@property` vs `@property.yaml`/`.json`.
 - **Ghostty rejects a value with a trailing comment**, silently, and falls back to the theme's
   value. Comments need their own line. `ghostty +show-config` prints what actually resolved.
+- **Plugins derive colours from groups you never meant for them.** snacks built lazygit's
+  accent from `MatchParen`, render-markdown builds heading backgrounds from `DiffDelete` /
+  `Visual` / `CursorColumn`, and codediff derives its character-level diff band from
+  `DiffAdd` x 1.4. That last one produced `#566048` against Material's comment grey
+  `#616161` — different hues, luminance 0.108 vs 0.117, so **1.05:1** and invisible. Pin
+  such colours explicitly (`line_insert`/`line_delete`, `char_brightness = 1.0`) instead of
+  letting them be computed. When a plugin looks wrong, grep *its* source for the group it
+  reads before touching the theme.
+- **Check luminance, not hue, for text on a tinted background.** Comment `#616161` sits at
+  luminance 0.117, so *any* background between ~0.02 and ~0.2 collapses its contrast toward
+  1:1 no matter what colour it is. Material's own `DIFF_INSERTED` (`#264b33`) still only gives
+  1.59:1. A tint that "looks dark" is not necessarily safe.
 - **Run `chezmoi diff <file>` before `re-add`.** A file showing modified in `chezmoi status`
   may mean the *source* is stale, not the target — `oxfmt.lua` had a richer live version that
   `chezmoi apply` would have silently reverted.
