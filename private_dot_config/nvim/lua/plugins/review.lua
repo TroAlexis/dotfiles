@@ -18,6 +18,12 @@ return {
             -- Keep one flat band instead of brightening.
             char_brightness = 1.0,
           },
+          keymaps = {
+            view = {
+              next_hunk = "<C-M-j>",
+              prev_hunk = "<C-M-k>",
+            },
+          },
         },
       },
       "MunifTanjim/nui.nvim",
