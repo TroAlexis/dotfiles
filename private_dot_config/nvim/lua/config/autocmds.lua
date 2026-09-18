@@ -12,6 +12,13 @@ vim.filetype.add({
   },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
+
 -- Dim diff filler lines (the ╱ hatching) instead of the theme's red DiffDelete block
 local function hex(group, key)
   local h = vim.api.nvim_get_hl(0, { name = group, link = false })
