@@ -104,6 +104,12 @@ return {
             -- the bracket cyan. Material paints REGEXP.META with DEFAULT_KEYWORD.
             ["@punctuation.delimiter.regex"] = { fg = c.mauve },
             ["@operator.regex"] = { fg = c.mauve },
+            -- and REGEXP.CHAR_CLASS is DEFAULT_ENTITY while plain characters and
+            -- redundant escapes are just text/escape: nvim's stock query has the
+            -- two swapped, so \w read like punctuation and `a` like a number.
+            ["@constant.regex"] = { fg = c.green }, -- literal char in a class
+            ["@string.escape.regex"] = { fg = c.peach }, -- \w \d \b
+            ["@string.regexp.regex"] = { fg = c.sky }, -- identity escape: \.
             ["@character.special"] = { fg = c.peach }, -- DEFAULT_ENTITY (&nbsp;)
             ["@variable.member"] = { fg = c.text }, -- DEFAULT_INSTANCE_FIELD
             ["@variable.builtin"] = { fg = c.red }, -- JS.THIS_SUPER
@@ -146,9 +152,16 @@ return {
             ["@lsp.type.function.javascript"] = { fg = c.yellow, style = italic },
             ["@lsp.type.function.javascriptreact"] = { fg = c.yellow, style = italic },
             ["@lsp.type.method"] = { fg = c.blue },
+            -- catppuccin paints @constructor yellow, which reads as a class name
+            -- next to the blue methods around it. Material has no separate role:
+            -- a constructor is DEFAULT_INSTANCE_METHOD.
+            ["@constructor"] = { fg = c.blue },
             ["@lsp.type.property"] = { fg = c.text }, -- JS.INSTANCE_MEMBER_VARIABLE
             ["@lsp.type.parameter"] = { fg = c.peach },
             ["@lsp.typemod.variable.defaultLibrary"] = { fg = c.blue, style = italic },
+            -- Object, Promise, Math: DEFAULT_PREDEFINED_SYMBOL, not a plain class
+            -- reference. Without this they fall back to @lsp.type.class green.
+            ["@lsp.typemod.class.defaultLibrary"] = { fg = c.blue, style = italic },
             -- PY.PREDEFINED_USAGE is blue italic; JS.CONSOLE is yellow
             ["@lsp.typemod.function.defaultLibrary"] = { fg = c.blue, style = italic },
             ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = c.yellow, style = italic },
