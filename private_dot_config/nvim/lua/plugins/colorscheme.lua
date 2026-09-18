@@ -98,6 +98,12 @@ return {
             ["@punctuation.special"] = { fg = c.sky }, -- optional `?`, template `${}`
             ["@string.escape"] = { fg = c.sky }, -- DEFAULT_VALID_STRING_ESCAPE
             ["@string.regexp"] = { fg = c.green }, -- JS.REGEXP
+            -- Inside the injected regex layer catppuccin links
+            -- @punctuation.delimiter.regex to @string.regexp, so ^ and $ come out
+            -- the same green as the literal text they anchor, and quantifiers share
+            -- the bracket cyan. Material paints REGEXP.META with DEFAULT_KEYWORD.
+            ["@punctuation.delimiter.regex"] = { fg = c.mauve },
+            ["@operator.regex"] = { fg = c.mauve },
             ["@character.special"] = { fg = c.peach }, -- DEFAULT_ENTITY (&nbsp;)
             ["@variable.member"] = { fg = c.text }, -- DEFAULT_INSTANCE_FIELD
             ["@variable.builtin"] = { fg = c.red }, -- JS.THIS_SUPER
@@ -154,6 +160,9 @@ return {
             -- json
             ["@property.json"] = { fg = c.mauve }, -- JSON.PROPERTY_KEY
             ["@property.yaml"] = { fg = "#f07178" }, -- YAML_SCALAR_KEY
+            -- Plain (unquoted) scalars are YAML_TEXT in WebStorm, not strings.
+            -- Captured in after/queries/yaml/highlights.scm; see the note there.
+            ["@yaml.scalar.plain"] = { link = "Normal" },
             -- snacks links this to NonText (#4a4a4a, 1.8:1) — unreadable next to the
             -- filename. Override the group, not NonText: DiffDelete derives from it.
             SnacksDashboardDir = { fg = c.overlay2 },
