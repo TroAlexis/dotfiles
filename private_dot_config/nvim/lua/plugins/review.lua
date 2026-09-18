@@ -2,7 +2,10 @@ return {
   "georgeguimaraes/review.nvim",
   tag = "v1.10.0",
   dependencies = {
-    "esmuellert/codediff.nvim",
+    {
+      "esmuellert/codediff.nvim",
+      opts = { diff = { layout = "inline" } },
+    },
     "MunifTanjim/nui.nvim",
   },
   event = "VeryLazy",
