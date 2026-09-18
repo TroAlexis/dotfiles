@@ -1,3 +1,31 @@
+local function setup_codediff_aliases()
+  vim.defer_fn(function()
+    local ok, lifecycle = pcall(require, "codediff.ui.lifecycle")
+    if not ok then
+      return
+    end
+
+    local original, modified = lifecycle.get_buffers(vim.api.nvim_get_current_tabpage())
+    for _, buffer in ipairs({ original, modified }) do
+      if buffer and vim.api.nvim_buf_is_valid(buffer) then
+        vim.keymap.set("n", "<C-M-j>", require("codediff").next_hunk, {
+          buffer = buffer,
+          desc = "Next diff hunk",
+        })
+        vim.keymap.set("n", "<C-M-k>", require("codediff").prev_hunk, {
+          buffer = buffer,
+          desc = "Previous diff hunk",
+        })
+      end
+    end
+  end, 100)
+end
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = { "CodeDiffOpen", "CodeDiffFileSelect" },
+  callback = setup_codediff_aliases,
+})
+
 return {
   {
     "georgeguimaraes/review.nvim",
@@ -17,12 +45,6 @@ return {
             -- (#616161), so comments on those lines sit at 1.05:1 and vanish.
             -- Keep one flat band instead of brightening.
             char_brightness = 1.0,
-          },
-          keymaps = {
-            view = {
-              next_hunk = "<C-M-j>",
-              prev_hunk = "<C-M-k>",
-            },
           },
         },
       },
