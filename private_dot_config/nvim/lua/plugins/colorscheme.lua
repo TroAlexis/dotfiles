@@ -133,6 +133,13 @@ return {
             ["@constant.import"] = { fg = c.peach }, -- DEFAULT_CONSTANT, ALL_CAPS imports
             -- .icls splits these: DEFAULT_CLASS_REFERENCE is green, DEFAULT_CLASS_NAME
             -- (the declaration) is yellow. Matches the bat/delta theme.
+            -- Treesitter fallback for buffers with no LSP (diff virtual lines,
+            -- picker previews). after/queries/typescript splits the yellow roles
+            -- back out; see the note there.
+            ["@type.typescript"] = { fg = c.green },
+            ["@type.tsx"] = { fg = c.green },
+            ["@type.definition"] = { fg = c.yellow },
+            ["@type.interface"] = { fg = c.green, style = italic },
             ["@lsp.type.class"] = { fg = c.green },
             ["@lsp.typemod.class.declaration"] = { fg = c.yellow },
             ["@lsp.type.enum"] = { fg = c.yellow },

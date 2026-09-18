@@ -30,3 +30,34 @@
   name: (identifier) @constant.import)
   (#lua-match? @constant.import "^_*[A-Z][A-Z%d_]*$")
   (#set! priority 115))
+
+; Without an LSP every type_identifier is @type. That is what a diff's removed
+; lines look like: codediff renders them as virtual lines, and virtual lines
+; carry no semantic tokens, so interfaces, aliases and class references all come
+; out one colour. Reproduce the semantic-token split from treesitter alone --
+; @type.typescript is green (DEFAULT_CLASS_REFERENCE / DEFAULT_INTERFACE_NAME)
+; and only the three yellow roles are pulled back out.
+
+((class_declaration
+  name: (type_identifier) @type.definition)
+  (#set! priority 101)) ; DEFAULT_CLASS_NAME
+
+((abstract_class_declaration
+  name: (type_identifier) @type.definition)
+  (#set! priority 101))
+
+((enum_declaration
+  name: (identifier) @type.definition)
+  (#set! priority 101))
+
+((type_parameter
+  name: (type_identifier) @type.definition)
+  (#set! priority 101)) ; TS.TYPE_PARAMETER
+
+((interface_declaration
+  name: (type_identifier) @type.interface)
+  (#set! priority 101)) ; DEFAULT_INTERFACE_NAME, green italic
+
+((type_alias_declaration
+  name: (type_identifier) @type.interface)
+  (#set! priority 101))
