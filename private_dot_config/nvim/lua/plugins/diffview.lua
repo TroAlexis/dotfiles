@@ -102,22 +102,6 @@ return {
           end,
           { desc = "Next diff hunk" },
         },
-        {
-          "n",
-          "[h",
-          function()
-            vim.cmd.normal({ "[c", bang = true })
-          end,
-          { desc = "Previous diff hunk" },
-        },
-        {
-          "n",
-          "]h",
-          function()
-            vim.cmd.normal({ "]c", bang = true })
-          end,
-          { desc = "Next diff hunk" },
-        },
       },
     },
   },

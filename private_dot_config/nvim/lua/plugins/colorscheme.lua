@@ -26,12 +26,9 @@ local material_terminal = {
 local default_colorscheme = "catppuccin-macchiato"
 
 -- Per-flavour overrides for options catppuccin only reads at setup time
--- (transparent_background, styles). Applied by the ColorScheme autocmd below.
+-- (styles). Applied by the ColorScheme autocmd below.
 local flavour_opts = {
   ["catppuccin-macchiato"] = {
-    -- Ghostty's background is #212121 (Material Darker), so staying transparent
-    -- gives the same colour while keeping background-opacity/blur.
-    transparent_background = true,
     -- Material sets FONT_TYPE=2 (italic) on keywords and comments.
     styles = { keywords = { "italic" }, comments = { "italic" } },
   },
