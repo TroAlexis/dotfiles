@@ -25,7 +25,7 @@
 	insteadOf = git@github.com:baitshift/
 
 [delta]
-	# Colours from ~/Material_Darker.icls. Delta reads these from git config, so
+	# Colours from ~/.config/themes/Material_Darker.icls. Delta reads these from git config, so
 	# they apply to lazygit's pager too. Emph styles are the base brightened ~1.5x.
 	syntax-theme = Material Darker
 	plus-style = syntax "#264b33"

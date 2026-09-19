@@ -5,13 +5,15 @@ the terminal stack so the same code looks the same everywhere.
 
 ## Source of truth
 
-`~/Material_Darker.icls`, exported from WebStorm:
+`~/.config/themes/Material_Darker.icls`, managed by chezmoi and exported from WebStorm:
 *Settings → Editor → Color Scheme → ⚙ → Export → IntelliJ IDEA color scheme (.icls)*
 
 It is XML: `<colors>` holds editor chrome (`CARET_ROW_COLOR`, `SELECTION_BACKGROUND`, …),
 `<attributes>` holds syntax roles (`DEFAULT_KEYWORD`, `DIFF_INSERTED`, `CONSOLE_*_OUTPUT`, …)
 with `FONT_TYPE` 1=bold 2=italic 3=both. **Never hand-pick a colour** — look it up there.
-Re-export after changing the scheme in WebStorm, then re-derive whatever it affects.
+Re-export to that path after changing the scheme in WebStorm, then run
+`chezmoi re-add ~/.config/themes/Material_Darker.icls` and re-derive whatever it affects.
+Find its version-controlled source with `chezmoi source-path ~/.config/themes/Material_Darker.icls`.
 
 ## Layers
 

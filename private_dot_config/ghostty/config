@@ -15,7 +15,7 @@ palette = 11=#ffdb97
 palette = 12=#a8c4ff
 palette = 13=#d8b3f0
 
-# CARET_COLOR / SELECTION_BACKGROUND from Material_Darker.icls
+# CARET_COLOR / SELECTION_BACKGROUND from ~/.config/themes/Material_Darker.icls
 cursor-color = #94ff86
 # invert the glyph under the cursor, like WebStorm’s caret (theme sets #bfbfbf)
 cursor-text = #212121
