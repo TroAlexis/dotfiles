@@ -17,7 +17,9 @@ Re-export after changing the scheme in WebStorm, then re-derive whatever it affe
 
 | layer | file | notes |
 |---|---|---|
-| nvim | `.config/nvim/lua/plugins/colorscheme.lua` | catppuccin repainted: `color_overrides` (palette) + `highlight_overrides.macchiato` (roles) + terminal palette |
+| nvim | `.config/nvim/lua/material-darker.lua` | Material palette, syntax roles, terminal colours, and Catppuccin-backed loader |
+| nvim | `.config/nvim/colors/material-darker.lua` | `:colorscheme material-darker` entry point |
+| nvim | `.config/nvim/lua/plugins/colorscheme.lua`, `.config/nvim/lua/lualine/themes/material-darker.lua` | default selection, Catppuccin dependency, bufferline/lualine adapters |
 | nvim | `.config/nvim/lua/config/autocmds.lua` | `theme_tweaks()` — theme-agnostic, derives from the active colorscheme |
 | nvim | `.config/nvim/after/queries/{typescript,tsx}/highlights.scm` | import + JSX captures treesitter gets wrong |
 | terminal | `.config/ghostty/config` | `theme = Material Darker` + palette fixes |
@@ -26,11 +28,25 @@ Re-export after changing the scheme in WebStorm, then re-derive whatever it affe
 | pagers | `dot_gitconfig` `[delta]`, `.config/bat/themes/Material Darker.tmTheme` | delta reads git config; bat theme also drives delta's syntax |
 | tools | `.config/atuin/themes/material-darker.toml`, `.config/lazygit`, `dot_zshrc` (fzf) | |
 
+## Neovim theme
+
+The default is **`material-darker`**, also selectable with `:colorscheme material-darker`
+or `<leader>uC`. Catppuccin remains the rendering/integration dependency, not a fork.
+Internally Material supplies the macchiato palette/role overrides to its engine; selecting
+`catppuccin-macchiato` now restores genuine Macchiato (with the existing global transparency
+setting), as do the other real flavours. `ColorSchemePre` restores Catppuccin's base options
+before loading a real flavour and clears Material's terminal colours when leaving Material.
+The loader calls the engine directly, so there is only one `ColorScheme` event per selection.
+
+Keep the bufferline adapter and lualine alias: their automatic theme detection otherwise
+misses the new name. Queries, `theme_tweaks()`, rainbow indents, and CodeDiff settings remain
+where they were; extraction does not change their behavior.
+
 ## Principles
 
 1. **Inherit over hardcode.** fzf uses `--color=base16` and atuin uses role names, so both
    follow the terminal palette with no hexes of their own. Prefer this whenever it exists.
-2. **Name groups, don't copy values.** snacks' lazygit accent points at `Constant`, so it
+2. **Name groups, don't copy values.** snacks' lazygit accent points at `UiAccent`, so it
    tracks whatever theme is loaded. Same for `theme_tweaks()` in nvim.
 3. **Better beats faithful.** The `.icls` is a reference, not a spec. Deviations, all deliberate:
    grey `DIFF_DELETED` → a faint red (scannability); markdown headings keep catppuccin's
@@ -78,7 +94,7 @@ chezmoi apply && bat cache --build
 Then reload what does not pick it up automatically: Ghostty (`cmd+shift+,`),
 `tmux source ~/.config/tmux/tmux.conf`, restart nvim and any running pi/lazygit.
 Colours that live only in nvim (`#033e5d`, `#3b514d`, `#4a4d50`, `#f071d0`, `#ffe153`,
-`#ffeb95`) are in `colorscheme.lua` alone.
+`#ffeb95`) are in `lua/material-darker.lua` alone.
 
 ## Traps
 
@@ -135,6 +151,39 @@ Colour questions are answerable, not guessable — screenshots lie, terminal opa
   candidate scope), rebuild, render, see which one paints it.
 - **nvim headless is a false negative** — LazyVim loads config on `VeryLazy`, which never
   fires without a UI. Always test through tmux.
+
+## Migration checks
+
+Pre-extraction configuration and UI snapshots are saved in
+`~/.local/state/nvim/material-migration/` (not generated into the dotfiles repo).
+`original-capture/` preserves the first pre-edit capture; `reference-config/nvim/` runs
+that original colorscheme with the expanded checks. `before-*.json` / `after-*.json` cover
+startup, lazy-loaded integrations, TSX, Markdown, YAML, a terminal buffer, repeat activation,
+and switching through Mocha and Tokyo Night. They capture all highlight namespaces, raw
+links and individually resolved definitions, ANSI colours, integration options, loaded
+plugins, and query hashes.
+
+Re-run the comparison in a real UI, from `~/.config` for the same startup context:
+
+```vim
+:lua dofile(vim.fn.stdpath("config") .. "/tests/theme_snapshot.lua").run(vim.fn.expand("~/.local/state/nvim/material-migration"), "after", "material-darker")
+```
+
+Use a fresh `nvim -i NONE` instance. Results are `after-result.txt` and
+`after-differences.txt`. The comparison normalizes the intentional scheme rename,
+session-generated lualine component IDs (retaining component order and every definition),
+and equivalent Catppuccin boolean/default-expanded integration options. Raw snapshots are
+retained unchanged; no colour/style differences are excluded.
+
+To test late activation, start a fresh `nvim -i NONE -c 'colorscheme tokyonight-moon'`,
+wait for the UI to load, then run:
+
+```vim
+:lua dofile(vim.fn.stdpath("config") .. "/tests/theme_snapshot.lua").check_switching(vim.fn.expand("~/.local/state/nvim/material-migration"))
+```
+
+This checks bufferline/lualine parity, all four genuine Catppuccin palettes, keyword/terminal
+cleanup, and one `ColorScheme` event per selection. Result: `switching-result.txt`.
 
 ## Known gaps
 
