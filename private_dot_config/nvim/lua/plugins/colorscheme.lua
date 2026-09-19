@@ -255,6 +255,36 @@ return {
             end)
         end,
       })
+      -- Handlebars still uses Vim syntax groups. Its syntax script runs after
+      -- the colourscheme and links delimiters/component names to generic
+      -- preprocessor groups, which does not match Material's semantic roles.
+      local function apply_handlebars_highlights()
+        if vim.g.colors_name ~= "catppuccin-macchiato" then
+          return
+        end
+        for from, to in pairs({
+          hbsHandles = "Delimiter",
+          hbsUnescapedHandles = "Delimiter",
+          hbsComponentStatement = "@tag.builtin",
+          hbsMustacheName = "Normal",
+          hbsControlFlow = "Keyword",
+        }) do
+          vim.api.nvim_set_hl(0, from, { link = to })
+        end
+      end
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "handlebars",
+        callback = function()
+          vim.schedule(apply_handlebars_highlights)
+        end,
+      })
+      vim.schedule(function()
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          if vim.bo[buf].filetype == "handlebars" then
+            apply_handlebars_highlights()
+          end
+        end
+      end)
     end,
   },
 }
