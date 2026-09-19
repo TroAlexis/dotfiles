@@ -139,6 +139,10 @@ Each of these cost real debugging time and fails **silently**:
 - **Run `chezmoi diff <file>` before `re-add`.** A file showing modified in `chezmoi status`
   may mean the *source* is stale, not the target — `oxfmt.lua` had a richer live version that
   `chezmoi apply` would have silently reverted.
+- **Nothing may `require("catppuccin")` before the colorscheme loads.** `material-darker.lua` skips
+  the stock `setup` only when Catppuccin is first pulled in by its own `load()`; an earlier
+  require sets up (and eagerly compiles) stock colours, then Material compiles again — two
+  compiles every startup, silently.
 
 ## Diagnosing
 
@@ -153,39 +157,6 @@ Colour questions are answerable, not guessable — screenshots lie, terminal opa
   candidate scope), rebuild, render, see which one paints it.
 - **nvim headless is a false negative** — LazyVim loads config on `VeryLazy`, which never
   fires without a UI. Always test through tmux.
-
-## Migration checks
-
-Pre-extraction configuration and UI snapshots are saved in
-`~/.local/state/nvim/material-migration/` (not generated into the dotfiles repo).
-`original-capture/` preserves the first pre-edit capture; `reference-config/nvim/` runs
-that original colorscheme with the expanded checks. `before-*.json` / `after-*.json` cover
-startup, lazy-loaded integrations, TSX, Markdown, YAML, a terminal buffer, repeat activation,
-and switching through Mocha and Tokyo Night. They capture all highlight namespaces, raw
-links and individually resolved definitions, ANSI colours, integration options, loaded
-plugins, and query hashes.
-
-Re-run the comparison in a real UI, from `~/.config` for the same startup context:
-
-```vim
-:lua dofile(vim.fn.stdpath("config") .. "/tests/theme_snapshot.lua").run(vim.fn.expand("~/.local/state/nvim/material-migration"), "after", "material-darker")
-```
-
-Use a fresh `nvim -i NONE` instance. Results are `after-result.txt` and
-`after-differences.txt`. The comparison normalizes the intentional scheme rename,
-session-generated lualine component IDs (retaining component order and every definition),
-and equivalent Catppuccin boolean/default-expanded integration options. Raw snapshots are
-retained unchanged; no colour/style differences are excluded.
-
-To test late activation, start a fresh `nvim -i NONE -c 'colorscheme tokyonight-moon'`,
-wait for the UI to load, then run:
-
-```vim
-:lua dofile(vim.fn.stdpath("config") .. "/tests/theme_snapshot.lua").check_switching(vim.fn.expand("~/.local/state/nvim/material-migration"))
-```
-
-This checks bufferline/lualine parity, all four genuine Catppuccin palettes, keyword/terminal
-cleanup, and one `ColorScheme` event per selection. Result: `switching-result.txt`.
 
 ## Known gaps
 

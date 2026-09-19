@@ -1,5 +1,4 @@
 -- Personal WebStorm Material Darker, rendered by Catppuccin.
--- Palette and syntax roles are intentionally unchanged from the former macchiato override.
 -- CONSOLE_*_OUTPUT from the .icls. WebStorm has no 16-colour ANSI model, so it
 -- exports no bright set; 9-14 are the normal hues blended 30% toward white.
 -- Colour 0 is the editor background so "black" panels in TUIs blend rather than
