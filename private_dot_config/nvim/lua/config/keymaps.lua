@@ -80,3 +80,34 @@ vim.keymap.set("x", "<leader>y", copy_selection_location, { desc = "Copy selecti
 vim.keymap.set("n", "<leader>fD", function()
   Snacks.terminal(nil, { cwd = vim.fn.expand("%:p:h") })
 end, { desc = "Terminal (buffer dir)" })
+
+vim.keymap.set("n", "<leader>fo", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" or not vim.uv.fs_stat(file) then
+    vim.notify("Current buffer has no file on disk", vim.log.levels.WARN)
+    return
+  end
+  local open_parent = function()
+    require("util.system-open").open(vim.fs.dirname(file))
+  end
+  local cmd
+  if vim.fn.has("mac") == 1 then
+    cmd = { "open", "-R", file }
+  elseif vim.fn.executable("gdbus") == 1 then
+    cmd = {
+      "gdbus", "call", "--session", "--timeout", "5",
+      "--dest", "org.freedesktop.FileManager1",
+      "--object-path", "/org/freedesktop/FileManager1",
+      "--method", "org.freedesktop.FileManager1.ShowItems",
+      vim.json.encode({ vim.uri_from_fname(file) }), "",
+    }
+  end
+  if not cmd then
+    return open_parent()
+  end
+  vim.system(cmd, {}, function(result)
+    if result.code ~= 0 then
+      vim.schedule(open_parent)
+    end
+  end)
+end, { desc = "Reveal current file in file manager" })
