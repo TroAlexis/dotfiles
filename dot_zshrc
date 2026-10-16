@@ -1,3 +1,4 @@
+typeset -U path fpath  # drop duplicate PATH entries
 fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -8,25 +9,13 @@ eval "$(starship init zsh)"
 
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" --no-use  # ponytail: skip nvm auto-use at startup; run `nvm use` per project
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# switches node on cd per .nvmrc/.node-version; no file = brew node ("system")
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 
 export PYTHON=python3
 
-# useful only for Mac OS Silicon M1, 
-# still working but useless for the other platforms
-docker() {
- if [[ `uname -m` == "arm64" ]] && [[ "$1" == "run" || "$1" == "build" ]]; then
-    /usr/local/bin/docker "$1" --platform linux/amd64 "${@:2}"
-  else
-     /usr/local/bin/docker "$@"
-  fi
-}
-export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
-export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
-export PATH="$PATH:$HOME/.local/bin"
+# build/run amd64 images on Apple Silicon; unset to use native arm64 images
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -35,10 +24,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-
-
-# Added by Antigravity CLI installer
 
 eval "$(tv init zsh)"
 
@@ -50,8 +35,6 @@ eval "$(atuin init zsh)"
 
 eval "$(zoxide init zsh)"
 
-# AI Skills Channel for Television
-# Quick access to explore AI agent skills from all locations
 export EDITOR=nvim
 export VISUAL=nvim
 
