@@ -12,10 +12,36 @@ vim.filetype.add({
   },
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function(args)
+    if #vim.lsp.get_clients({ bufnr = args.buf, name = "eslint" }) > 0 then
+      vim.cmd("LspEslintFixAll")
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function(args)
     vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
+
+-- Keep at most ten listed buffers; never discard edits or buffers shown in a window.
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    vim.schedule(function()
+      local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+      table.sort(buffers, function(a, b) return a.lastused < b.lastused end)
+      local excess = #buffers - 10
+      for _, buffer in ipairs(buffers) do
+        if excess <= 0 then break end
+        if buffer.changed == 0 and #vim.fn.win_findbuf(buffer.bufnr) == 0 then
+          vim.api.nvim_buf_delete(buffer.bufnr, {})
+          excess = excess - 1
+        end
+      end
+    end)
   end,
 })
 
