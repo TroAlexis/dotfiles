@@ -11,7 +11,7 @@ ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_V
 
 # switches node on cd per .nvmrc/.node-version; no file = brew node ("system")
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
-autoload -Uz add-zsh-hook && add-zsh-hook chpwd rehash  # zsh caches brew's node path otherwise
+chpwd_functions+=(rehash)  # runs after fnm's hook; zsh caches brew's node path otherwise
 
 export PYTHON=python3
 
