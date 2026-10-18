@@ -4,6 +4,31 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+# vi line editing (explicit, rather than implied by EDITOR=nvim);
+# Ghostty's shell integration already switches block/bar cursor per mode
+bindkey -v
+KEYTIMEOUT=1  # Esc → normal mode in 10ms, not 400ms
+
+# insert mode: deletes/jumps that don't stop at the insert point
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^[^?' backward-kill-word  # Option+Backspace
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+
+# normal mode Ctrl+V: edit the line in nvim, :wq runs it
+autoload -Uz edit-command-line && zle -N edit-command-line
+bindkey -M vicmd '^V' edit-command-line
+
+# ci" ca' di( da{ yib ... like vim text objects
+autoload -Uz select-quoted select-bracketed
+zle -N select-quoted && zle -N select-bracketed
+for m in viopp visual; do
+  for c in {a,i}${(s..)^:-\'\"\`}; do bindkey -M $m $c select-quoted; done
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do bindkey -M $m $c select-bracketed; done
+done
+
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 
