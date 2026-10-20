@@ -1,2 +1,4 @@
 alias v='nvim'
 alias zz='z -'
+# Pick a sesh session from anywhere (outside tmux it attaches, inside it switches)
+t() { local s; s=$(sesh list -d --icons | fzf --ansi --no-sort --prompt '⚡  ' --preview 'sesh preview {}') && sesh connect "$s"; }
