@@ -43,9 +43,6 @@ unsetopt hash_cmds  # else zsh keeps brew's cached node path after fnm switches
 
 export PYTHON=python3
 
-# build/run amd64 images on Apple Silicon; unset to use native arm64 images
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
-
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
