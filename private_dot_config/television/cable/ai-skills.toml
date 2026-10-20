@@ -1,0 +1,20 @@
+[metadata]
+name = "ai-skills"
+description = "Browse AI agent SKILL.md files"
+requirements = ["find", "bat"]
+
+[source]
+command = "find \"$HOME/.agents/skills\" \"$HOME/.codex/skills\" \"$PWD/.agents/skills\" \"$PWD/.codex/skills\" \"$PWD/ai/skills\" -type f -name SKILL.md 2>/dev/null | sort -u"
+
+[preview]
+command = "bat -n --color=always '{}'"
+env = { BAT_THEME = "ansi" }
+
+[keybindings]
+enter = "actions:edit"
+
+[actions.edit]
+description = "Open the selected skill"
+command = "${EDITOR:-nvim} '{}'"
+shell = "bash"
+mode = "execute"

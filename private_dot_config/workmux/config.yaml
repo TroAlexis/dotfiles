@@ -1,0 +1,24 @@
+# workmux global config — https://github.com/raine/workmux
+nerdfont: true
+agent: ppi
+agents:
+  ppi:            # ppi picker inside the pane; "--" forwards the prompt to pi
+    type: pi
+    command: ppi
+    args: ["--"]
+
+# Window name in the catppuccin status bar; project config lives in .workmux.yaml
+window_prefix: "󰘬 "
+
+# Same shape as prefix+P (agentic layout): agent left 65%, shell right 35%
+panes:
+  - command: <agent>
+    focus: true
+  - split: horizontal
+    percentage: 35
+
+# `workmux add -A`: branch name from the prompt. Pinned to a profile because the ppi picker has no tty here.
+auto_name:
+  # workmux pipes its own naming instructions via stdin, so pi needs no coding system prompt, tools, AGENTS.md or session
+  command: "ppi mini -- -p --no-tools --no-context-files --no-session --system-prompt 'You output only a kebab-case git branch name.'"
+  background: true

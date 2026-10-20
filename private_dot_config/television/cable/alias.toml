@@ -1,0 +1,14 @@
+[metadata]
+name = "alias"
+description = "A channel to select from shell aliases"
+
+[source]
+# you may need to adjust the command depending on your shell
+command = "zsh -f -c 'source ~/.zshrc >/dev/null 2>&1; alias'"
+output = "{split:=:0}"
+
+[preview]
+command = "zsh -f -c 'source ~/.zshrc >/dev/null 2>&1; alias' | grep -E '^(alias )?{split:=:0}='"
+
+[ui.preview_panel]
+size = 30
