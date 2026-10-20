@@ -34,7 +34,7 @@ customCommands:
       - key: p
         context: localBranches
         description: Open pipeline
-        command: glab ci view --web --branch {{.SelectedLocalBranch.Name | quote}}
+        command: open "$(glab ci get --branch {{.SelectedLocalBranch.Name | quote}} -F json --jq .web_url)"
       - key: b
         context: localBranches
         description: Open branch in browser
