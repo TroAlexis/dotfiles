@@ -5,7 +5,9 @@ git:
   pagers:
     - pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 
-    - externalDiffCommand: difft --color=always --display=inline
+    # difft has no themes, only ANSI colours. "light" picks slots 1-4 (Material Darker's own
+    # red/green/yellow/blue in Ghostty) over the brightened 9-12 it uses on dark backgrounds.
+    - externalDiffCommand: difft --color=always --display=inline --background light
 
     - pager: delta --dark --paging=never --side-by-side --width={{columnWidth}}
 
