@@ -17,9 +17,7 @@ if has('ide')
   " ============================================================================
 
   set keep-english-in-normal
-  set VimEverywhere
   set mini-ai
-  set quickscope
   set which-key
 
   " ============================================================================
@@ -192,8 +190,6 @@ if has('ide')
   " Diagnostics mappings
   " ============================================================================
 
-  let g:WhichKeyDesc_diagnostics = "<leader>x Diagnostics"
-
   let g:WhichKeyDesc_next_diagnostic = "]d Next diagnostic"
   nnoremap ]d :action GotoNextError<CR>
   vnoremap ]d <Esc>:action GotoNextError<CR>
@@ -209,14 +205,6 @@ if has('ide')
   let g:WhichKeyDesc_prev_error = "[e Previous error"
   nnoremap [e :action GotoPreviousError<CR>
   vnoremap [e <Esc>:action GotoPreviousError<CR>
-
-  let g:WhichKeyDesc_next_warning = "]w Next warning"
-  nnoremap ]w :action GotoNextError<CR>
-  vnoremap ]w <Esc>:action GotoNextError<CR>
-
-  let g:WhichKeyDesc_prev_warning = "[w Previous warning"
-  nnoremap [w :action GotoPreviousError<CR>
-  vnoremap [w <Esc>:action GotoPreviousError<CR>
 
   " ============================================================================
   " Refactor mappings
@@ -269,10 +257,6 @@ if has('ide')
 
   let g:WhichKeyDesc_git_local_history = "<leader>gF Local history"
   nnoremap <leader>gF :action LocalHistory.ShowHistory<CR>
-
-  let g:WhichKeyDesc_git_log_cwd = "<leader>gL Git log cwd"
-  nnoremap <leader>gL :action Vcs.Show.Log<CR>
-  vnoremap <leader>gL <Esc>:action Vcs.Show.Log<CR>
 
   let g:WhichKeyDesc_next_hunk = "]h Next VCS change"
   nnoremap ]h :action VcsShowNextChangeMarker<CR>

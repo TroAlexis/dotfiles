@@ -2,9 +2,6 @@ gui:
   nerdFontsVersion: "3"
 
 git:
-  paging:
-    colorArg: always
-
   pagers:
     - pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 

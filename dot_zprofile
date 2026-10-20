@@ -1,8 +1,5 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# JetBrains Toolbox launchers (webstorm)
-export PATH="$PATH:/Users/atroshin/Library/Application Support/JetBrains/Toolbox/scripts"
-
 # user bins: claude, tmux (patched build), workmux, ppi, obsidian, agy
 export PATH="/Users/atroshin/.local/bin:$PATH"
 

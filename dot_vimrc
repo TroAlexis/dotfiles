@@ -63,7 +63,10 @@ nmap gR <Plug>ReplaceWithRegisterOperator
 nmap gRR <Plug>ReplaceWithRegisterLine
 xmap gR <Plug>ReplaceWithRegisterVisual
 " Clear the plugin's default grr line mapping from the gr namespace.
-nunmap grr
+" (IdeaVim only: in Vim the gR maps above already stop the plugin from creating grr)
+if is_ide
+	nunmap grr
+endif
 
 " Theme settings --------------------------
 if !is_ide
@@ -92,22 +95,23 @@ if !is_ide
 	nmap ga <Plug>(EasyAlign)
 endif
 
-" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
-nmap <C-n> <Plug>NextWholeOccurrence
-xmap <C-n> <Plug>NextWholeOccurrence
-nmap g<C-n> <Plug>NextOccurrence
-xmap g<C-n> <Plug>NextOccurrence
-xmap <C-x> <Plug>SkipOccurrence
-xmap <C-p> <Plug>RemoveOccurrence
+" Remap IdeaVim multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+" (IdeaVim only: in Vim the plugin's own maps are the originals)
+if is_ide
+	nmap <C-n> <Plug>NextWholeOccurrence
+	xmap <C-n> <Plug>NextWholeOccurrence
+	nmap g<C-n> <Plug>NextOccurrence
+	xmap g<C-n> <Plug>NextOccurrence
+	xmap <C-x> <Plug>SkipOccurrence
+	xmap <C-p> <Plug>RemoveOccurrence
 
-
-" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
-" <A-n> is used to enter accented text e.g. ñ
-nmap <leader><C-n> <Plug>AllWholeOccurrences
-xmap <leader><C-n> <Plug>AllWholeOccurrences
-nmap <leader>g<C-n> <Plug>AllOccurrences
-xmap <leader>g<C-n> <Plug>AllOccurrences
-" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+	" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+	" <A-n> is used to enter accented text e.g. ñ
+	nmap <leader><C-n> <Plug>AllWholeOccurrences
+	xmap <leader><C-n> <Plug>AllWholeOccurrences
+	nmap <leader>g<C-n> <Plug>AllOccurrences
+	xmap <leader>g<C-n> <Plug>AllOccurrences
+endif
 
 " Display the search results in the middle of the screen
 noremap * *zz

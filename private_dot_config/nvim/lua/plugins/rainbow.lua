@@ -79,9 +79,11 @@ return {
     end,
     opts = {
       indent = {
-        only_scope = true,
-        only_current = true,
-        hl = indent_hl,
+        indent = {
+          only_scope = true,
+          only_current = true,
+          hl = indent_hl,
+        },
       },
     },
   },

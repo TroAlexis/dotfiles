@@ -41,8 +41,6 @@ ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_V
 eval "$(fnm env --use-on-cd --version-file-strategy=recursive --log-level=quiet --shell zsh)"
 unsetopt hash_cmds  # else zsh keeps brew's cached node path after fnm switches
 
-export PYTHON=python3
-
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
@@ -63,12 +61,6 @@ eval "$(zoxide init zsh)"
 
 export EDITOR=nvim
 export VISUAL=nvim
-
-# pi-pretty / Shiki syntax highlighting theme
-export PRETTY_THEME=nord
-
-# pi-ask-user: use inline display mode by default
-export PI_ASK_USER_DISPLAY_MODE=inline
 
 # ppi: complete subcommands and profile IDs
 eval "$(ppi completion zsh)"
