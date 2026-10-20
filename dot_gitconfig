@@ -24,10 +24,12 @@
 	rst = commit --amend --no-edit --reset-author
 [diff]
 	tool = codediff
+	algorithm = histogram
 [difftool "codediff"]
 	cmd = nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"
 [merge]
 	tool = codediff
+	conflictStyle = zdiff3
 [mergetool "codediff"]
 	cmd = nvim \"$MERGED\" -c \"CodeDiff --exit-on-close merge \\\"$MERGED\\\"\"
 [mergetool]
@@ -52,3 +54,9 @@
 	line-numbers-minus-style = "#f07178"
 	line-numbers-plus-style = "#c3e88d"
 	line-numbers-zero-style = "#616161"
+[rerere]
+	enabled = true
+[fetch]
+	prune = true
+[branch]
+	sort = -committerdate
