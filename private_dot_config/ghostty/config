@@ -26,3 +26,9 @@ font-size = 16
 font-thicken = true
 font-thicken-strength = 120
 macos-option-as-alt = true
+
+# tmux draws its own tabs/status, so drop the title bar and give the grid some air
+macos-titlebar-style = hidden
+window-padding-x = 8
+window-padding-y = 4
+window-padding-balance = true
