@@ -5,3 +5,6 @@ export PATH="$PATH:/Users/atroshin/Library/Application Support/JetBrains/Toolbox
 
 # user bins: claude, tmux (patched build), workmux, ppi, obsidian, agy
 export PATH="/Users/atroshin/.local/bin:$PATH"
+
+# go install'd tools: dlv, goplay (golangci-lint comes from brew, gopls from mason)
+export PATH="$PATH:/Users/atroshin/go/bin"

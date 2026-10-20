@@ -10,8 +10,7 @@ git:
 
     - externalDiffCommand: difft --color=always --display=inline
 
-    - pager: ydiff -p cat -s --wrap --width={{columnWidth}}
-      colorArg: never
+    - pager: delta --dark --paging=never --side-by-side --width={{columnWidth}}
 
 os:
   # 'e' открывает файл буфером в текущем окне neovim, а не в новой вкладке
