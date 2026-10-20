@@ -1,25 +1,25 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 sort_order = ["tmux", "config", "zoxide"]
 
-# Layout for every session below: nvim left 60%, empty pane right 40% for an agent.
+# Layout for every session below: nvim left 65%, empty pane right 35% (same as prefix+P and workmux) for an agent.
 # -d keeps focus on the nvim pane.
 
 [[session]]
 name = "dotfiles"
 path = "~/.config"
-startup_command = 'tmux split-window -h -l 40% -d -c "$PWD" && nvim'
+startup_command = 'tmux split-window -h -l 35% -d -c "$PWD" && nvim'
 
 [[session]]
 name = "vault"
 path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Knowledge halls"
-startup_command = 'tmux split-window -h -l 40% -d -c "$PWD" && nvim'
+startup_command = 'tmux split-window -h -l 35% -d -c "$PWD" && nvim'
 
 [[session]]
 name = "lme-frontend"
 path = "~/WebstormProjects/lme-frontend"
-startup_command = 'tmux split-window -h -l 40% -d -c "$PWD" && nvim'
+startup_command = 'tmux split-window -h -l 35% -d -c "$PWD" && nvim'
 
 [[session]]
 name = "lme-backend"
 path = "~/WebstormProjects/lme-chat-service"
-startup_command = 'tmux split-window -h -l 40% -d -c "$PWD" && nvim'
+startup_command = 'tmux split-window -h -l 35% -d -c "$PWD" && nvim'

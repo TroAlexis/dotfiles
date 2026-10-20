@@ -15,6 +15,8 @@ return {
         end,
       },
       servers = {
+        -- Inactive while options.lua sets vim.g.lazyvim_ts_lsp = "tsc", and kept on purpose:
+        -- deleting that line switches back to vtsls (its extra stays in lazyvim.json). Not dead config.
         vtsls = {
           keys = {
             {

@@ -16,6 +16,10 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function(args)
     vim.diagnostic.enable(false, { bufnr = args.buf })
+    -- Obsidian vault: prettier/markdownlint on save would rewrite notes (and kanban/dataview syntax)
+    if vim.fs.root(args.buf, ".obsidian") then
+      vim.b[args.buf].autoformat = false
+    end
   end,
 })
 

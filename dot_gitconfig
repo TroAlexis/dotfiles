@@ -6,7 +6,11 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[includeIf "gitdir:~/WebstormProjects/lme-frontend/"]
+# Work identity follows the remote (tedo GitLab hosts), not the folder, so every work repo,
+# clone and worktree gets it. ~/.config/git/tedo is local only: this dotfiles repo is public.
+[includeIf "hasconfig:remote.*.url:https://gitlab-ext.tedo.ru/**"]
+	path = ~/.config/git/tedo
+[includeIf "hasconfig:remote.*.url:git@tedo-git.gitlab.yandexcloud.net:*/**"]
 	path = ~/.config/git/tedo
 [core]
 	autocrlf = input

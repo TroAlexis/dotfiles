@@ -51,8 +51,6 @@ esac
 
 eval "$(tv init zsh)"
 
-. "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
 
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
@@ -64,7 +62,6 @@ export VISUAL=nvim
 
 # ppi: complete subcommands and profile IDs
 eval "$(ppi completion zsh)"
-
 
 # fzf defaults to its 256-colour "dark" scheme on a 256-colour terminal, which is
 # built from fixed cube indices (109/161/236...) that no terminal theme controls.

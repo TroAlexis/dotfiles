@@ -6,16 +6,20 @@ return {
       -- drop once #2918/#2964 land upstream.
       -- A placement whose buffer leaves every window gets hidden, and nothing un-hides it
       -- on return, so the image comes back blank after switching files.
-      local P = require("snacks.image.placement")
-      local update = P.update
-      P.update = function(self)
-        local away = #self:wins() == 0
-        if not away and self._away then
-          self.hidden = false
+      -- Scheduled: placement loads snacks.image, which snapshots its config on load; requiring it
+      -- here (before Snacks.setup) froze image opts at the defaults.
+      vim.schedule(function()
+        local P = require("snacks.image.placement")
+        local update = P.update
+        P.update = function(self)
+          local away = #self:wins() == 0
+          if not away and self._away then
+            self.hidden = false
+          end
+          self._away = away
+          return update(self)
         end
-        self._away = away
-        return update(self)
-      end
+      end)
     end,
   },
   {
@@ -42,7 +46,17 @@ return {
       },
     },
     opts = {
-      image = { enabled = true },
+      image = {
+        enabled = true,
+        -- Obsidian vault: ![[x.jpeg]] lives in <vault>/attachments, not next to the note
+        resolve = function(file, src)
+          local root = vim.fs.root(file, ".obsidian")
+          local path = root and root .. "/attachments/" .. vim.trim(src)
+          if path and vim.uv.fs_stat(path) then
+            return path
+          end
+        end,
+      },
       -- snacks derives lazygit's accent from MatchParen's fg, but Material's
       -- MATCHED_BRACE_ATTRIBUTES tints only the background, leaving nothing to
       -- derive. UiAccent is the palette's dedicated "active thing" colour.
