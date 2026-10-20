@@ -9,4 +9,6 @@ return {
       },
     },
   },
+  -- render-markdown (from lang.markdown) previews in-buffer; no need for the browser one
+  { "iamcco/markdown-preview.nvim", enabled = false },
 }
