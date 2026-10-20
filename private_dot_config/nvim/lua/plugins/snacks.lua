@@ -1,6 +1,24 @@
 return {
   {
     "folke/snacks.nvim",
+    opts = function()
+      -- ponytail: local fix for folke/snacks.nvim#2896; drop once #2918/#2964 land upstream.
+      -- A placement whose buffer leaves every window gets hidden, and nothing un-hides it
+      -- on return, so the image comes back blank after switching files.
+      local P = require("snacks.image.placement")
+      local update = P.update
+      P.update = function(self)
+        local away = #self:wins() == 0
+        if not away and self._away then
+          self.hidden = false
+        end
+        self._away = away
+        return update(self)
+      end
+    end,
+  },
+  {
+    "folke/snacks.nvim",
     keys = {
       {
         "<leader>sU",
