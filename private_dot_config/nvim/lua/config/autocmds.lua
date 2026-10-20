@@ -12,14 +12,6 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function(args)
-    if #vim.lsp.get_clients({ bufnr = args.buf, name = "eslint" }) > 0 then
-      vim.cmd("LspEslintFixAll")
-    end
-  end,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function(args)

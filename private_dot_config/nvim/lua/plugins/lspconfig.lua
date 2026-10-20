@@ -2,6 +2,18 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      setup = {
+        -- Replaces linting.eslint's setup: same formatter, but priority 50 instead of 200 so
+        -- ESLint fixes run after conform (oxfmt) and get the last word, once per save.
+        eslint = function()
+          LazyVim.format.register(LazyVim.lsp.formatter({
+            name = "eslint: lsp",
+            primary = false,
+            priority = 50,
+            filter = "eslint",
+          }))
+        end,
+      },
       servers = {
         vtsls = {
           keys = {
