@@ -224,12 +224,6 @@ if has('ide')
 
   let g:WhichKeyDesc_refactor = "<leader>r Refactor"
 
-  let g:WhichKeyDesc_refactor_rename_element = "<leader>rn Rename element"
-  map <leader>rn <Action>(RenameElement)
-
-  let g:WhichKeyDesc_refactor_reformat_code = "<leader>rr Reformat code"
-  map <leader>rr <Action>(ReformatCode)
-
   let g:WhichKeyDesc_refactor_reformat_prettier = "<leader>rR Prettier"
   map <leader>rR <Action>(ReformatWithPrettierAction)
 
@@ -238,9 +232,6 @@ if has('ide')
 
   let g:WhichKeyDesc_refactor_stylelint_fix = "<leader>rs Fix Stylelint"
   map <leader>rs <Action>(Stylelint.Fix)
-
-  let g:WhichKeyDesc_refactor_optimize_imports = "<leader>ri Optimize imports"
-  map <leader>ri <Action>(OptimizeImports)
 
   let g:WhichKeyDesc_refactor_quick_list = "<leader>rt Refactor list"
   map <leader>rt <Action>(Refactorings.QuickListPopupAction)

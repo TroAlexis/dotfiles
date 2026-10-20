@@ -1,6 +1,9 @@
 typeset -U path fpath  # drop duplicate PATH entries
 fpath=(~/.zsh/completions $fpath)
-autoload -Uz compinit && compinit
+# full check + dump rebuild once a day, else trust the cached dump (~18ms less);
+# rm ~/.zcompdump to pick up new completions sooner
+autoload -Uz compinit
+() { if (( $# )); then compinit && touch ~/.zcompdump; else compinit -C; fi } ~/.zcompdump(N.mh+24)
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
@@ -35,7 +38,7 @@ eval "$(starship init zsh)"
 ___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
 
 # switches node on cd per .nvmrc/.node-version; no file = brew node ("system")
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --log-level=quiet --shell zsh)"
 unsetopt hash_cmds  # else zsh keeps brew's cached node path after fnm switches
 
 export PYTHON=python3
@@ -69,9 +72,6 @@ export PRETTY_THEME=nord
 
 # pi-ask-user: use inline display mode by default
 export PI_ASK_USER_DISPLAY_MODE=inline
-
-# Figma REST API token from macOS Keychain
-export FIGMA_API_KEY="$(security find-generic-password -a "$USER" -s figma-api-key -w 2>/dev/null)"
 
 # ppi: complete subcommands and profile IDs
 eval "$(ppi completion zsh)"

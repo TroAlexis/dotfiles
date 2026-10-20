@@ -6,19 +6,26 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[includeIf "gitdir:~/WebstormProjects/lme-frontend/"]
+	path = ~/.config/git/tedo
 [core]
 	autocrlf = input
 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[push]
+	autoSetupRemote = true
 [alias]
 	rst = commit --amend --no-edit --reset-author
 [diff]
-	tool = nvimdiff
-[difftool "nvimdiff"]
-	cmd = nvim -d "$LOCAL" "$REMOTE"
+	tool = codediff
+[difftool "codediff"]
+	cmd = nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"
 [merge]
-	tool = nvimdiff
-[mergetool "nvimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+	tool = codediff
+[mergetool "codediff"]
+	cmd = nvim \"$MERGED\" -c \"CodeDiff --exit-on-close merge \\\"$MERGED\\\"\"
 [mergetool]
 	keepBackup = false
 [url "git@github-baitshift:baitshift/"]

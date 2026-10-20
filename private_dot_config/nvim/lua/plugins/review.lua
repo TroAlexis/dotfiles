@@ -28,6 +28,7 @@ return {
     event = "VeryLazy",
     keys = {
       { "<leader>gz", "<cmd>Review<cr>", desc = "Review working tree" },
+      { "<leader>gA", "<cmd>CodeDiff<cr>", desc = "Diff working tree against HEAD" },
       {
         "<leader>gZ",
         function()
