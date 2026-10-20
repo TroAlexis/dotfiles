@@ -1,0 +1,5 @@
+#!/bin/sh
+# Figma REST MCP server; reads the API token from Keychain at launch instead of every shell start
+FIGMA_API_KEY=$(security find-generic-password -a "$USER" -s figma-api-key -w) || exit 1
+export FIGMA_API_KEY
+exec npx -y figma-developer-mcp --stdio
