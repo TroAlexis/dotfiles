@@ -63,8 +63,6 @@ if tmux has-session -t "=$name" 2>/dev/null; then
 else
   target=$(tmux new-session -d -P -F '#{pane_id}' -s "$name" -c "$dir")
 fi
-# Same layout as sesh.toml: nvim left 65%, empty pane right 35% for an agent
-tmux split-window -h -l 35% -d -t "$target" -c "$dir"
 tmux send-keys -t "$target" "nvim $(printf '%q ' "${files[@]}")" Enter
 
 if [ -n "$(tmux list-clients 2>/dev/null)" ]; then
