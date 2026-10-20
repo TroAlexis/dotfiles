@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # @raycast.schemaVersion 1
-# @raycast.title Open in Neovim
+# @raycast.title Open in Neovim (nvim)
 # @raycast.mode silent
 # @raycast.icon 📝
 # @raycast.packageName Finder
