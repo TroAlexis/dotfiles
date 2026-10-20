@@ -20,22 +20,26 @@ os:
   editAtLine: '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")'
 
 customCommands:
-  - key: M
-    context: localBranches
+  - key: <c-g>
     description: GitLab
     commandMenu:
       - key: o
+        context: localBranches
         description: Open MR
         command: glab mr view {{.SelectedLocalBranch.Name | quote}} --web
       - key: c
+        context: localBranches
         description: Create MR (pushes branch)
         command: glab mr create --fill --web --source-branch {{.SelectedLocalBranch.Name | quote}}
       - key: p
+        context: localBranches
         description: Open pipeline
         command: glab ci view --web --branch {{.SelectedLocalBranch.Name | quote}}
       - key: b
+        context: localBranches
         description: Open branch in browser
         command: glab repo view --web --branch {{.SelectedLocalBranch.Name | quote}}
       - key: r
+        context: localBranches
         description: Open MR review (diffs)
         command: open "$(glab mr view {{.SelectedLocalBranch.Name | quote}} -F json --jq .web_url)/diffs"
