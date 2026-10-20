@@ -43,7 +43,8 @@ if [ -n "$pane" ]; then
     sock=$(ls "${TMPDIR:-$(getconf DARWIN_USER_TEMP_DIR)}"nvim.$USER/*/nvim.$p.0 2>/dev/null | head -1)
     [ -n "$sock" ] && break
   done
-  if [ -n "$sock" ]; then
+  # Probe first: --remote falls back to a local (here: stuck, tty-less) nvim if the socket is stale
+  if [ -n "$sock" ] && nvim --server "$sock" --remote-expr 1 >/dev/null 2>&1 </dev/null; then
     nvim --server "$sock" --remote "${files[@]}"
     tmux switch-client -t "$pane_id"
     open -a Ghostty
