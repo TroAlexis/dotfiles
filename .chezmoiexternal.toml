@@ -1,0 +1,10 @@
+# tmux plugins that must exist before tmux.conf runs them; TPM installs the rest (prefix+I)
+[".config/tmux/plugins/tpm"]
+type = "git-repo"
+url = "https://github.com/tmux-plugins/tpm"
+refreshPeriod = "168h"
+
+[".config/tmux/plugins/catppuccin/tmux"]
+type = "git-repo"
+url = "https://github.com/catppuccin/tmux.git"
+refreshPeriod = "168h"
