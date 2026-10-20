@@ -1,0 +1,2 @@
+# project/tool interpreters come only from uv, never brew (brew pythons are formula deps and churn on upgrade)
+python-preference = "only-managed"
