@@ -1,6 +1,6 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# user bins: claude, tmux (patched build), workmux, ppi, obsidian, agy
+# user bins: claude, workmux, ppi, obsidian, agy
 export PATH="/Users/atroshin/.local/bin:$PATH"
 
 # go install'd tools: dlv, goplay (golangci-lint comes from brew, gopls from mason)
