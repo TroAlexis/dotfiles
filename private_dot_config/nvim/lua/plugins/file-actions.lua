@@ -24,18 +24,6 @@ return {
       opts.picker = opts.picker or {}
       opts.picker.actions = opts.picker.actions or {}
 
-      opts.picker.actions.webstorm_open = function(...)
-        return require("util.webstorm").open_picker_item(...)
-      end
-
-      opts.picker.actions.system_open = function(...)
-        return require("util.system-open").open_picker_item(...)
-      end
-
-      opts.picker.actions.system_open_parent = function(...)
-        return require("util.system-open").open_picker_item_parent(...)
-      end
-
       opts.picker.actions.file_actions = function(picker, item)
         item = item or picker:current()
         if not item then

@@ -145,9 +145,6 @@ vnoremap <S-Tab> <gv
 noremap ' `
 noremap ` '
 
-" Break line (opposite of J)
-nnoremap K gh
-
 map U <C-R>
 inoremap <C-l> <Del>
 
