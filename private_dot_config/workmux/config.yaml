@@ -22,3 +22,6 @@ auto_name:
   # workmux pipes its own naming instructions via stdin, so pi needs no coding system prompt, tools, AGENTS.md or session
   command: "ppi mini -- -p --no-tools --no-context-files --no-session --system-prompt 'You output only a kebab-case git branch name.'"
   background: true
+
+# Keep catppuccin window-status formats (zoom flag); @workmux_status is added there
+status_format: false
