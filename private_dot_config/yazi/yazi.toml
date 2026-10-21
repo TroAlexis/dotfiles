@@ -1,0 +1,8 @@
+# Inside tmux, hand text files to the pane's nvim (same script as the Raycast action) and
+# close the popup; a nested nvim in a popup has no $TMUX_PANE, so smart-splits complains.
+# Outside tmux, or if no nvim could be reached or started, fall back to $EDITOR here.
+[opener]
+edit = [
+	{ run = '[ -n "$TMUX" ] && ~/.config/tmux/scripts/open-in-nvim.sh %s && { tmux display-popup -C; :; } || ${EDITOR:-vi} %s', desc = "nvim (tmux pane)", for = "unix", block = true },
+	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR (here)", for = "unix", block = true },
+]
