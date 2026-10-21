@@ -1,0 +1,4 @@
+# Code previews use the same Material Darker syntax theme as bat; the rest of the
+# default theme is ANSI colours, which already follow Ghostty's palette.
+[mgr]
+syntect_theme = "~/.config/bat/themes/Material Darker.tmTheme"
