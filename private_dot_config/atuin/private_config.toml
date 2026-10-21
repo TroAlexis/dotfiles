@@ -254,12 +254,6 @@ search_mode = "daemon-fuzzy"
 # Defaults to false. The backspace key performs the same functionality as Tab and copies the selected line to the command line to be modified when at the start of the line.
 # accept_with_backspace = false
 
-[sync]
-# Enable sync v2 by default
-# This ensures that sync v2 is enabled for new installs only
-# In a later release it will become the default across the board
-records = true
-
 [preview]
 ## which preview strategy to use to calculate the preview height (respects max_preview_height).
 ## possible values: auto, static
@@ -269,14 +263,12 @@ records = true
 # strategy = "auto"
 
 [daemon]
-enabled = true
-autostart = true
 ## Enables using the daemon to sync.
-# enabled = false
+enabled = true
 
 ## Automatically start and manage the daemon when needed.
 ## Not compatible with `systemd_socket = true`.
-# autostart = false
+autostart = true
 
 ## How often the daemon should sync in seconds
 # sync_frequency = 300

@@ -1,6 +1,6 @@
--- Run: nvim --headless -u NONE -l nvim/tests/buffer-limit.lua
+-- Run: nvim --headless -u NONE -l ~/.config/nvim/tests/buffer-limit.lua
 vim.opt.hidden = true
-dofile("nvim/lua/config/autocmds.lua")
+dofile(vim.fn.expand("~/.config/nvim/lua/config/autocmds.lua"))
 local first
 for i = 1, 11 do
   vim.cmd("enew")

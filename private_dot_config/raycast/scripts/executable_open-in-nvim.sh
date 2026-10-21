@@ -52,11 +52,13 @@ if [ -n "$pane" ]; then
   fi
 fi
 
-# No nvim pane: new session named sesh-style after the project (git root, else folder)
+# No nvim pane: new session for the project (git root, else folder), named by sesh.toml if
+# listed there, else sesh-style after the folder
 dir="${files[0]}"
 [ -d "$dir" ] || dir="$(dirname "$dir")"
 dir="$(git -C "$dir" rev-parse --show-toplevel 2>/dev/null || echo "$dir")"
-name="$(basename "$dir" | tr '.:' '__')"
+name=$(sesh list -c -j 2>/dev/null | jq -r --arg d "$dir" 'first(.[] | select(.Path == $d) | .Name) // empty')
+[ -n "$name" ] || name="$(basename "$dir" | tr '.:' '__')"
 
 # Typed into a shell like sesh's startup_command, so quitting nvim leaves the pane open
 if tmux has-session -t "=$name" 2>/dev/null; then

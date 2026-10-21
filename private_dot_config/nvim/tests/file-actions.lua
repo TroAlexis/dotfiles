@@ -1,6 +1,6 @@
--- Run: nvim --headless -u NONE -l nvim/tests/file-actions.lua
+-- Run: nvim --headless -u NONE -l ~/.config/nvim/tests/file-actions.lua
 local opts = {}
-assert(loadfile("nvim/lua/plugins/file-actions.lua"))()[1].opts(nil, opts)
+assert(loadfile(vim.fn.expand("~/.config/nvim/lua/plugins/file-actions.lua")))()[1].opts(nil, opts)
 local path = vim.fn.tempname()
 vim.fn.writefile({ "test" }, path)
 local refreshed = 0
