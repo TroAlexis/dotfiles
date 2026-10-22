@@ -6,3 +6,6 @@ edit = [
 	{ run = '[ -n "$TMUX" ] && ~/.config/tmux/scripts/open-in-nvim.sh %s && { tmux display-popup -C; :; } || ${EDITOR:-vi} %s', desc = "nvim (tmux pane)", for = "unix", block = true },
 	{ run = '${EDITOR:-vi} %s', desc = "$EDITOR (here)", for = "unix", block = true },
 ]
+
+[mgr]
+sort_dir_first = false
