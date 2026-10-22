@@ -9,3 +9,8 @@ edit = [
 
 [mgr]
 sort_dir_first = false
+
+[open]
+prepend_rules = [
+	{ mime = "text/*", use = ["edit", "open", "reveal"] },
+]
