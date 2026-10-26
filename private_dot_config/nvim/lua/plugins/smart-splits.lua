@@ -14,8 +14,10 @@ return {
     dependencies = {
       { "smart-splits-nvim/backend-tmux", main = "smart-splits-backend-tmux" },
     },
-    -- at_edge must match the tmux bindings, which stop at the window edge
-    opts = { move = { at_edge = "stop" }, mux = { backend = "smart-splits-backend-tmux" } },
+    -- at_edge must match the tmux bindings, which stop at the window edge;
+    -- float = "mux": from a float (lazygit), go straight to tmux instead of focusing the editor first,
+    -- so the float is still focused when you come back
+    opts = { move = { at_edge = "stop", float = "mux" }, mux = { backend = "smart-splits-backend-tmux" } },
     keys = {
       { "<M-h>", split("move_cursor_left"), desc = "Window/pane left", mode = { "n", "i", "t" } },
       { "<M-j>", split("move_cursor_down"), desc = "Window/pane down", mode = { "n", "t" } },
