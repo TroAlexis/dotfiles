@@ -19,7 +19,25 @@ os:
   edit: '[ -z "$NVIM" ] && (nvim -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}})'
   editAtLine: '[ -z "$NVIM" ] && (nvim +{{line}} -- {{filename}}) || (nvim --server "$NVIM" --remote-send "q" && nvim --server "$NVIM" --remote {{filename}} && nvim --server "$NVIM" --remote-send ":{{line}}<CR>")'
 
+# codediff.sh returns to lazygit on its own (nvim quit, or a tab in the host nvim)
+promptToReturnFromSubprocess: false
+
 customCommands:
+  - key: <c-v>
+    context: files
+    description: CodeDiff working tree
+    command: ~/.config/lazygit/codediff.sh
+    output: terminal
+  - key: <c-v>
+    context: commits
+    description: CodeDiff commit
+    command: ~/.config/lazygit/codediff.sh {{.SelectedLocalCommit.Sha}}~ {{.SelectedLocalCommit.Sha}}
+    output: terminal
+  - key: <c-v>
+    context: localBranches
+    description: CodeDiff working tree vs branch
+    command: ~/.config/lazygit/codediff.sh {{.SelectedLocalBranch.Name}}
+    output: terminal
   - key: <c-g>
     description: GitLab
     commandMenu:
