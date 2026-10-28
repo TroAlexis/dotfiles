@@ -8,6 +8,8 @@ return {
     dependencies = {
       {
         "esmuellert/codediff.nvim",
+        -- git difftool/mergetool run `nvim +CodeDiff`, which fires before VeryLazy
+        cmd = "CodeDiff",
         opts = {
           diff = { layout = "inline", cycle_hunks_across_files = true },
           highlights = {

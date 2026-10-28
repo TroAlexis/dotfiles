@@ -26,7 +26,7 @@
 	tool = codediff
 	algorithm = histogram
 [difftool "codediff"]
-	cmd = nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"
+	cmd = "if [ -d \"$LOCAL\" ]; then nvim +\"CodeDiff --exit-on-close dir $LOCAL $REMOTE\"; else nvim \"$LOCAL\" \"$REMOTE\" +\"CodeDiff --exit-on-close file $LOCAL $REMOTE\"; fi"
 [merge]
 	tool = codediff
 	conflictStyle = zdiff3
