@@ -1,0 +1,21 @@
+[metadata]
+name = "claude-memories"
+description = "Browse Claude Code memories across all projects"
+requirements = ["find", "awk", "bat"]
+
+[source]
+command = '''find "$HOME/.claude/projects" -path '*/memory/*.md' ! -name MEMORY.md -type f 2>/dev/null | sort | awk -F/ '{p=$(NF-2); sub(/^-Users-[^-]+-?/,"",p); if(p=="")p="~"; print p "/" $NF "\t" $0}' '''
+display = "{split:\\t:0}"
+
+[preview]
+command = "bat -n --color=always '{split:\\t:1}'"
+env = { BAT_THEME = "ansi" }
+
+[keybindings]
+enter = "actions:edit"
+
+[actions.edit]
+description = "Open the selected memory"
+command = "${EDITOR:-nvim} '{split:\\t:1}'"
+shell = "bash"
+mode = "execute"
