@@ -1,21 +1,26 @@
 [metadata]
 name = "claude-memories"
 description = "Browse Claude Code memories across all projects"
-requirements = ["find", "awk", "bat"]
+requirements = ["find", "awk", "rg", "bat"]
 
+# Entries are "display<TAB>path<TAB>line" in every source
 [source]
-command = '''find "$HOME/.claude/projects" -path '*/memory/*.md' ! -name MEMORY.md -type f 2>/dev/null | sort | awk -F/ '{p=$(NF-2); sub(/^-Users-[^-]+-?/,"",p); if(p=="")p="~"; print p "/" $NF "\t" $0}' '''
+command = [
+  { name = "Description", run = '''find "$HOME/.claude/projects" -path '*/memory/*.md' ! -name MEMORY.md -type f -exec grep -H -m1 '^description:' {} + 2>/dev/null | sort | awk '{i=index($0,":description:"); f=substr($0,1,i-1); d=substr($0,i+13); gsub(/^ *"?|"$/,"",d); n=split(f,a,"/"); p=a[n-2]; sub(/^-Users-[^-]+-?/,"",p); if(p=="")p="~"; print p "/" a[n] "  " d "\t" f "\t1"}' ''' },
+  { name = "Content", run = '''rg --no-heading --line-number --color=never --sort path --glob '**/memory/*.md' --glob '!MEMORY.md' . "$HOME/.claude/projects" 2>/dev/null | awk '{i=index($0,":"); f=substr($0,1,i-1); r=substr($0,i+1); j=index(r,":"); l=substr(r,1,j-1); t=substr(r,j+1); gsub(/\t/," ",t); n=split(f,a,"/"); p=a[n-2]; sub(/^-Users-[^-]+-?/,"",p); if(p=="")p="~"; print p "/" a[n] ":" l "  " t "\t" f "\t" l}' ''' },
+]
 display = "{split:\\t:0}"
 
 [preview]
 command = "bat -n --color=always '{split:\\t:1}'"
 env = { BAT_THEME = "ansi" }
+offset = '{split:\t:2}'
 
 [keybindings]
 enter = "actions:edit"
 
 [actions.edit]
-description = "Open the selected memory"
-command = "${EDITOR:-nvim} '{split:\\t:1}'"
+description = "Open the selected memory at the matched line"
+command = "${EDITOR:-nvim} '+{split:\\t:2}' '{split:\\t:1}'"
 shell = "bash"
 mode = "execute"
